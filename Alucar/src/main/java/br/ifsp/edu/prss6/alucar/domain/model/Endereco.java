@@ -2,12 +2,30 @@ package br.ifsp.edu.prss6.alucar.domain.model;
 
 import java.util.Objects;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
+
+@Entity
+@Table(name="ENDERECO")
 public class Endereco {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	@NotNull
 	private String logradouro;
+	@NotNull
 	private int numero;
+	@NotNull
 	private String bairro;
+	@NotNull
 	private String cidade;
+	@NotNull
 	private String cep;
+	@NotNull
 	private String estado;
 	
 	public String getLogradouro() {
@@ -45,6 +63,12 @@ public class Endereco {
 	}
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 	@Override

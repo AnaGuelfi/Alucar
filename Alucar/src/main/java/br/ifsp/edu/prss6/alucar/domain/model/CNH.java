@@ -3,8 +3,15 @@ package br.ifsp.edu.prss6.alucar.domain.model;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+import jakarta.validation.constraints.NotNull;
+
+@Embeddable
 public class CNH {
+	@Column(name="numero_registro")
 	private String numeroRegistro;
+	@Column(name="data_validade")
 	private LocalDate dataValidade;
 	private String categoria;
 	
