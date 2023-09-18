@@ -9,7 +9,7 @@ import jakarta.validation.constraints.NotNull;
 
 @Embeddable
 public class CNH {
-	@Column(name="numero_registro")
+	@Column(name="numero_registro", unique=true)
 	private String numeroRegistro;
 	@Column(name="data_validade")
 	private LocalDate dataValidade;

@@ -44,7 +44,11 @@ CREATE TABLE IF NOT EXISTS VEICULO(
 	combustivel VARCHAR(50) NOT NULL,
 	opcionais VARCHAR(50),
 	quilometragem BIGINT(20),
-	imagens LONGBLOB,
+	imagem_frontal LONGBLOB,
+	imagem_lateral LONGBLOB,
+	imagem_traseira LONGBLOB,
+	imagem_interior LONGBLOB,
+	imagem_pneus LONGBLOB,
 	renavam VARCHAR(20) NOT NULL,
 	data_emissao DATE NOT NULL,
 	cidade_emissao VARCHAR(50) NOT NULL,
@@ -55,8 +59,8 @@ CREATE TABLE IF NOT EXISTS VEICULO(
 	FOREIGN KEY (id_usuario) REFERENCES USUARIO(id)
 )ENGINE=INNODB DEFAULT CHARSET=UTF8;
 
-INSERT INTO VEICULO(id, marca, modelo, cor, placa, combustivel, renavam, data_emissao, cidade_emissao, estado_emissao, id_usuario) VALUES(1, 'Honda', 'Fit', 'branco', 'ABC3W89', 'Flex', '2-481014777', '2023-05-02', 'São Carlos', 'São Paulo', 1);
-INSERT INTO VEICULO(id, marca, modelo, cor, placa, combustivel, renavam, data_emissao, cidade_emissao, estado_emissao, id_usuario) VALUES(2, 'Fiat', 'Palio', 'preto', 'CDE3W89', 'Álcool', '2-481014888', '2023-07-09', 'Ribeirão Preto', 'São Paulo', 2);
+INSERT INTO VEICULO(id, marca, modelo, cor, placa, combustivel, quilometragem, renavam, data_emissao, cidade_emissao, estado_emissao, id_usuario) VALUES(1, 'Honda', 'Fit', 'branco', 'ABC3W89', 'FLEX', 50000, '2-481014777', '2023-05-02', 'São Carlos', 'São Paulo', 1);
+INSERT INTO VEICULO(id, marca, modelo, cor, placa, combustivel, quilometragem, renavam, data_emissao, cidade_emissao, estado_emissao, id_usuario) VALUES(2, 'Fiat', 'Palio', 'preto', 'CDE3W89', 'ALCOOL', 80000, '2-481014888', '2023-07-09', 'Ribeirão Preto', 'São Paulo', 2);
 
 
 

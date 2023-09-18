@@ -2,18 +2,57 @@ package br.ifsp.edu.prss6.alucar.domain.model;
 
 import java.util.Objects;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+
+@Entity
+@Table(name="VEICULO")
 public class Veiculo {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Long id;
+	@NotNull
 	private String marca;
+	@NotNull
 	private String modelo;
+	@NotNull
 	private String cor;
+	@NotNull
+	@Column(unique=true)
 	private String placa;
+	@NotNull
+	@Enumerated(EnumType.STRING)
 	private Combustivel combustivel;
+	@Enumerated(EnumType.STRING)
 	private Opcionais opcionais;
+	@Min(value=0)
 	private double quilometragem;
+	@Embedded
 	private CRLV crlv;
+	@Embedded
 	private Imagens imagens;
+	@NotNull
+	@ManyToOne
+	@JoinColumn(name="id_usuario")
 	private Usuario usuario;
 	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
 	public Usuario getUsuario() {
 		return usuario;
 	}
@@ -74,10 +113,10 @@ public class Veiculo {
 	public void setImagens(Imagens imagens) {
 		this.imagens = imagens;
 	}
-	
 	@Override
 	public int hashCode() {
-		return Objects.hash(combustivel, cor, crlv, imagens, marca, modelo, opcionais, placa, quilometragem, usuario);
+		return Objects.hash(combustivel, cor, crlv, id, imagens, marca, modelo, opcionais, placa, quilometragem,
+				usuario);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -89,10 +128,11 @@ public class Veiculo {
 			return false;
 		Veiculo other = (Veiculo) obj;
 		return combustivel == other.combustivel && Objects.equals(cor, other.cor) && Objects.equals(crlv, other.crlv)
-				&& Objects.equals(imagens, other.imagens) && Objects.equals(marca, other.marca)
-				&& Objects.equals(modelo, other.modelo) && opcionais == other.opcionais
-				&& Objects.equals(placa, other.placa)
+				&& Objects.equals(id, other.id) && Objects.equals(imagens, other.imagens)
+				&& Objects.equals(marca, other.marca) && Objects.equals(modelo, other.modelo)
+				&& opcionais == other.opcionais && Objects.equals(placa, other.placa)
 				&& Double.doubleToLongBits(quilometragem) == Double.doubleToLongBits(other.quilometragem)
 				&& Objects.equals(usuario, other.usuario);
 	}
+	
 }

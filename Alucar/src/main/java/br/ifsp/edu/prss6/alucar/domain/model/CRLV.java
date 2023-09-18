@@ -3,10 +3,22 @@ package br.ifsp.edu.prss6.alucar.domain.model;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
+import jakarta.persistence.UniqueConstraint;
+
+@Embeddable
 public class CRLV {
+	@Column(unique=true)
 	private String renavam;
+	@Column(name="cidade_emissao")
 	private String cidadeEmissao;
+	@Column(name="estado_emissao")
 	private String estadoEmissao;
+	@Column(name="data_emissao")
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataEmissao;
 	
 	public String getRenavam() {
