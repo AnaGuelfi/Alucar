@@ -13,7 +13,6 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.BindingResult;
@@ -31,7 +30,7 @@ public class AlucarExceptionHandler extends ResponseEntityExceptionHandler{
 	private MessageSource messageSource;
 	
 	@Override
-	protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
+	protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
 		String userMessage = messageSource.getMessage("invalid.message", null, LocaleContextHolder.getLocale());
 		String developerMessage = Optional.ofNullable(ex.getCause()).orElse(ex).toString();
 	
@@ -39,7 +38,7 @@ public class AlucarExceptionHandler extends ResponseEntityExceptionHandler{
 	}
 
 	@Override
-	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
+	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
 		List<Error> errors = createErrorsList(ex.getBindingResult());
 		return handleExceptionInternal(ex, errors, headers, HttpStatus.BAD_REQUEST, request);
 	}
@@ -65,9 +64,11 @@ public class AlucarExceptionHandler extends ResponseEntityExceptionHandler{
 	}
 
 	@ExceptionHandler({ DataIntegrityViolationException.class } )
-	public ResponseEntity<Object> handleDataIntegrityViolationException(DataIntegrityViolationException ex,	WebRequest request) {
+	public ResponseEntity<Object> handleDataIntegrityViolationException(DataIntegrityViolationException ex, 		
+		WebRequest request) {
 		String userMessage = messageSource.getMessage("resource.operation-not-allowed", null, LocaleContextHolder.getLocale());
 		String developerMessage = ExceptionUtils.getRootCauseMessage(ex);
+		// com ExceptionUtils conseguimos uma mensagem melhor para o desenvolvedor
 		List<Error> errors = Arrays.asList(new Error(userMessage, developerMessage));
 		return handleExceptionInternal(ex, errors, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
 	}

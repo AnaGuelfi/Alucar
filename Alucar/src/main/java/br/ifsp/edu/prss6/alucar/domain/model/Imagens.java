@@ -2,8 +2,8 @@ package br.ifsp.edu.prss6.alucar.domain.model;
 
 import java.sql.Blob;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
 
 @Embeddable
 public class Imagens {

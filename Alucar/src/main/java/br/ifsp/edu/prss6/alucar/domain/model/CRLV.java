@@ -5,9 +5,8 @@ import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.UniqueConstraint;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
 
 @Embeddable
 public class CRLV {

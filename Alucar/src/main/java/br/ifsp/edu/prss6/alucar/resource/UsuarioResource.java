@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 import br.ifsp.edu.prss6.alucar.domain.model.Usuario;
 import br.ifsp.edu.prss6.alucar.repository.UsuarioRepository;
 import br.ifsp.edu.prss6.alucar.service.UsuarioService;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.validation.Valid;
+import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/usuarios")
