@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,17 +33,20 @@ public class VeiculoResource {
 	@Autowired
 	private VeiculoRepository veiculoRepository;
 	
+	@PreAuthorize("hasAuthority('ROLE_SEARCH_CAR') and #oauth2.hasScope('read')")
 	@GetMapping
 	public List<Veiculo> list(){
 		return veiculoRepository.findAll();
 	}
 	
+	@PreAuthorize("hasAuthority('ROLE_REGISTER_CAR') and #oauth2.hasScope('write')")
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public Veiculo create(@Valid @RequestBody Veiculo veiculo, HttpServletResponse response) {
 		return veiculoRepository.save(veiculo);
 	}
 	
+	@PreAuthorize("hasAuthority('ROLE_SEARCH_CAR') and #oauth2.hasScope('read')")
 	@GetMapping("/{id}")
 	public ResponseEntity<Veiculo> findById(@PathVariable Long id){
 		Optional<Veiculo> veiculo = veiculoRepository.findById(id);
@@ -52,12 +56,14 @@ public class VeiculoResource {
 		return ResponseEntity.notFound().build();
 	}
 	
+	@PreAuthorize("hasAuthority('ROLE_REMOVE_CAR') and #oauth2.hasScope('write')")
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void remove(@PathVariable Long id) {
 		veiculoRepository.deleteById(id);
 	}
 	
+	@PreAuthorize("hasAuthority('ROLE_REGISTER_CAR') and #oauth2.hasScope('write')")
 	@PutMapping("/{id}")
 	public ResponseEntity<Veiculo> update(@PathVariable Long id, @Valid @RequestBody Veiculo veiculo){
 		Veiculo veiculoSaved = veiculoService.update(id, veiculo);

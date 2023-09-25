@@ -31,8 +31,8 @@ CREATE TABLE IF NOT EXISTS USUARIO(
 	FOREIGN KEY (id_endereco) REFERENCES ENDERECO(id)
 )ENGINE=INNODB DEFAULT CHARSET=UTF8;
 
-INSERT INTO USUARIO(id, CPF, nome, telefone, email, data_nascimento, senha, numero_registro, categoria, data_validade, id_endereco) VALUES(1, '473.322.598-93', 'Ana', '12345689', 'ana@email.com', '2002-08-03', '123', 'SP123456789', 'A', '2023-09-04', 1);
-INSERT INTO USUARIO(id, CPF, nome, telefone, email, data_nascimento, senha, id_endereco) VALUES(2, '323.378.228-42', 'Stefano', '12348689', 'stefano@email.com', '2001-06-03', '123', 2);
+INSERT INTO USUARIO(id, CPF, nome, telefone, email, data_nascimento, senha, numero_registro, categoria, data_validade, id_endereco) VALUES(1, '473.322.598-93', 'Ana', '12345689', 'ana@email.com', '2002-08-03', '$2a$10$Ot4XGuyPP7r82nN3WXA0bOL1Qk9gShKDlVuPoyp89HoFnHcwO4Tji', 'SP123456789', 'A', '2023-09-04', 1);
+INSERT INTO USUARIO(id, CPF, nome, telefone, email, data_nascimento, senha, id_endereco) VALUES(2, '323.378.228-42', 'Stefano', '12348689', 'stefano@email.com', '2001-06-03', '$2a$10$Ot4XGuyPP7r82nN3WXA0bOL1Qk9gShKDlVuPoyp89HoFnHcwO4Tji', 2);
 
 
 CREATE TABLE IF NOT EXISTS VEICULO(

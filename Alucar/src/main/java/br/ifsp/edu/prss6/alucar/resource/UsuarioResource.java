@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,17 +33,21 @@ public class UsuarioResource {
 	@Autowired
 	private UsuarioService usuarioService;
 	
+	
+	@PreAuthorize("hasAuthority('ROLE_SEARCH_USER') and #oauth2.hasScope('read')")
 	@GetMapping
 	public List<Usuario> list(){
 		return usuarioRepository.findAll();
 	}
 	
+	@PreAuthorize("hasAuthority('ROLE_REGISTER_USER') and #oauth2.hasScope('write')")
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public Usuario create(@Valid @RequestBody Usuario usuario, HttpServletResponse response) {
 		return usuarioRepository.save(usuario);
 	}
 	
+	@PreAuthorize("hasAuthority('ROLE_SEARCH_USER') and #oauth2.hasScope('read')")
 	@GetMapping("/{id}")
 	public ResponseEntity<Usuario> findById(@PathVariable Long id){
 		Optional<Usuario> usuario = usuarioRepository.findById(id);
@@ -52,12 +57,14 @@ public class UsuarioResource {
 		return ResponseEntity.notFound().build();
 	}
 	
+	@PreAuthorize("hasAuthority('ROLE_REMOVE_USER') and #oauth2.hasScope('write')")
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void remove(@PathVariable Long id) {
 		usuarioRepository.deleteById(id);
 	}
 	
+	@PreAuthorize("hasAuthority('ROLE_REGISTER_USER') and #oauth2.hasScope('write')")
 	@PutMapping("/{id}")
 	public ResponseEntity<Usuario> update(@PathVariable Long id, @Valid @RequestBody Usuario usuario){
 		Usuario usuarioSaved = usuarioService.update(id, usuario);

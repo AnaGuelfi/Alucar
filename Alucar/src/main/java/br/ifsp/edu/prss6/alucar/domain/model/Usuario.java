@@ -1,6 +1,8 @@
 package br.ifsp.edu.prss6.alucar.domain.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import org.hibernate.validator.constraints.br.CPF;
@@ -10,10 +12,13 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
@@ -48,6 +53,9 @@ public class Usuario {
 	private LocalDate dataNascimento;
 	@Embedded
 	private CNH cnh;
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "USUARIO_PERMISSAO", joinColumns = @JoinColumn(name = "id_usuario"), inverseJoinColumns = @JoinColumn(name = "id_permissao"))
+	private List<Permissao> permissoes;
 	
 	public String getNome() {
 		return nome;
@@ -103,6 +111,12 @@ public class Usuario {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	public List<Permissao> getPermissoes() {
+		return permissoes;
+	}
+	public void setPermissoes(List<Permissao> permissoes) {
+		this.permissoes = permissoes;
+	}
 	
 	@Override
 	public int hashCode() {
@@ -123,6 +137,5 @@ public class Usuario {
 				&& Objects.equals(nome, other.nome) && Objects.equals(senha, other.senha)
 				&& Objects.equals(telefone, other.telefone);
 	}
-	
 	
 }
