@@ -31,11 +31,11 @@ public class RefreshTokenCookiePreProcessorFilter implements Filter {
 		      && req.getCookies() != null) {
 
 		    String refreshToken = 
-		        Stream.of(req.getCookies()) // Transformar o array de cookies em um Stream
-		            .filter(cookie -> "refreshToken".equals(cookie.getName())) // Filtrar os dados do Stream para que retorne apenas o que tenha o nome refreshToken
-		            .findFirst() // Obter o primeiro objeto do Stream (caso exista)
-		            .map(cookie -> cookie.getValue()) // Transformá-lo de cookie em uma String com o seu valor.
-		            .orElse(null); // Caso não tenha encontrado um cookie com o nome refreshToken, retorna null.
+		        Stream.of(req.getCookies()) 
+		            .filter(cookie -> "refreshToken".equals(cookie.getName())) 
+		            .findFirst() 
+		            .map(cookie -> cookie.getValue()) 
+		            .orElse(null); 
 
 		    req = new MyServletRequestWrapper(req, refreshToken);
 		  }

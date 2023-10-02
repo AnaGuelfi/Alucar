@@ -68,7 +68,6 @@ public class AlucarExceptionHandler extends ResponseEntityExceptionHandler{
 		WebRequest request) {
 		String userMessage = messageSource.getMessage("resource.operation-not-allowed", null, LocaleContextHolder.getLocale());
 		String developerMessage = ExceptionUtils.getRootCauseMessage(ex);
-		// com ExceptionUtils conseguimos uma mensagem melhor para o desenvolvedor
 		List<Error> errors = Arrays.asList(new Error(userMessage, developerMessage));
 		return handleExceptionInternal(ex, errors, new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
 	}
