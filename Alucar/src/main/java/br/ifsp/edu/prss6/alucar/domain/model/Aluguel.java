@@ -3,6 +3,8 @@ package br.ifsp.edu.prss6.alucar.domain.model;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import javax.persistence.Embedded;
+
 public class Aluguel {
 	private double valor;
 	private Endereco localRetirada;
@@ -13,7 +15,9 @@ public class Aluguel {
 	private Usuario locador;
 	private Usuario locatario;
 	private Veiculo veiculo;
+	@Embedded
 	private TermoComprometimento termoComprometimento;
+	@Embedded
 	private TermoConsentimento termoConsentimento;
 	
 	public double getValor() {

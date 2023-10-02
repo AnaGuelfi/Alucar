@@ -3,9 +3,16 @@ package br.ifsp.edu.prss6.alucar.domain.model;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class TermoConsentimento {
+	@Column(name="mensagem_consentimento")
 	private String mensagem;
+	@Column(name="valor_multa")
 	private double valorMulta;
+	@Column(name="assinatura_locatario")
 	private LocalDate assinaturaLocatario;
 	
 	public String getMensagem() {

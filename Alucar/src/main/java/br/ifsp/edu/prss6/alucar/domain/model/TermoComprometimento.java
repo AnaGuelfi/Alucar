@@ -3,8 +3,14 @@ package br.ifsp.edu.prss6.alucar.domain.model;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class TermoComprometimento {
+	@Column(name="mensagem_comprometimento")
 	private String mensagem;
+	@Column(name="assinatura_locador")
 	private LocalDate assinaturaLocador;
 	
 	public String getMensagem() {
