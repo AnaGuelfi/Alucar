@@ -80,6 +80,7 @@ CREATE TABLE IF NOT EXISTS ALUGUEL(
 	mensagem_consentimento VARCHAR(255) NOT NULL,
 	assinatura_locatario DATE,
 	valor_multa FLOAT,
+	status VARCHAR(50) NOT NULL,
 	FOREIGN KEY (local_retirada) REFERENCES ENDERECO(id),
 	FOREIGN KEY (local_entrega) REFERENCES ENDERECO(id),
 	FOREIGN KEY (locador) REFERENCES USUARIO(id),
@@ -87,4 +88,4 @@ CREATE TABLE IF NOT EXISTS ALUGUEL(
 	FOREIGN KEY (veiculo) REFERENCES VEICULO(id)
 )ENGINE=INNODB DEFAULT CHARSET=UTF8;
 
-INSERT INTO ALUGUEL(id, valor, local_retirada, local_entrega, data_retirada, data_entrega, periodo, locador, locatario, veiculo, mensagem_comprometimento, assinatura_locador, mensagem_consentimento, assinatura_locatario) VALUES(1, 300, 2, 1, '2023-09-04', '2023-09-07', 3, 2, 1, 2, 'Mensagem Comprometimento', '2023-09-04', 'Mensagem Consentimento', '2023-09-04');
+INSERT INTO ALUGUEL(id, status, valor, local_retirada, local_entrega, data_retirada, data_entrega, periodo, locador, locatario, veiculo, mensagem_comprometimento, assinatura_locador, mensagem_consentimento, assinatura_locatario) VALUES(1, "ATIVO", 300, 2, 1, '2023-09-04', '2023-09-07', 3, 2, 1, 2, 'Mensagem Comprometimento', '2023-09-04', 'Mensagem Consentimento', '2023-09-04');

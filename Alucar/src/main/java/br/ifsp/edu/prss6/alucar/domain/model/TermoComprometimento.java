@@ -12,12 +12,13 @@ public class TermoComprometimento {
 	private String mensagem;
 	@Column(name="assinatura_locador")
 	private LocalDate assinaturaLocador;
+	private static String texto = "Termo de Comprometimento";
 	
 	public String getMensagem() {
 		return mensagem;
 	}
 	public void setMensagem(String mensagem) {
-		this.mensagem = mensagem;
+		this.mensagem = texto;
 	}
 	public LocalDate getAssinaturaLocador() {
 		return assinaturaLocador;

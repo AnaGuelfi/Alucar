@@ -14,12 +14,13 @@ public class TermoConsentimento {
 	private double valorMulta;
 	@Column(name="assinatura_locatario")
 	private LocalDate assinaturaLocatario;
+	private static String texto = "Termo de Consentimento";
 	
 	public String getMensagem() {
 		return mensagem;
 	}
 	public void setMensagem(String mensagem) {
-		this.mensagem = mensagem;
+		this.mensagem = texto;
 	}
 	public double getValorMulta() {
 		return valorMulta;

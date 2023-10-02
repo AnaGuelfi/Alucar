@@ -6,6 +6,8 @@ import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,6 +25,9 @@ public class Aluguel {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
+	@NotNull
+	@Enumerated(EnumType.STRING)
+	private StatusAluguel status;
 	@NotNull
 	private double valor;
 	@NotNull
@@ -133,11 +138,19 @@ public class Aluguel {
 	public void setTermoConsentimento(TermoConsentimento termoConsentimento) {
 		this.termoConsentimento = termoConsentimento;
 	}
+	public StatusAluguel getStatus() {
+		return status;
+	}
+	public void setStatus(StatusAluguel status) {
+		this.status = status;
+	}
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(dataEntrega, dataRetirada, id, locador, localEntrega, localRetirada, locatario, periodo,
-				termoComprometimento, termoConsentimento, valor, veiculo);
+				status, termoComprometimento, termoConsentimento, valor, veiculo);
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -151,7 +164,7 @@ public class Aluguel {
 				&& Objects.equals(id, other.id) && Objects.equals(locador, other.locador)
 				&& Objects.equals(localEntrega, other.localEntrega)
 				&& Objects.equals(localRetirada, other.localRetirada) && Objects.equals(locatario, other.locatario)
-				&& Double.doubleToLongBits(periodo) == Double.doubleToLongBits(other.periodo)
+				&& Double.doubleToLongBits(periodo) == Double.doubleToLongBits(other.periodo) && status == other.status
 				&& Objects.equals(termoComprometimento, other.termoComprometimento)
 				&& Objects.equals(termoConsentimento, other.termoConsentimento)
 				&& Double.doubleToLongBits(valor) == Double.doubleToLongBits(other.valor)
