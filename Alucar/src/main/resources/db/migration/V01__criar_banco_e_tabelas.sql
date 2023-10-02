@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS USUARIO(
 	FOREIGN KEY (id_endereco) REFERENCES ENDERECO(id)
 )ENGINE=INNODB DEFAULT CHARSET=UTF8;
 
-INSERT INTO USUARIO(id, CPF, nome, telefone, email, data_nascimento, senha, numero_registro, categoria, data_validade, id_endereco) VALUES(1, '473.322.598-93', 'Ana', '12345689', 'ana@email.com', '2002-08-03', '$2a$10$Ot4XGuyPP7r82nN3WXA0bOL1Qk9gShKDlVuPoyp89HoFnHcwO4Tji', 'SP123456789', 'A', '2023-09-04', 1);
+INSERT INTO USUARIO(id, CPF, nome, telefone, email, data_nascimento, senha, numero_registro, categoria, data_validade, id_endereco) VALUES(1, '473.322.598-93', 'Ana', '12345689', 'ana@email.com', '2002-08-03', '$2a$10$Ot4XGuyPP7r82nN3WXA0bOL1Qk9gShKDlVuPoyp89HoFnHcwO4Tji', 'SP123456789', 'A', '2029-09-04', 1);
 INSERT INTO USUARIO(id, CPF, nome, telefone, email, data_nascimento, senha, id_endereco) VALUES(2, '323.378.228-42', 'Stefano', '12348689', 'stefano@email.com', '2001-06-03', '$2a$10$Ot4XGuyPP7r82nN3WXA0bOL1Qk9gShKDlVuPoyp89HoFnHcwO4Tji', 2);
 
 
@@ -75,11 +75,11 @@ CREATE TABLE IF NOT EXISTS ALUGUEL(
 	locador BIGINT(20) NOT NULL,
 	locatario BIGINT(20) NOT NULL,
 	veiculo BIGINT(20) NOT NULL,
-	mensagem_comprometimento VARCHAR(255) NOT NULL,
+	mensagem_comprometimento TEXT NOT NULL,
 	assinatura_locador DATE,
-	mensagem_consentimento VARCHAR(255) NOT NULL,
+	mensagem_consentimento TEXT NOT NULL,
 	assinatura_locatario DATE,
-	valor_multa FLOAT,
+	valor_multa DOUBLE,
 	status VARCHAR(50) NOT NULL,
 	FOREIGN KEY (local_retirada) REFERENCES ENDERECO(id),
 	FOREIGN KEY (local_entrega) REFERENCES ENDERECO(id),

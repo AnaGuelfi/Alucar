@@ -6,11 +6,14 @@ import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Embeddable
 public class TermoComprometimento {
 	@Column(name="mensagem_comprometimento")
 	private String mensagem;
 	@Column(name="assinatura_locador")
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate assinaturaLocador;
 	private static String texto = "Termo de Comprometimento";
 	

@@ -6,26 +6,28 @@ import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Embeddable
 public class TermoConsentimento {
 	@Column(name="mensagem_consentimento")
 	private String mensagem;
 	@Column(name="valor_multa")
-	private double valorMulta;
+	private Double valorMulta;
 	@Column(name="assinatura_locatario")
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate assinaturaLocatario;
-	private static String texto = "Termo de Consentimento";
 	
 	public String getMensagem() {
 		return mensagem;
 	}
 	public void setMensagem(String mensagem) {
-		this.mensagem = texto;
+		this.mensagem = mensagem;
 	}
-	public double getValorMulta() {
+	public Double getValorMulta() {
 		return valorMulta;
 	}
-	public void setValorMulta(double valorMulta) {
+	public void setValorMulta(Double valorMulta) {
 		this.valorMulta = valorMulta;
 	}
 	public LocalDate getAssinaturaLocatario() {

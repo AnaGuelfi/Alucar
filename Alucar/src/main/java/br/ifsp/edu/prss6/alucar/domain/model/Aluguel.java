@@ -42,7 +42,6 @@ public class Aluguel {
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	@Column(name="data_retirada")
 	private LocalDate dataRetirada;
-	@NotNull
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	@Column(name="data_entrega")
 	private LocalDate dataEntrega;

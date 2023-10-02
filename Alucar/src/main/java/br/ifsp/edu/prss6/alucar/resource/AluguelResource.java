@@ -44,7 +44,7 @@ public class AluguelResource {
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public Aluguel create(@Valid @RequestBody Aluguel aluguel, HttpServletResponse response) {
-		return aluguelRepository.save(aluguel);
+		return aluguelService.save(aluguel);
 	}
 	
 	@PreAuthorize("hasAuthority('ROLE_SEARCH_RENTAL') and #oauth2.hasScope('read')")
