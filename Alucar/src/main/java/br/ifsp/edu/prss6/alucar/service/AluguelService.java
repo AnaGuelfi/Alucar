@@ -48,7 +48,7 @@ public class AluguelService {
 		return aluguelRepository.save(aluguel);
 	}
 	
-	public void updateTermoComprometimento(Long id, String termoComp) {
+	public void updateTermoComprometimento(Long id) {
 		Aluguel aluguelSaved = findAluguelById(id);
 		
 		TermoComprometimento termo = new TermoComprometimento();
@@ -58,7 +58,7 @@ public class AluguelService {
 				+ "placa " + aluguelSaved.getVeiculo().getPlaca() + " e Renavam " + aluguelSaved.getVeiculo().getCrlv().getRenavam() + ".";
 		
 		termo.setMensagem(termoComprometimento);
-		termo.setAssinaturaLocador(LocalDate.now());
+		termo.setAssinaturaLocador(LocalDate.now().plusDays(1));
 		aluguelSaved.setTermoComprometimento(termo);
 		definirStatus(aluguelSaved);
 		aluguelRepository.save(aluguelSaved);
