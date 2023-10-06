@@ -1,6 +1,7 @@
 package br.ifsp.edu.prss6.alucar.domain.model;
 
 public enum StatusAluguel {
+	TESTE("Teste"),
 	PENDENTE("Pendente"), // Faltam as assinaturas dos termos 
 	ATIVO("Ativo"), // O aluguel está dentro do período acordado
 	CANCELADO("Cancelado"), // O aluguel foi cancelado

@@ -70,4 +70,10 @@ public class AluguelResource {
 		Aluguel aluguelSaved = aluguelService.update(id, aluguel);
 		return ResponseEntity.ok(aluguelSaved);
 	}
+	
+	@PreAuthorize("hasAuthority('ROLE_REGISTER_RENTAL') and #oauth2.hasScope('write')")
+	@PutMapping("/{id}/comprometimento")
+	public void updateTermoComprometimento(@PathVariable Long id, @Valid @RequestBody String termo){
+		aluguelService.updateTermoComprometimento(id, termo);
+	}
 }

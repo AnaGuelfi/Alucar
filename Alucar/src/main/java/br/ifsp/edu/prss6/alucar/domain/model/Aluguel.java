@@ -45,8 +45,11 @@ public class Aluguel {
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	@Column(name="data_entrega")
 	private LocalDate dataEntrega;
+	@JsonFormat(pattern = "dd/MM/yyyy")
+	@Column(name="data_prevista_entrega")
+	private LocalDate dataPrevistaEntrega;
 	@NotNull
-	private double periodo;
+	private Long periodo;
 	@NotNull
 	@ManyToOne
 	@JoinColumn(name="locador")
@@ -101,10 +104,10 @@ public class Aluguel {
 	public void setDataEntrega(LocalDate dataEntrega) {
 		this.dataEntrega = dataEntrega;
 	}
-	public double getPeriodo() {
+	public Long getPeriodo() {
 		return periodo;
 	}
-	public void setPeriodo(double periodo) {
+	public void setPeriodo(Long periodo) {
 		this.periodo = periodo;
 	}
 	public Usuario getLocador() {
@@ -143,13 +146,17 @@ public class Aluguel {
 	public void setStatus(StatusAluguel status) {
 		this.status = status;
 	}
-	
+	public LocalDate getDataPrevistaEntrega() {
+		return dataPrevistaEntrega;
+	}
+	public void setDataPrevistaEntrega(LocalDate dataPrevistaEntrega) {
+		this.dataPrevistaEntrega = dataPrevistaEntrega;
+	}
 	@Override
 	public int hashCode() {
-		return Objects.hash(dataEntrega, dataRetirada, id, locador, localEntrega, localRetirada, locatario, periodo,
-				status, termoComprometimento, termoConsentimento, valor, veiculo);
+		return Objects.hash(dataEntrega, dataPrevistaEntrega, dataRetirada, id, locador, localEntrega, localRetirada,
+				locatario, periodo, status, termoComprometimento, termoConsentimento, valor, veiculo);
 	}
-	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -159,14 +166,16 @@ public class Aluguel {
 		if (getClass() != obj.getClass())
 			return false;
 		Aluguel other = (Aluguel) obj;
-		return Objects.equals(dataEntrega, other.dataEntrega) && Objects.equals(dataRetirada, other.dataRetirada)
-				&& Objects.equals(id, other.id) && Objects.equals(locador, other.locador)
-				&& Objects.equals(localEntrega, other.localEntrega)
+		return Objects.equals(dataEntrega, other.dataEntrega)
+				&& Objects.equals(dataPrevistaEntrega, other.dataPrevistaEntrega)
+				&& Objects.equals(dataRetirada, other.dataRetirada) && Objects.equals(id, other.id)
+				&& Objects.equals(locador, other.locador) && Objects.equals(localEntrega, other.localEntrega)
 				&& Objects.equals(localRetirada, other.localRetirada) && Objects.equals(locatario, other.locatario)
-				&& Double.doubleToLongBits(periodo) == Double.doubleToLongBits(other.periodo) && status == other.status
+				&& Objects.equals(periodo, other.periodo) && status == other.status
 				&& Objects.equals(termoComprometimento, other.termoComprometimento)
 				&& Objects.equals(termoConsentimento, other.termoConsentimento)
 				&& Double.doubleToLongBits(valor) == Double.doubleToLongBits(other.valor)
 				&& Objects.equals(veiculo, other.veiculo);
 	}
+	
 }

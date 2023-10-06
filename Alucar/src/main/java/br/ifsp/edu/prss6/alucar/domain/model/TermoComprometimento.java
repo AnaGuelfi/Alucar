@@ -15,13 +15,12 @@ public class TermoComprometimento {
 	@Column(name="assinatura_locador")
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate assinaturaLocador;
-	private static String texto = "Termo de Comprometimento";
 	
 	public String getMensagem() {
 		return mensagem;
 	}
 	public void setMensagem(String mensagem) {
-		this.mensagem = texto;
+		this.mensagem = mensagem;
 	}
 	public LocalDate getAssinaturaLocador() {
 		return assinaturaLocador;
