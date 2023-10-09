@@ -82,4 +82,10 @@ public class AluguelResource {
 	public void setCancelamento(@PathVariable Long id){
 		aluguelService.setCancelamento(id);
 	}
+	
+	@PreAuthorize("hasAuthority('ROLE_REGISTER_RENTAL') and #oauth2.hasScope('write')")
+	@PutMapping("/{id}/entrega")
+	public void setEntrega(@PathVariable Long id){
+		aluguelService.setEntrega(id);
+	}
 }

@@ -90,7 +90,10 @@ public class AluguelService {
 		if(aluguel.getTermoComprometimento() == null || aluguel.getTermoConsentimento() == null) {
 			aluguel.setStatus(StatusAluguel.PENDENTE);
 		} else if(aluguel.getTermoComprometimento() != null && aluguel.getTermoConsentimento() != null){
-			if(aluguel.getDataPrevistaEntrega().isAfter(LocalDate.now())){
+			if (aluguel.getDataRetirada().isAfter(LocalDate.now())) {
+				aluguel.setStatus(StatusAluguel.PENDENTE);
+			}
+			else if((aluguel.getDataPrevistaEntrega().isAfter(LocalDate.now()) || aluguel.getDataPrevistaEntrega().equals(LocalDate.now())) && (aluguel.getDataRetirada().equals(LocalDate.now()))){
 				aluguel.setStatus(StatusAluguel.ATIVO);
 			}else {
 				aluguel.setStatus(StatusAluguel.ATRASADO);
@@ -113,12 +116,28 @@ public class AluguelService {
 	
 	public void setCancelamento(Long id) {
 		Aluguel aluguel = findAluguelById(id);
-		aluguel.setStatus(StatusAluguel.CANCELADO);
-		
-		LocalDate dataRetirada = aluguel.getDataRetirada();
-		if(dataRetirada.equals(LocalDate.now())) {
-			aluguel.getTermoConsentimento().setValorMulta(aluguel.getValor());
+		if(aluguel.getDataRetirada().isAfter(LocalDate.now())){
+			aluguel.setStatus(StatusAluguel.CANCELADO);
+			
+			LocalDate dataRetirada = aluguel.getDataRetirada();
+			if(dataRetirada.equals(LocalDate.now())) {
+				aluguel.getTermoConsentimento().setValorMulta(aluguel.getValor());
+			}
+			aluguelRepository.save(aluguel);
 		}
+	}
+	
+	public void setEntrega(Long id) {
+		Aluguel aluguel = findAluguelById(id);
+		LocalDate dataEntrega = LocalDate.now();
+		aluguel.setDataEntrega(dataEntrega);
+		
+		if(dataEntrega.isAfter(aluguel.getDataPrevistaEntrega())) {
+			int diasAtraso = dataEntrega.compareTo(aluguel.getDataPrevistaEntrega());
+			double valorMultaAtraso = aluguel.getValor() * diasAtraso * 0.1;
+			aluguel.getTermoConsentimento().setValorMulta(Math.floor(valorMultaAtraso));
+		} 
+		aluguel.setStatus(StatusAluguel.CONCLUIDO);
 		aluguelRepository.save(aluguel);
 	}
 	
