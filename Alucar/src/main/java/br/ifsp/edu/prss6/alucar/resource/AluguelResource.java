@@ -76,4 +76,10 @@ public class AluguelResource {
 	public void updateTermoComprometimento(@PathVariable Long id){
 		aluguelService.updateTermoComprometimento(id);
 	}
+	
+	@PreAuthorize("hasAuthority('ROLE_REGISTER_RENTAL') and #oauth2.hasScope('write')")
+	@PutMapping("/{id}/cancelamento")
+	public void setCancelamento(@PathVariable Long id){
+		aluguelService.setCancelamento(id);
+	}
 }

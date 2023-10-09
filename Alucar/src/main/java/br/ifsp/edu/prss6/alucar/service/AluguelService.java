@@ -58,7 +58,7 @@ public class AluguelService {
 				+ "placa " + aluguelSaved.getVeiculo().getPlaca() + " e Renavam " + aluguelSaved.getVeiculo().getCrlv().getRenavam() + ".";
 		
 		termo.setMensagem(termoComprometimento);
-		termo.setAssinaturaLocador(LocalDate.now().plusDays(1));
+		termo.setAssinaturaLocador(LocalDate.now());
 		aluguelSaved.setTermoComprometimento(termo);
 		definirStatus(aluguelSaved);
 		aluguelRepository.save(aluguelSaved);
@@ -109,6 +109,17 @@ public class AluguelService {
 		aluguel.getTermoConsentimento().setMensagem(termoConsentimento);
 		
 		aluguel.getTermoConsentimento().setAssinaturaLocatario(LocalDate.now());
+	}
+	
+	public void setCancelamento(Long id) {
+		Aluguel aluguel = findAluguelById(id);
+		aluguel.setStatus(StatusAluguel.CANCELADO);
+		
+		LocalDate dataRetirada = aluguel.getDataRetirada();
+		if(dataRetirada.equals(LocalDate.now())) {
+			aluguel.getTermoConsentimento().setValorMulta(aluguel.getValor());
+		}
+		aluguelRepository.save(aluguel);
 	}
 	
 	public Aluguel update (Long id, Aluguel aluguel) {
