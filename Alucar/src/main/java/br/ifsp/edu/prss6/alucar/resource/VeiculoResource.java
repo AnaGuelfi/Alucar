@@ -39,6 +39,12 @@ public class VeiculoResource {
 		return veiculoRepository.findAll();
 	}
 	
+	@PreAuthorize("hasAuthority('ROLE_SEARCH_CAR') and #oauth2.hasScope('read')")
+	@GetMapping("/disponiveis")
+	public List<Veiculo> listVeiculosDisponiveis(){
+		return veiculoService.listVeiculosDisponiveis();
+	}
+	
 	@PreAuthorize("hasAuthority('ROLE_REGISTER_CAR') and #oauth2.hasScope('write')")
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)

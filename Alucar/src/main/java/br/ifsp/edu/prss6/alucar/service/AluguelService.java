@@ -1,6 +1,7 @@
 package br.ifsp.edu.prss6.alucar.service;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
@@ -31,12 +32,19 @@ public class AluguelService {
 	private UsuarioRepository usuarioRepository;
 	
 	public Aluguel save(Aluguel aluguel) {
+		Optional<Veiculo> veiculo = veiculoRepository.findById(aluguel.getVeiculo().getId());
+		List<Aluguel> listaAluguel = aluguelRepository.findAll();
+		for(Aluguel a: listaAluguel) {
+			if(!a.getStatus().equals(StatusAluguel.CONCLUIDO) && a.getVeiculo()==veiculo.get()) {
+				return null;
+			}
+		}
+		
 		Optional<Usuario> locatario = usuarioRepository.findById(aluguel.getLocatario().getId());
 		validarCNH(locatario);
 		
 		Optional<Usuario> locador = usuarioRepository.findById(aluguel.getLocador().getId());
 		
-		Optional<Veiculo> veiculo = veiculoRepository.findById(aluguel.getVeiculo().getId());
 		validarRenavam(veiculo);
 		
 		definirDataPrevistaEntrega(aluguel);
