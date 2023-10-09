@@ -62,6 +62,17 @@ public class VeiculoResource {
 		return ResponseEntity.notFound().build();
 	}
 	
+	@PreAuthorize("hasAuthority('ROLE_SEARCH_CAR') and #oauth2.hasScope('read')")
+	@GetMapping("/usuario/{email}")
+	public ResponseEntity<List<Veiculo>> listByUser(@PathVariable String email){
+		List<Veiculo> veiculos = veiculoService.listByUser(email);
+		if(!veiculos.isEmpty()) {
+			return ResponseEntity.ok(veiculos);
+		}
+		return ResponseEntity.notFound().build();
+	}
+	
+	
 	@PreAuthorize("hasAuthority('ROLE_REMOVE_CAR') and #oauth2.hasScope('write')")
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)

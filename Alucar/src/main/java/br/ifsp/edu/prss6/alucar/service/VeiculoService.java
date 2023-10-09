@@ -2,6 +2,7 @@ package br.ifsp.edu.prss6.alucar.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.BeanUtils;
@@ -10,8 +11,10 @@ import org.springframework.stereotype.Service;
 
 import br.ifsp.edu.prss6.alucar.domain.model.Aluguel;
 import br.ifsp.edu.prss6.alucar.domain.model.StatusAluguel;
+import br.ifsp.edu.prss6.alucar.domain.model.Usuario;
 import br.ifsp.edu.prss6.alucar.domain.model.Veiculo;
 import br.ifsp.edu.prss6.alucar.repository.AluguelRepository;
+import br.ifsp.edu.prss6.alucar.repository.UsuarioRepository;
 import br.ifsp.edu.prss6.alucar.repository.VeiculoRepository;
 
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -24,6 +27,9 @@ public class VeiculoService {
 	
 	@Autowired
 	private AluguelRepository aluguelRepository;
+	
+	@Autowired
+	private UsuarioRepository usuarioRepository;
 	
 	public Veiculo update (Long id, Veiculo veiculo) {
 		Veiculo veiculoSaved = findVeiculoById(id);
@@ -55,5 +61,13 @@ public class VeiculoService {
 				}).collect(Collectors.toList());
 		
 		return veiculosDisponiveis;
+	}
+	
+	public List<Veiculo> listByUser(String email){
+		Optional<Usuario> usuario = usuarioRepository.findByEmail(email);
+		if(usuario.isPresent()) {
+			return veiculoRepository.findByUsuario(usuario.get());
+		}
+		return null;
 	}
 }
