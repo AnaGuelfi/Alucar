@@ -155,6 +155,18 @@ public class AluguelService {
 		return aluguelRepository.save(aluguelSaved);
 	}
 	
+	public List<Aluguel> listByUser(String email){
+		Optional<Usuario> usuario = usuarioRepository.findByEmail(email);
+		if(usuario.isPresent()) {
+			if(aluguelRepository.findByLocador(usuario.get()).isEmpty()) {
+				return aluguelRepository.findByLocatario(usuario.get());
+			} else {
+				return aluguelRepository.findByLocador(usuario.get());
+			}
+		}
+		return null;
+	}
+	
 	public Aluguel findAluguelById(Long id) {
 		Aluguel aluguelSaved = aluguelRepository.findById(id).orElseThrow(() -> new EmptyResultDataAccessException(1));
 		return aluguelSaved;		

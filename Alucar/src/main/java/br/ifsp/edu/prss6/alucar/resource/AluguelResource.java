@@ -57,6 +57,16 @@ public class AluguelResource {
 		return ResponseEntity.notFound().build();
 	}
 	
+	@PreAuthorize("hasAuthority('ROLE_SEARCH_RENTAL') and #oauth2.hasScope('read')")
+	@GetMapping("/usuario/{email}")
+	public ResponseEntity<List<Aluguel>> listByUser(@PathVariable String email){
+		List<Aluguel> alugueis = aluguelService.listByUser(email);
+		if(!alugueis.isEmpty()) {
+			return ResponseEntity.ok(alugueis);
+		}
+		return ResponseEntity.notFound().build();
+	}
+	
 	@PreAuthorize("hasAuthority('ROLE_REMOVE_RENTAL') and #oauth2.hasScope('write')")
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
