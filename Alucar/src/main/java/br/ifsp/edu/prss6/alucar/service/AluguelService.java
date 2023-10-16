@@ -1,6 +1,7 @@
 package br.ifsp.edu.prss6.alucar.service;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
 
@@ -84,7 +85,7 @@ public class AluguelService {
 	public void validarRenavam(Optional<Veiculo> veiculo) {
 		if(!veiculo.isPresent() || 
 					veiculo.get().getCrlv() == null || 
-					veiculo.get().getCrlv().getDataEmissao().getYear() < LocalDate.now().getYear() ) {
+					veiculo.get().getCrlv().getDataEmissao().until(LocalDate.now(), ChronoUnit.DAYS) > 365) {
 				System.out.println("Veiculo");
 			throw new InvalidAluguelException();
 		}

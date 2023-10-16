@@ -1,6 +1,7 @@
 package br.ifsp.edu.prss6.alucar.service;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -17,6 +18,7 @@ import br.ifsp.edu.prss6.alucar.domain.model.Veiculo;
 import br.ifsp.edu.prss6.alucar.repository.AluguelRepository;
 import br.ifsp.edu.prss6.alucar.repository.UsuarioRepository;
 import br.ifsp.edu.prss6.alucar.repository.VeiculoRepository;
+import br.ifsp.edu.prss6.alucar.service.exception.InvalidAluguelException;
 
 import org.springframework.dao.EmptyResultDataAccessException;
 
@@ -45,6 +47,15 @@ public class VeiculoService {
 	
 	public List<Veiculo> listVeiculosDisponiveis(){
 		List<Veiculo> todosVeiculos = veiculoRepository.findAll();
+		List<Veiculo> veiculosRenavamOK = new ArrayList<>();
+		Long diasValidade;
+		for(Veiculo v: todosVeiculos) {
+			diasValidade = v.getCrlv().getDataEmissao().until(LocalDate.now(), ChronoUnit.DAYS);
+			if(v.getCrlv() != null && diasValidade <= 365) {
+				veiculosRenavamOK.add(v);
+			}
+		}
+		
 		List<Veiculo> veiculosIndisponiveis = new ArrayList<>();
 		List<Aluguel> listaAluguel = aluguelRepository.findAll();
 		for(Aluguel a: listaAluguel) {
@@ -54,7 +65,7 @@ public class VeiculoService {
 		}
 		
 		List<Veiculo> veiculosDisponiveis;
-		veiculosDisponiveis = todosVeiculos.stream()
+		veiculosDisponiveis = veiculosRenavamOK.stream()
 				.filter(v -> {
 					return veiculosIndisponiveis.stream()
 							.map(Veiculo::getId)
