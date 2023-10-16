@@ -1,5 +1,6 @@
 package br.ifsp.edu.prss6.alucar.service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -69,5 +70,11 @@ public class VeiculoService {
 			return veiculoRepository.findByUsuario(usuario.get());
 		}
 		return null;
+	}
+	
+	public void updateCrlv(Long id, LocalDate novaData) {
+		Veiculo veiculoSaved = findVeiculoById(id);
+		veiculoSaved.getCrlv().setDataEmissao(novaData);
+		veiculoRepository.save(veiculoSaved);
 	}
 }

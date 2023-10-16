@@ -1,5 +1,7 @@
 package br.ifsp.edu.prss6.alucar.resource;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -85,5 +87,12 @@ public class VeiculoResource {
 	public ResponseEntity<Veiculo> update(@PathVariable Long id, @Valid @RequestBody Veiculo veiculo){
 		Veiculo veiculoSaved = veiculoService.update(id, veiculo);
 		return ResponseEntity.ok(veiculoSaved);
+	}
+	
+	@PreAuthorize("hasAuthority('ROLE_REGISTER_CAR') and #oauth2.hasScope('write')")
+	@PutMapping("/{id}/crlv")
+	public void updateCrlv(@PathVariable Long id, @Valid @RequestBody LocalDate novaData){
+		System.out.println(novaData);
+		veiculoService.updateCrlv(id, novaData);
 	}
 }
