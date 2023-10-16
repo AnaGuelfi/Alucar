@@ -18,7 +18,6 @@ import br.ifsp.edu.prss6.alucar.domain.model.Veiculo;
 import br.ifsp.edu.prss6.alucar.repository.AluguelRepository;
 import br.ifsp.edu.prss6.alucar.repository.UsuarioRepository;
 import br.ifsp.edu.prss6.alucar.repository.VeiculoRepository;
-import br.ifsp.edu.prss6.alucar.service.exception.InvalidAluguelException;
 
 import org.springframework.dao.EmptyResultDataAccessException;
 

@@ -76,8 +76,8 @@ public class AluguelService {
 	public void validarCNH(Optional<Usuario> usuario) {
 		if(!usuario.isPresent() || 
 					usuario.get().getCnh() == null || 
-					usuario.get().getCnh().getDataValidade().isBefore(LocalDate.now())) {
-			System.out.println("Usuario");
+					usuario.get().getCnh().getDataValidade().isBefore(LocalDate.now()) ||
+					usuario.get().getCnh().getCategoria().equals("A")) {
 			throw new InvalidAluguelException();
 		}
 	}
@@ -86,7 +86,6 @@ public class AluguelService {
 		if(!veiculo.isPresent() || 
 					veiculo.get().getCrlv() == null || 
 					veiculo.get().getCrlv().getDataEmissao().until(LocalDate.now(), ChronoUnit.DAYS) > 365) {
-				System.out.println("Veiculo");
 			throw new InvalidAluguelException();
 		}
 	}

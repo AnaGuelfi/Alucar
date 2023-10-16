@@ -1,7 +1,6 @@
 package br.ifsp.edu.prss6.alucar.resource;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
