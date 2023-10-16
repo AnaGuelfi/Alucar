@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.ifsp.edu.prss6.alucar.domain.model.CNH;
 import br.ifsp.edu.prss6.alucar.domain.model.Usuario;
 import br.ifsp.edu.prss6.alucar.repository.UsuarioRepository;
 import br.ifsp.edu.prss6.alucar.service.UsuarioService;
@@ -74,7 +75,13 @@ public class UsuarioResource {
 	
 	@PreAuthorize("hasAuthority('ROLE_REGISTER_USER') and #oauth2.hasScope('write')")
 	@PutMapping("/{id}/cnh")
-	public void updateCnh(@PathVariable Long id, @Valid @RequestBody LocalDate novaData){
-		usuarioService.updateCnh(id, novaData);
+	public void insertCnh(@PathVariable Long id, @Valid @RequestBody CNH cnh){
+		usuarioService.insertCnh(id, cnh);
+	}
+	
+	@PreAuthorize("hasAuthority('ROLE_REGISTER_USER') and #oauth2.hasScope('write')")
+	@PutMapping("/{id}/datacnh")
+	public void updateDataCnh(@PathVariable Long id, @Valid @RequestBody LocalDate novaData){
+		usuarioService.updateDataCnh(id, novaData);
 	}
 }
