@@ -1,5 +1,6 @@
 package br.ifsp.edu.prss6.alucar.resource;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -69,5 +70,11 @@ public class UsuarioResource {
 	public ResponseEntity<Usuario> update(@PathVariable Long id, @Valid @RequestBody Usuario usuario){
 		Usuario usuarioSaved = usuarioService.update(id, usuario);
 		return ResponseEntity.ok(usuarioSaved);
+	}
+	
+	@PreAuthorize("hasAuthority('ROLE_REGISTER_USER') and #oauth2.hasScope('write')")
+	@PutMapping("/{id}/cnh")
+	public void updateCnh(@PathVariable Long id, @Valid @RequestBody LocalDate novaData){
+		usuarioService.updateCnh(id, novaData);
 	}
 }

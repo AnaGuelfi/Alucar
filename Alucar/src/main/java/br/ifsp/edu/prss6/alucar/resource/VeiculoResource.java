@@ -92,7 +92,6 @@ public class VeiculoResource {
 	@PreAuthorize("hasAuthority('ROLE_REGISTER_CAR') and #oauth2.hasScope('write')")
 	@PutMapping("/{id}/crlv")
 	public void updateCrlv(@PathVariable Long id, @Valid @RequestBody LocalDate novaData){
-		System.out.println(novaData);
 		veiculoService.updateCrlv(id, novaData);
 	}
 }

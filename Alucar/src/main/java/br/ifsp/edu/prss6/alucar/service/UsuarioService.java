@@ -1,5 +1,7 @@
 package br.ifsp.edu.prss6.alucar.service;
 
+import java.time.LocalDate;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,5 +25,11 @@ public class UsuarioService {
 	public Usuario findUsuarioById(Long id) {
 		Usuario usuarioSaved = usuarioRepository.findById(id).orElseThrow(() -> new EmptyResultDataAccessException(1));
 		return usuarioSaved;		
+	}
+	
+	public void updateCnh(Long id, LocalDate novaData) {
+		Usuario usuarioSaved = findUsuarioById(id);
+		usuarioSaved.getCnh().setDataValidade(novaData);
+		usuarioRepository.save(usuarioSaved);
 	}
 }
