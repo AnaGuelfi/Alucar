@@ -1,3 +1,4 @@
+import { VeiculoService } from './../veiculo.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,9 +7,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./veiculos-list.component.css']
 })
 export class VeiculosListComponent {
-  veiculos = [
-    { marca: 'Honda', modelo: "Fit", cor: "branco", placa: "ABC3W89", combustivel: "Flex", quilometragem: "50000",
-    renavam: "2-481014777", dataEmissao: '16/10/2023', cidadeEmissao: "São Carlos",
-    estadoEmissao: "São Paulo", usuario: "Ana" }
-  ];
+  veiculos = [];
+  constructor(private VeiculoService: VeiculoService){ }
+
+  ngOnInit(): void {
+    this.list();
+  }
+
+  list(): void {
+    this.VeiculoService.list()
+      .then(result => {
+        this.veiculos = result;
+      });
+  }
 }
