@@ -2,7 +2,7 @@
 <div class="container">
 
   <div class="p-col-12">
-    <h1>Atividades Físicas</h1>
+    <h1>Aluguéis</h1>
   </div>
 
   <div class="p-grid">
@@ -21,9 +21,9 @@
             <th>Locador</th>
             <th>Locatário</th>
             <th>Veículo</th>
-            <th>Mensagem Comprometimento</th>
+            <th>Termo Comprometimento</th>
             <th>Assinatura Locador</th>
-            <th>Mensagem Consentimento</th>
+            <th>Termo Consentimento</th>
             <th>Assinatura Locatário</th>
             <th>Valor da Multa</th>
             <th>Status Aluguel</th>
@@ -33,15 +33,15 @@
           <tr>
             <td>
               <span class="p-column-title">Valor</span>
-              {{ aluguel.valor }}
+              R${{ aluguel.valor }}
             </td>
             <td>
               <span class="p-column-title">Local de Retirada</span>
-              {{ aluguel.localRetirada }}
+              {{ aluguel.localRetirada.logradouro }}, {{ aluguel.localRetirada.numero }}, {{ aluguel.localRetirada.bairro }}
             </td>
             <td>
               <span class="p-column-title">Local de Entrega</span>
-              {{ aluguel.localEntrega }}
+              {{ aluguel.localEntrega.logradouro }}, {{ aluguel.localEntrega.numero }}, {{ aluguel.localEntrega.bairro }}
             </td>
             <td>
               <span class="p-column-title">Data de Retirada</span>
@@ -61,35 +61,35 @@
             </td>
             <td>
               <span class="p-column-title">Locador</span>
-              {{ aluguel.locador }}
+              {{ aluguel.locador.nome }}
             </td>
             <td>
               <span class="p-column-title">Locatário</span>
-              {{ aluguel.locatario }}
+              {{ aluguel.locatario.nome }}
             </td>
             <td>
               <span class="p-column-title">Veículo</span>
-              {{ aluguel.veiculo }}
+              {{ aluguel.veiculo.marca }} {{ aluguel.veiculo.modelo }}
             </td>
             <td>
               <span class="p-column-title">Mensagem Comprometimento</span>
-              {{ aluguel.mensagemComprometimento }}
+              {{ aluguel.termoComprometimento.mensagem }}
             </td>
             <td>
               <span class="p-column-title">Assinatura Locador</span>
-              {{ aluguel.assinaturaLocador }}
+              {{ aluguel.termoComprometimento.assinaturaLocador }}
             </td>
             <td>
               <span class="p-column-title">Mensagem Consentimento</span>
-              {{ aluguel.mensagemConsentimento }}
+              {{ aluguel.termoConsentimento.mensagem }}
             </td>
             <td>
               <span class="p-column-title">Assinatura Locatário</span>
-              {{ aluguel.assinaturaLocatario }}
+              {{ aluguel.termoConsentimento.assinaturaLocatario }}
             </td>
             <td>
               <span class="p-column-title">Valor da Multa</span>
-              {{ aluguel.valorMulta }}
+              R${{ aluguel.termoConsentimento.valorMulta }}
             </td>
             <td>
               <span class="p-column-title">Status do Aluguel</span>
