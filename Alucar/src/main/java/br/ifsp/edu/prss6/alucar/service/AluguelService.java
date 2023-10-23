@@ -2,6 +2,7 @@ package br.ifsp.edu.prss6.alucar.service;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -158,7 +159,12 @@ public class AluguelService {
 	public List<Aluguel> listByUser(String email){
 		Optional<Usuario> usuario = usuarioRepository.findByEmail(email);
 		if(usuario.isPresent()) {
-			if(aluguelRepository.findByLocador(usuario.get()).isEmpty()) {
+			if(!aluguelRepository.findByLocador(usuario.get()).isEmpty() && !aluguelRepository.findByLocatario(usuario.get()).isEmpty()) {
+				List<Aluguel> alugueis = new ArrayList<Aluguel>();
+				alugueis.addAll(aluguelRepository.findByLocatario(usuario.get()));
+				alugueis.addAll(aluguelRepository.findByLocador(usuario.get()));
+				return alugueis;
+			} else if (aluguelRepository.findByLocador(usuario.get()).isEmpty()) {
 				return aluguelRepository.findByLocatario(usuario.get());
 			} else {
 				return aluguelRepository.findByLocador(usuario.get());
