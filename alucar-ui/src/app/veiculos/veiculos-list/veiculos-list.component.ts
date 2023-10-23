@@ -15,7 +15,7 @@ export class VeiculosListComponent {
   }
 
   list(): void {
-    this.VeiculoService.list()
+    this.VeiculoService.listByUser()
       .then(result => {
         this.veiculos = result;
       });
