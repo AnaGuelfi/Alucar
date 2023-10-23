@@ -1,0 +1,111 @@
+
+<div class="container">
+
+  <div class="p-col-12">
+    <h1>Atividades Físicas</h1>
+  </div>
+
+  <div class="p-grid">
+    <div class="p-col-12">
+      <p-table [value]="alugueis" responsiveLayout="stack" [breakpoint]="'768px'">
+        <th class="col-actions-header"></th>
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Valor</th>
+            <th>Local de Retirada</th>
+            <th>Local de Entrega</th>
+            <th>Data Retirada</th>
+            <th>Data Entrega</th>
+            <th>Data Prevista de Entrega</th>
+            <th>Período</th>
+            <th>Locador</th>
+            <th>Locatário</th>
+            <th>Veículo</th>
+            <th>Mensagem Comprometimento</th>
+            <th>Assinatura Locador</th>
+            <th>Mensagem Consentimento</th>
+            <th>Assinatura Locatário</th>
+            <th>Valor da Multa</th>
+            <th>Status Aluguel</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-aluguel>
+          <tr>
+            <td>
+              <span class="p-column-title">Valor</span>
+              {{ aluguel.valor }}
+            </td>
+            <td>
+              <span class="p-column-title">Local de Retirada</span>
+              {{ aluguel.localRetirada }}
+            </td>
+            <td>
+              <span class="p-column-title">Local de Entrega</span>
+              {{ aluguel.localEntrega }}
+            </td>
+            <td>
+              <span class="p-column-title">Data de Retirada</span>
+              {{ aluguel.dataRetirada }}
+            </td>
+            <td>
+              <span class="p-column-title">Data de Entrega</span>
+              {{ aluguel.dataEntrega }}
+            </td>
+            <td>
+              <span class="p-column-title">Data Prevista de Entrega</span>
+              {{ aluguel.dataPrevistaEntrega }}
+            </td>
+            <td>
+              <span class="p-column-title">Período</span>
+              {{ aluguel.periodo }}
+            </td>
+            <td>
+              <span class="p-column-title">Locador</span>
+              {{ aluguel.locador }}
+            </td>
+            <td>
+              <span class="p-column-title">Locatário</span>
+              {{ aluguel.locatario }}
+            </td>
+            <td>
+              <span class="p-column-title">Veículo</span>
+              {{ aluguel.veiculo }}
+            </td>
+            <td>
+              <span class="p-column-title">Mensagem Comprometimento</span>
+              {{ aluguel.mensagemComprometimento }}
+            </td>
+            <td>
+              <span class="p-column-title">Assinatura Locador</span>
+              {{ aluguel.assinaturaLocador }}
+            </td>
+            <td>
+              <span class="p-column-title">Mensagem Consentimento</span>
+              {{ aluguel.mensagemConsentimento }}
+            </td>
+            <td>
+              <span class="p-column-title">Assinatura Locatário</span>
+              {{ aluguel.assinaturaLocatario }}
+            </td>
+            <td>
+              <span class="p-column-title">Valor da Multa</span>
+              {{ aluguel.valorMulta }}
+            </td>
+            <td>
+              <span class="p-column-title">Status do Aluguel</span>
+              {{ aluguel.status }}
+            </td>
+
+            <td class="col-actions">
+              <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"></a>
+              <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"></button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+    <div class="p-col-12">
+      <p><a pButton label="Nova Atividade"></a></p>
+    </div>
+  </div>
+</div>

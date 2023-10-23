@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { VeiculosModule } from './veiculos/veiculos.module';
 import { SecurityModule } from './security/security.module';
 import { AuthService } from './security/auth.service';
+import { AlugueisModule } from './alugueis/alugueis.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { AuthService } from './security/auth.service';
     HttpClientModule,
     AppRoutingModule,
 
+    AlugueisModule,
     VeiculosModule,
     SecurityModule
   ],
