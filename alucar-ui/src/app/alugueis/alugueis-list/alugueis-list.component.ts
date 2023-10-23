@@ -16,7 +16,7 @@ export class AlugueisListComponent {
   }
 
   list(): void {
-    this.aluguelService.list()
+    this.aluguelService.listByUser()
       .then(result => {
         this.alugueis = result;
       });
