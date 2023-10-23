@@ -8,10 +8,12 @@ import { VeiculosModule } from './veiculos/veiculos.module';
 import { SecurityModule } from './security/security.module';
 import { AuthService } from './security/auth.service';
 import { AlugueisModule } from './alugueis/alugueis.module';
+import { NavbarComponent } from './core/navbar/navbar.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -21,6 +23,9 @@ import { AlugueisModule } from './alugueis/alugueis.module';
     AlugueisModule,
     VeiculosModule,
     SecurityModule
+  ],
+  exports:[
+    NavbarComponent
   ],
   providers: [
     AuthService
