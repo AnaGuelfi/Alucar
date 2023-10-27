@@ -1,5 +1,6 @@
 package br.ifsp.edu.prss6.alucar.domain.model;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -34,8 +35,7 @@ public class Veiculo {
 	@NotNull
 	@Enumerated(EnumType.STRING)
 	private Combustivel combustivel;
-	@Enumerated(EnumType.STRING)
-	private Opcionais opcionais;
+	private String opcionais;
 	@Min(value=0)
 	private double quilometragem;
 	@Embedded
@@ -89,10 +89,10 @@ public class Veiculo {
 	public void setCombustivel(Combustivel combustivel) {
 		this.combustivel = combustivel;
 	}
-	public Opcionais getOpcionais() {
+	public String getOpcionais() {
 		return opcionais;
 	}
-	public void setOpcionais(Opcionais opcionais) {
+	public void setOpcionais(String opcionais) {
 		this.opcionais = opcionais;
 	}
 	public double getQuilometragem() {
@@ -113,6 +113,7 @@ public class Veiculo {
 	public void setImagens(Imagens imagens) {
 		this.imagens = imagens;
 	}
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(combustivel, cor, crlv, id, imagens, marca, modelo, opcionais, placa, quilometragem,
@@ -130,7 +131,7 @@ public class Veiculo {
 		return combustivel == other.combustivel && Objects.equals(cor, other.cor) && Objects.equals(crlv, other.crlv)
 				&& Objects.equals(id, other.id) && Objects.equals(imagens, other.imagens)
 				&& Objects.equals(marca, other.marca) && Objects.equals(modelo, other.modelo)
-				&& opcionais == other.opcionais && Objects.equals(placa, other.placa)
+				&& Objects.equals(opcionais, other.opcionais) && Objects.equals(placa, other.placa)
 				&& Double.doubleToLongBits(quilometragem) == Double.doubleToLongBits(other.quilometragem)
 				&& Objects.equals(usuario, other.usuario);
 	}

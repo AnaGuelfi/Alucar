@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS VEICULO(
 	cor VARCHAR(50) NOT NULL,
 	placa VARCHAR(20) NOT NULL,
 	combustivel VARCHAR(50) NOT NULL,
-	opcionais VARCHAR(50),
+	opcionais TEXT,
 	quilometragem BIGINT(20),
 	imagem_frontal LONGBLOB,
 	imagem_lateral LONGBLOB,
