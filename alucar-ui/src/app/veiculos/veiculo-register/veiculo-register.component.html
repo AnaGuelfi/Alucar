@@ -32,10 +32,10 @@
         [(ngModel)]="veiculo.combustivel"></p-dropdown>
       </div>
 
-      <div class="p-col-12 p-md-6 p-fluid">
+      <div class="p-col-12 p-md-9 p-fluid">
         <label>Opcionais</label>
-        <p-dropdown name="opcionais" [options]="opcionais" placeholder="Selecione"
-        [(ngModel)]="veiculo.opcionais"></p-dropdown>
+        <!--<input pInputText name="opcionais" type="text" [(ngModel)]="veiculo.opcionais">-->
+        <textarea pInputTextarea name="opcionais" [(ngModel)]="veiculo.opcionais" placeholder="Ar-condicionado, GPS, alarme..."></textarea>
       </div>
 
       <div class="p-col-12 p-md-9 p-fluid">

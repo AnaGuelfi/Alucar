@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { CalendarModule } from 'primeng/calendar';
 import { DropdownModule } from 'primeng/dropdown';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 import { InputTextModule } from 'primeng/inputtext';
 import { TableModule } from 'primeng/table';
 import { TooltipModule } from 'primeng/tooltip';
@@ -28,7 +29,8 @@ import { VeiculoRegisterComponent } from './veiculo-register/veiculo-register.co
     TableModule,
     TooltipModule,
     CalendarModule,
-    DropdownModule
+    DropdownModule,
+    InputTextareaModule
   ],
   exports: [
     VeiculosListComponent,

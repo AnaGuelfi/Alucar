@@ -40,10 +40,6 @@ export class Veiculo {
       opcionais: veiculo.opcionais,
       quilometragem: veiculo.quilometragem,
       crlv: veiculo.crlv,
-      /*renavam: veiculo.renavam,
-      dataEmissao: moment(veiculo.dataEmissao).format('DD/MM/YYYY'),
-      cidadeEmissao: veiculo.cidadeEmissao,
-      estadoEmissao: veiculo.estadoEmissao,*/
       usuario: veiculo.usuario
     }
   }
