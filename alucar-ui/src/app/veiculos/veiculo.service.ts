@@ -1,6 +1,8 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+
 import { AuthService } from '../security/auth.service';
+import { Veiculo } from '../core/model';
 
 
 @Injectable({
@@ -32,5 +34,13 @@ export class VeiculoService {
       .then(response => {
         return response;
       });
+  }
+
+  add(veiculo: Veiculo): Promise<Veiculo> {
+    const headers = new HttpHeaders()
+      .append('Content-Type', 'application/json');
+
+    return this.http.post<any>(this.veiculosUrl, Veiculo.toJson(veiculo), { headers })
+      .toPromise();
   }
 }
