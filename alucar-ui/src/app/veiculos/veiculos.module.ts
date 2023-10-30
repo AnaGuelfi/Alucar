@@ -1,6 +1,7 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms'
+import { RouterModule } from '@angular/router'
 import { NgModule } from '@angular/core';
 
 import { ButtonModule } from 'primeng/button';
@@ -31,7 +32,8 @@ import { VeiculoRegisterComponent } from './veiculo-register/veiculo-register.co
     CalendarModule,
     DropdownModule,
     InputTextareaModule,
-    SharedModule
+    SharedModule,
+    RouterModule
   ],
   exports: [
     VeiculosListComponent,

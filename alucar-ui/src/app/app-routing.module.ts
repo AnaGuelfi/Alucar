@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: 'alugueis', component: AlugueisListComponent },
   { path: 'login', component: LoginFormComponent },
   { path: 'veiculos', component: VeiculosListComponent },
+  { path: 'veiculos/:id', component: VeiculoRegisterComponent },
   { path: 'veiculos/new', component: VeiculoRegisterComponent}
 ];
 @NgModule({

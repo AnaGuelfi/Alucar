@@ -4,6 +4,8 @@ import { Injectable } from '@angular/core';
 import { AuthService } from '../security/auth.service';
 import { Veiculo } from '../core/model';
 
+import * as moment from 'moment';
+
 
 @Injectable({
   providedIn: 'root'
@@ -49,4 +51,34 @@ export class VeiculoService {
       .toPromise()
       .then(() => null);
   }
+
+  update(veiculo: Veiculo): Promise<Veiculo> {
+    const headers = new HttpHeaders()
+      .append('Content-Type', 'application/json');
+
+    return this.http.put<Veiculo>(`${this.veiculosUrl}/${veiculo.id}`, Veiculo.toJson(veiculo), { headers })
+      .toPromise()
+      .then((response: any) => {
+        const updated = response;
+
+        updated.crlv.dataEmissao = moment(updated.crlv.dataEmissao, 'DD/MM/YYYY').toDate();
+
+        return updated;
+      });
+  }
+
+  findById(id: number): Promise<Veiculo> {
+    return this.http.get<Veiculo>(`${this.veiculosUrl}/${id}`)
+      .toPromise()
+      .then((response: any) => {
+        const veiculo = response;
+
+        veiculo.crlv.dataEmissao = moment(veiculo.crlv.dataEmissao, 'DD/MM/YYYY').toDate();
+
+        return veiculo;
+      });
+  }
+
+
+
 }

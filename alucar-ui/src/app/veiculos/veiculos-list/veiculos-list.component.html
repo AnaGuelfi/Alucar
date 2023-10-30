@@ -13,8 +13,10 @@
             <th>Usuário</th>
             <th>Marca</th>
             <th>Modelo</th>
+            <th>Cor</th>
             <th>Placa</th>
             <th>Combustível</th>
+            <th>Opcionais</th>
             <th>Quilometragem</th>
             <th>Renavam</th>
             <th>Data Emissão</th>
@@ -37,12 +39,20 @@
               {{ veiculos.modelo }}
             </td>
             <td>
+              <span class="p-column-title">Cor</span>
+              {{ veiculos.cor }}
+            </td>
+            <td>
               <span class="p-column-title">Placa</span>
               {{ veiculos.placa }}
             </td>
             <td>
               <span class="p-column-title">Combustível</span>
               {{ veiculos.combustivel }}
+            </td>
+            <td>
+              <span class="p-column-title">Opcionais</span>
+              {{ veiculos.opcionais }}
             </td>
             <td>
               <span class="p-column-title">Quilometragem</span>
@@ -65,7 +75,8 @@
               {{ veiculos.crlv.estadoEmissao }}
             </td>
             <td class="col-actions">
-              <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"></a>
+              <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
+                [routerLink]="['/veiculos', veiculos.id]"></a>
               <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
                 (click)="confirmRemoval(veiculos)"></button>
             </td>
@@ -74,7 +85,7 @@
       </p-table>
     </div>
     <div class="p-col-12">
-      <p><a pButton label="Novo Veículo"></a></p>
+      <p><a pButton label="Novo Veículo" routerLink="/veiculos/new"></a></p>
     </div>
   </div>
 </div>
