@@ -1,11 +1,8 @@
 import * as moment from 'moment';
+import { AuthService } from '../security/auth.service';
 
 export class Usuario {
   id!: number;
-
-  constructor(){
-    this.id = 1;
-  }
 }
 
 export class CRLV {
@@ -25,8 +22,13 @@ export class Veiculo {
   combustivel!: 'FLEX';
   opcionais!: 'AR_CONDICIONADO';
   quilometragem!: number;
+  usuario: any;
   crlv = new CRLV();
-  usuario = new Usuario();
+
+  constructor(usuario_id: number){
+    this.usuario = new Usuario();
+    this.usuario.id = usuario_id;
+  }
 
   static toJson(veiculo: Veiculo): any {
     veiculo.crlv.dataEmissao = moment(veiculo.crlv.dataEmissao).format('DD/MM/YYYY');

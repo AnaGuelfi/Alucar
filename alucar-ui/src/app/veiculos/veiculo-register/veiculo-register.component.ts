@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
+import { AuthService } from 'src/app/security/auth.service';
 import { Veiculo } from 'src/app/core/model';
 import { VeiculoService } from '../veiculo.service';
 
@@ -26,16 +27,19 @@ export class VeiculoRegisterComponent {
     { label: 'Vidro elétrico, travas elétricas e alarme', value: 'TRIO_ELETRICO'}
   ]
 
-  veiculo = new Veiculo();
+  veiculo = new Veiculo(this.auth.jwtPayload?.usuario_id);
 
-  constructor(private veiculoService: VeiculoService){}
+  constructor(
+    private veiculoService: VeiculoService,
+    private auth: AuthService
+    ){}
 
   save(activityForm: NgForm) {
     this.veiculoService.add(this.veiculo)
       .then(() => {
         console.log('Veículo adicionado com sucesso!');
         activityForm.reset();
-        this.veiculo = new Veiculo();
+        this.veiculo = new Veiculo(this.auth.jwtPayload?.usuario_id);
       })
       .catch(erro => console.log(erro));
   }
