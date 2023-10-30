@@ -8,54 +8,61 @@
 
       <div class="p-col-12 p-md-9 p-fluid">
         <label>Marca</label>
-        <input pInputText name="marca" type="text" [(ngModel)]="veiculo.marca">
+        <input pInputText name="marca" type="text" [(ngModel)]="veiculo.marca" #marca="ngModel" required>
+        <app-message [control]="marca" error="required" text="Informe a Marca do Veículo"></app-message>
       </div>
 
       <div class="p-col-12 p-md-9 p-fluid">
         <label>Modelo</label>
-        <input pInputText name="modelo" type="text" [(ngModel)]="veiculo.modelo">
+        <input pInputText name="modelo" type="text" [(ngModel)]="veiculo.modelo" #modelo="ngModel" required>
+        <app-message [control]="modelo" error="required" text="Informe o Modelo do Veículo"></app-message>
       </div>
 
       <div class="p-col-12 p-md-9 p-fluid">
         <label>Cor</label>
-        <input pInputText name="cor" type="text" [(ngModel)]="veiculo.cor">
+        <input pInputText name="cor" type="text" [(ngModel)]="veiculo.cor" #cor="ngModel" required>
+        <app-message [control]="cor" error="required" text="Informe a Cor do Veículo"></app-message>
       </div>
 
       <div class="p-col-12 p-md-9 p-fluid">
         <label>Placa</label>
-        <input pInputText name="placa" type="text" [(ngModel)]="veiculo.placa">
+        <input pInputText name="placa" type="text" [(ngModel)]="veiculo.placa" #placa="ngModel" required>
+        <app-message [control]="placa" error="required" text="Informe a Placa do Veículo"></app-message>
       </div>
 
       <div class="p-col-12 p-md-6 p-fluid">
         <label>Combustível</label>
         <p-dropdown name="combustiveis" [options]="combustiveis" placeholder="Selecione"
-        [(ngModel)]="veiculo.combustivel"></p-dropdown>
+        [(ngModel)]="veiculo.combustivel" #combustivel="ngModel" required></p-dropdown>
       </div>
 
       <div class="p-col-12 p-md-9 p-fluid">
         <label>Opcionais</label>
-        <!--<input pInputText name="opcionais" type="text" [(ngModel)]="veiculo.opcionais">-->
         <textarea pInputTextarea name="opcionais" [(ngModel)]="veiculo.opcionais" placeholder="Ar-condicionado, GPS, alarme..."></textarea>
       </div>
 
       <div class="p-col-12 p-md-9 p-fluid">
         <label>Renavam</label>
-        <input pInputText name="renavam" type="text" [(ngModel)]="veiculo.crlv.renavam">
+        <input pInputText name="renavam" type="text" [(ngModel)]="veiculo.crlv.renavam" #renavam="ngModel" required>
+        <app-message [control]="renavam" error="required" text="Informe o Renavam do Veículo"></app-message>
       </div>
 
       <div class="p-col-6 p-md-3 p-fluid">
         <label>Data de Emissão do Renavam</label>
-        <p-calendar name="data" dateFormat="dd/mm/yy" [inline]="false" [(ngModel)]="veiculo.crlv.dataEmissao"></p-calendar>
+        <p-calendar name="data" dateFormat="dd/mm/yy" [inline]="false" [(ngModel)]="veiculo.crlv.dataEmissao" #data="ngModel" required></p-calendar>
+        <app-message [control]="data" error="required" text="Informe a Data de Emissão do Renavam do Veículo"></app-message>
       </div>
 
       <div class="p-col-12 p-md-9 p-fluid">
         <label>Cidade de Emissão do Renavam</label>
-        <input pInputText name="cidade" type="text" [(ngModel)]="veiculo.crlv.cidadeEmissao">
+        <input pInputText name="cidade" type="text" [(ngModel)]="veiculo.crlv.cidadeEmissao" #cidade="ngModel" required>
+        <app-message [control]="cidade" error="required" text="Informe a Cidade de Emissão do Renavam do Veículo"></app-message>
       </div>
 
       <div class="p-col-12 p-md-9 p-fluid">
         <label>Estado de Emissão do Renavam</label>
-        <input pInputText name="estado" type="text" [(ngModel)]="veiculo.crlv.estadoEmissao">
+        <input pInputText name="estado" type="text" [(ngModel)]="veiculo.crlv.estadoEmissao" #estado="ngModel" required>
+        <app-message [control]="estado" error="required" text="Informe o Estado de Emissão do Renavam do Veículo"></app-message>
       </div>
 
       <div class="p-col-12">

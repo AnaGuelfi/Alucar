@@ -11,7 +11,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { TableModule } from 'primeng/table';
 import { TooltipModule } from 'primeng/tooltip';
 
-
+import { SharedModule } from '../shared/shared.module';
 import { VeiculosListComponent } from './veiculos-list/veiculos-list.component';
 import { VeiculoRegisterComponent } from './veiculo-register/veiculo-register.component';
 
@@ -30,7 +30,8 @@ import { VeiculoRegisterComponent } from './veiculo-register/veiculo-register.co
     TooltipModule,
     CalendarModule,
     DropdownModule,
-    InputTextareaModule
+    InputTextareaModule,
+    SharedModule
   ],
   exports: [
     VeiculosListComponent,
