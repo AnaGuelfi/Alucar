@@ -43,4 +43,10 @@ export class VeiculoService {
     return this.http.post<any>(this.veiculosUrl, Veiculo.toJson(veiculo), { headers })
       .toPromise();
   }
+
+  remove(id: number): Promise<any> {
+    return this.http.delete(`${this.veiculosUrl}/${id}`)
+      .toPromise()
+      .then(() => null);
+  }
 }

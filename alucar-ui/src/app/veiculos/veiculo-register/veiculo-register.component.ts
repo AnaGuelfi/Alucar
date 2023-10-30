@@ -1,9 +1,14 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
+import { MessageService } from 'primeng/api';
+
 import { AuthService } from 'src/app/security/auth.service';
+import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 import { Veiculo } from 'src/app/core/model';
 import { VeiculoService } from '../veiculo.service';
+
+
 
 @Component({
   selector: 'app-veiculo-register',
@@ -31,7 +36,9 @@ export class VeiculoRegisterComponent {
 
   constructor(
     private veiculoService: VeiculoService,
-    private auth: AuthService
+    private auth: AuthService,
+    private errorHandler: ErrorHandlerService,
+    private messageService: MessageService
     ){}
 
   save(activityForm: NgForm) {
@@ -41,6 +48,6 @@ export class VeiculoRegisterComponent {
         activityForm.reset();
         this.veiculo = new Veiculo(this.auth.jwtPayload?.usuario_id);
       })
-      .catch(erro => console.log(erro));
+      .catch(error => this.errorHandler.handle(error));
   }
 }
