@@ -63,15 +63,16 @@
               {{ veiculos.crlv.renavam }}
             </td>
             <td>
-              <span class="p-column-title">Data Emissao</span>
+              <span class="p-column-title">Data de Emissão</span>
               {{ veiculos.crlv.dataEmissao }}
+              <a class="a-row-edit" [routerLink]="['/veiculos', veiculos.id, 'crlv']">Atualizar</a>
             </td>
             <td>
-              <span class="p-column-title">Cidade Emissao</span>
+              <span class="p-column-title">Cidade de Emissão</span>
               {{ veiculos.crlv.cidadeEmissao }}
             </td>
             <td>
-              <span class="p-column-title">Estado Emissão</span>
+              <span class="p-column-title">Estado de Emissão</span>
               {{ veiculos.crlv.estadoEmissao }}
             </td>
             <td class="col-actions">

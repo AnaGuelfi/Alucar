@@ -15,11 +15,13 @@ import { TooltipModule } from 'primeng/tooltip';
 import { SharedModule } from '../shared/shared.module';
 import { VeiculosListComponent } from './veiculos-list/veiculos-list.component';
 import { VeiculoRegisterComponent } from './veiculo-register/veiculo-register.component';
+import { VeiculoUpdateCrlvComponent } from './veiculo-update-crlv/veiculo-update-crlv.component';
 
 @NgModule({
   declarations: [
     VeiculosListComponent,
-    VeiculoRegisterComponent
+    VeiculoRegisterComponent,
+    VeiculoUpdateCrlvComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +39,8 @@ import { VeiculoRegisterComponent } from './veiculo-register/veiculo-register.co
   ],
   exports: [
     VeiculosListComponent,
-    VeiculoRegisterComponent
+    VeiculoRegisterComponent,
+    VeiculoUpdateCrlvComponent
   ]
 })
 export class VeiculosModule { }

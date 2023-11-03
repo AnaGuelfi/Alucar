@@ -6,7 +6,6 @@ import { Veiculo } from '../core/model';
 
 import * as moment from 'moment';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -67,6 +66,14 @@ export class VeiculoService {
       });
   }
 
+  updateRenavam(veiculo: Veiculo): Promise<any> {
+    const headers = new HttpHeaders()
+      .append('Content-Type', 'application/json');
+
+    return this.http.put<any>(`${this.veiculosUrl}/${veiculo.id}/crlv`, Veiculo.dataEmissaoToJson(veiculo), { headers })
+      .toPromise();
+  }
+
   findById(id: number): Promise<Veiculo> {
     return this.http.get<Veiculo>(`${this.veiculosUrl}/${id}`)
       .toPromise()
@@ -78,7 +85,5 @@ export class VeiculoService {
         return veiculo;
       });
   }
-
-
 
 }

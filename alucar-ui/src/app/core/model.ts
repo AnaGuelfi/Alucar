@@ -45,4 +45,8 @@ export class Veiculo {
       usuario: veiculo.usuario
     }
   }
+
+  static dataEmissaoToJson(veiculo: Veiculo): any {
+    return moment(veiculo.crlv.dataEmissao, 'DD/MM/YYYY').toDate();
+  }
 }

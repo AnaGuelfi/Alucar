@@ -1,0 +1,23 @@
+<div class="container">
+  <form #f="ngForm" autocomplete="off" (ngSubmit)="updateRenavam(f)">
+
+    <div class="p-grid">
+      <div class="p-col-12">
+        <h1>Atualizar Data de Emissão do Renavam</h1>
+      </div>
+
+      <div class="p-col-6 p-md-3 p-fluid">
+        <label>Data de Emissão do Renavam</label>
+        <p-calendar name="data" dateFormat="dd/mm/yy" [inline]="false"  [(ngModel)]="veiculo.crlv.dataEmissao" #data="ngModel" required></p-calendar>
+      </div>
+
+      <div class="p-col-12">
+        <p>
+          <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
+          <a routerLink="/veiculo">Meus Veículos</a>
+        </p>
+      </div>
+    </div>
+
+  </form>
+</div>
