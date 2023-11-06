@@ -10,7 +10,6 @@
         <th class="col-actions-header"></th>
         <ng-template pTemplate="header">
           <tr>
-            <th>Usuário</th>
             <th>Marca</th>
             <th>Modelo</th>
             <th>Cor</th>
@@ -22,10 +21,6 @@
         </ng-template>
         <ng-template pTemplate="body" let-veiculos>
           <tr>
-            <td>
-              <span class="p-column-title">Usuário</span>
-              {{ veiculos.usuario.nome }}
-            </td>
             <td>
               <span class="p-column-title">Marca</span>
               {{ veiculos.marca }}
@@ -53,6 +48,9 @@
             <td>
               <span class="p-column-title">Quilometragem</span>
               {{ veiculos.quilometragem }} km
+            </td>
+            <td>
+              <a class="a-row-edit" [routerLink]="['/alugueis/new', veiculos.id]">Alugar</a>
             </td>
           </tr>
         </ng-template>

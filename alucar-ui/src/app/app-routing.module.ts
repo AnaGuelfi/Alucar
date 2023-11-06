@@ -7,9 +7,11 @@ import { VeiculosListComponent } from './veiculos/veiculos-list/veiculos-list.co
 import { VeiculoRegisterComponent } from './veiculos/veiculo-register/veiculo-register.component';
 import { VeiculoUpdateCrlvComponent } from './veiculos/veiculo-update-crlv/veiculo-update-crlv.component';
 import { VeiculosDisponiveisListComponent } from './veiculos/veiculos-disponiveis-list/veiculos-disponiveis-list.component';
+import { AluguelRegisterComponent } from './alugueis/aluguel-register/aluguel-register.component';
 
 const routes: Routes = [
   { path: 'alugueis', component: AlugueisListComponent },
+  { path: 'alugueis/new/:id', component: AluguelRegisterComponent },
   { path: 'login', component: LoginFormComponent },
   { path: 'veiculos', component: VeiculosListComponent },
   { path: 'veiculos/disponiveis', component: VeiculosDisponiveisListComponent },

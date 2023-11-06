@@ -13,6 +13,35 @@ export class CRLV {
 
 }
 
+export class Aluguel {
+  id!: number;
+  valor!: number;
+  localRetirada!: number;
+  localEntrega!: number;
+  dataRetirada!: string;
+  periodo!: number;
+  veiculo!: number;
+  usuario: any;
+
+  constructor(usuario_id: number){
+    this.usuario = new Usuario();
+    this.usuario.id = usuario_id;
+  }
+
+  static toJson(aluguel: Aluguel): any {
+    return {
+      id: aluguel.id,
+      valor: aluguel.valor,
+      localRetirada: aluguel.localRetirada,
+      localEntrega: aluguel.localEntrega,
+      dataRetirada: moment(aluguel.dataRetirada).format('DD/MM/YYYY'),
+      periodo: aluguel.periodo,
+      veiculo: aluguel.veiculo,
+      usuario: aluguel.usuario
+    }
+  }
+}
+
 export class Veiculo {
   id!: number;
   marca!: string;
