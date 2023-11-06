@@ -1,0 +1,62 @@
+<div class="container">
+
+  <div class="p-col-12">
+    <h1>Alucar</h1>
+  </div>
+
+  <div class="p-grid">
+    <div class="p-col-12">
+      <p-table [value]="veiculos" responsiveLayout="stack" [breakpoint]="'768px'">
+        <th class="col-actions-header"></th>
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Usuário</th>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Cor</th>
+            <th>Placa</th>
+            <th>Combustível</th>
+            <th>Opcionais</th>
+            <th>Quilometragem</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-veiculos>
+          <tr>
+            <td>
+              <span class="p-column-title">Usuário</span>
+              {{ veiculos.usuario.nome }}
+            </td>
+            <td>
+              <span class="p-column-title">Marca</span>
+              {{ veiculos.marca }}
+            </td>
+            <td>
+              <span class="p-column-title">Modelo</span>
+              {{ veiculos.modelo }}
+            </td>
+            <td>
+              <span class="p-column-title">Cor</span>
+              {{ veiculos.cor }}
+            </td>
+            <td>
+              <span class="p-column-title">Placa</span>
+              {{ veiculos.placa }}
+            </td>
+            <td>
+              <span class="p-column-title">Combustível</span>
+              {{ veiculos.combustivel }}
+            </td>
+            <td>
+              <span class="p-column-title">Opcionais</span>
+              {{ veiculos.opcionais }}
+            </td>
+            <td>
+              <span class="p-column-title">Quilometragem</span>
+              {{ veiculos.quilometragem }} km
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>

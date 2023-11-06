@@ -28,6 +28,14 @@ export class VeiculoService {
       });
   }
 
+  listDisponiveis(): Promise<any> {
+    return this.http.get(`${this.veiculosUrl}/disponiveis`)
+      .toPromise()
+      .then(response => {
+        return response;
+      });
+  }
+
   listByUser(): Promise<any> {
     this.email = this.auth.jwtPayload?.user_name;
     return this.http.get(`${this.veiculosUrl}/usuario/${this.email}`)

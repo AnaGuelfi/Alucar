@@ -16,12 +16,14 @@ import { SharedModule } from '../shared/shared.module';
 import { VeiculosListComponent } from './veiculos-list/veiculos-list.component';
 import { VeiculoRegisterComponent } from './veiculo-register/veiculo-register.component';
 import { VeiculoUpdateCrlvComponent } from './veiculo-update-crlv/veiculo-update-crlv.component';
+import { VeiculosDisponiveisListComponent } from './veiculos-disponiveis-list/veiculos-disponiveis-list.component';
 
 @NgModule({
   declarations: [
     VeiculosListComponent,
     VeiculoRegisterComponent,
-    VeiculoUpdateCrlvComponent
+    VeiculoUpdateCrlvComponent,
+    VeiculosDisponiveisListComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,8 @@ import { VeiculoUpdateCrlvComponent } from './veiculo-update-crlv/veiculo-update
   exports: [
     VeiculosListComponent,
     VeiculoRegisterComponent,
-    VeiculoUpdateCrlvComponent
+    VeiculoUpdateCrlvComponent,
+    VeiculosDisponiveisListComponent
   ]
 })
 export class VeiculosModule { }

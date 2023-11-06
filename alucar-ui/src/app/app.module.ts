@@ -15,7 +15,7 @@ import { VeiculosModule } from './veiculos/veiculos.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
