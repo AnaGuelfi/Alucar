@@ -13,19 +13,46 @@ export class CRLV {
 
 }
 
+export class Endereco {
+  id!: number;
+  logradouro!: string;
+  numero!: number;
+  bairro!: string;
+  cidade!: string;
+  cep!: string;
+  estado!: string;
+
+  static toJson(endereco: Endereco): any {
+    return {
+      id: endereco.id,
+      logradouro: endereco.logradouro,
+      numero: endereco.numero,
+      bairro: endereco.bairro,
+      cidade: endereco.cidade,
+      cep: endereco.cep,
+      estado: endereco.estado
+    }
+  }
+}
+
 export class Aluguel {
   id!: number;
   valor!: number;
-  localRetirada!: number;
-  localEntrega!: number;
+  localRetirada = new Endereco();
+  localEntrega = new Endereco();
   dataRetirada!: string;
   periodo!: number;
-  veiculo!: number;
-  usuario: any;
+  veiculo: any;
+  locatario: any;
+  locador: any;
 
-  constructor(usuario_id: number){
-    this.usuario = new Usuario();
-    this.usuario.id = usuario_id;
+  constructor(veiculo_id: number, locatario_id: number, locador_id: number){
+    this.locatario = new Usuario();
+    this.locatario = locatario_id;
+    this.locador = new Usuario();
+    this.locador = locador_id;
+    this.veiculo = new Veiculo(locador_id);
+    this.veiculo = veiculo_id;
   }
 
   static toJson(aluguel: Aluguel): any {
@@ -37,7 +64,8 @@ export class Aluguel {
       dataRetirada: moment(aluguel.dataRetirada).format('DD/MM/YYYY'),
       periodo: aluguel.periodo,
       veiculo: aluguel.veiculo,
-      usuario: aluguel.usuario
+      locatario: aluguel.locatario,
+      locador: aluguel.veiculo.usuario
     }
   }
 }

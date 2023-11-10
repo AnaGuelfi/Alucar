@@ -26,13 +26,6 @@ export class VeiculoRegisterComponent {
     { label: 'Gasolina', value: 'GASOLINA'}
   ];
 
-  opcionais = [
-    { label: 'Ar-Condicionado', value: 'AR_CONDICIONADO'},
-    { label: 'Quatro Portas', value: 'QUATRO_PORTAS'},
-    { label: 'Rádio e/ou GPS', value: 'RADIO_GPS'},
-    { label: 'Vidro elétrico, travas elétricas e alarme', value: 'TRIO_ELETRICO'}
-  ]
-
   veiculo = new Veiculo(this.auth.jwtPayload?.usuario_id);
 
   constructor(

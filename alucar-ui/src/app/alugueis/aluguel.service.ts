@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 import { AuthService } from '../security/auth.service';
+
+import { Aluguel } from '../core/model';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +33,14 @@ export class AluguelService {
       .then(response => {
         return response;
       });
+  }
+
+  add(aluguel: Aluguel): Promise<Aluguel> {
+    const headers = new HttpHeaders()
+      .append('Content-Type', 'application/json');
+
+    return this.http.post<any>(this.alugueisUrl, Aluguel.toJson(aluguel), { headers })
+      .toPromise();
   }
 
 
