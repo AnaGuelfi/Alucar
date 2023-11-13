@@ -29,7 +29,8 @@ export class VeiculoService {
   }
 
   listDisponiveis(): Promise<any> {
-    return this.http.get(`${this.veiculosUrl}/disponiveis`)
+    this.email = this.auth.jwtPayload?.user_name;
+    return this.http.get(`${this.veiculosUrl}/disponiveis/${this.email}`)
       .toPromise()
       .then(response => {
         return response;
