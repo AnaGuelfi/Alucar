@@ -14,9 +14,11 @@ import org.springframework.stereotype.Service;
 import br.ifsp.edu.prss6.alucar.domain.model.Aluguel;
 import br.ifsp.edu.prss6.alucar.domain.model.StatusAluguel;
 import br.ifsp.edu.prss6.alucar.domain.model.TermoComprometimento;
+import br.ifsp.edu.prss6.alucar.domain.model.TermoConsentimento;
 import br.ifsp.edu.prss6.alucar.domain.model.Usuario;
 import br.ifsp.edu.prss6.alucar.domain.model.Veiculo;
 import br.ifsp.edu.prss6.alucar.repository.AluguelRepository;
+import br.ifsp.edu.prss6.alucar.repository.EnderecoRepository;
 import br.ifsp.edu.prss6.alucar.repository.UsuarioRepository;
 import br.ifsp.edu.prss6.alucar.repository.VeiculoRepository;
 import br.ifsp.edu.prss6.alucar.service.exception.InvalidAluguelException;
@@ -32,6 +34,9 @@ public class AluguelService {
 	
 	@Autowired
 	private UsuarioRepository usuarioRepository;
+	
+	@Autowired
+	private EnderecoRepository enderecoRepository;
 	
 	public Aluguel save(Aluguel aluguel) {
 		Optional<Veiculo> veiculo = veiculoRepository.findById(aluguel.getVeiculo().getId());
@@ -54,6 +59,9 @@ public class AluguelService {
 		definirStatus(aluguel);
 		
 		emitirTermoConsentimento(aluguel, locatario, locador, veiculo);
+				
+		enderecoRepository.save(aluguel.getLocalRetirada());
+		enderecoRepository.save(aluguel.getLocalEntrega());
 				
 		return aluguelRepository.save(aluguel);
 	}
@@ -78,7 +86,7 @@ public class AluguelService {
 		if(!usuario.isPresent() || 
 					usuario.get().getCnh() == null || 
 					usuario.get().getCnh().getDataValidade().isBefore(LocalDate.now()) ||
-					usuario.get().getCnh().getCategoria().equals("A")) {
+					!usuario.get().getCnh().getCategoria().equals("A")) {
 			throw new InvalidAluguelException();
 		}
 	}
@@ -113,14 +121,17 @@ public class AluguelService {
 	}
 	
 	public void emitirTermoConsentimento(Aluguel aluguel, Optional<Usuario> locatario, Optional<Usuario> locador, Optional<Veiculo> veiculo) {
+		TermoConsentimento termo = new TermoConsentimento();
+		
 		String termoConsentimento = "Eu, " + locatario.get().getNome() + ", portador do CPF, " + locatario.get().getCpf() 
 				+ " declaro que me responsabilizo por possíveis avarias, roubos e furtos que acontecerem com o veículo deste aluguel, de propriedade de "
 				+ locador.get().getNome() + ", de CPF " + locador.get().getCpf() + ". O veículo alugado possui a placa "
 				+ veiculo.get().getPlaca() + " e Renavam " + veiculo.get().getCrlv().getRenavam() + "."
 				+ "Caso tenha atraso na devolução do veículo, será cobrada uma taxa de multa de 10% do valor acordado a cada dia de atraso.";
-		aluguel.getTermoConsentimento().setMensagem(termoConsentimento);
 		
-		aluguel.getTermoConsentimento().setAssinaturaLocatario(LocalDate.now());
+		termo.setMensagem(termoConsentimento);
+		termo.setAssinaturaLocatario(LocalDate.now());
+		aluguel.setTermoConsentimento(termo);
 	}
 	
 	public void setCancelamento(Long id) {

@@ -42,26 +42,32 @@ export class Aluguel {
   localEntrega = new Endereco();
   dataRetirada!: string;
   periodo!: number;
+  status!: string;
   veiculo: any;
   locatario: any;
   locador: any;
 
   constructor(veiculo_id: number, locatario_id: number, locador_id: number){
     this.locatario = new Usuario();
-    this.locatario = locatario_id;
+    this.locatario.id = locatario_id;
     this.locador = new Usuario();
-    this.locador = locador_id;
+    this.locador.id = locador_id;
     this.veiculo = new Veiculo(locador_id);
     this.veiculo = veiculo_id;
+
+
   }
 
   static toJson(aluguel: Aluguel): any {
+    aluguel.dataRetirada = moment(aluguel.dataRetirada).format('DD/MM/YYYY');
+    aluguel.veiculo.crlv.dataEmissao = moment(aluguel.veiculo.crlv.dataEmissao).format('DD/MM/YYYY');
     return {
       id: aluguel.id,
+      status: 'CRIADO',
       valor: aluguel.valor,
       localRetirada: aluguel.localRetirada,
       localEntrega: aluguel.localEntrega,
-      dataRetirada: moment(aluguel.dataRetirada).format('DD/MM/YYYY'),
+      dataRetirada: aluguel.dataRetirada,
       periodo: aluguel.periodo,
       veiculo: aluguel.veiculo,
       locatario: aluguel.locatario,

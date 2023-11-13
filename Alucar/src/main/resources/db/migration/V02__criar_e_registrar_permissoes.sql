@@ -21,6 +21,8 @@ INSERT INTO PERMISSAO (id, descricao) values (6, 'ROLE_SEARCH_CAR');
 INSERT INTO PERMISSAO (id, descricao) values (7, 'ROLE_REGISTER_RENTAL');
 INSERT INTO PERMISSAO (id, descricao) values (8, 'ROLE_REMOVE_RENTAL');
 INSERT INTO PERMISSAO (id, descricao) values (9, 'ROLE_SEARCH_RENTAL');
+INSERT INTO PERMISSAO (id, descricao) values (10, 'ROLE_REGISTER_ADDRESS');
+INSERT INTO PERMISSAO (id, descricao) values (11, 'ROLE_SEARCH_ADDRESS');
 
 INSERT INTO USUARIO_PERMISSAO (id_usuario, id_permissao) values (1, 1);
 INSERT INTO USUARIO_PERMISSAO (id_usuario, id_permissao) values (1, 2);
@@ -31,6 +33,8 @@ INSERT INTO USUARIO_PERMISSAO (id_usuario, id_permissao) values (1, 6);
 INSERT INTO USUARIO_PERMISSAO (id_usuario, id_permissao) values (1, 7);
 INSERT INTO USUARIO_PERMISSAO (id_usuario, id_permissao) values (1, 8);
 INSERT INTO USUARIO_PERMISSAO (id_usuario, id_permissao) values (1, 9);
+INSERT INTO USUARIO_PERMISSAO (id_usuario, id_permissao) values (1, 10);
+INSERT INTO USUARIO_PERMISSAO (id_usuario, id_permissao) values (1, 11);
 
 INSERT INTO USUARIO_PERMISSAO (id_usuario, id_permissao) values (2, 1);
 INSERT INTO USUARIO_PERMISSAO (id_usuario, id_permissao) values (2, 2);
@@ -41,3 +45,5 @@ INSERT INTO USUARIO_PERMISSAO (id_usuario, id_permissao) values (2, 6);
 INSERT INTO USUARIO_PERMISSAO (id_usuario, id_permissao) values (2, 7);
 INSERT INTO USUARIO_PERMISSAO (id_usuario, id_permissao) values (2, 8);
 INSERT INTO USUARIO_PERMISSAO (id_usuario, id_permissao) values (2, 9);
+INSERT INTO USUARIO_PERMISSAO (id_usuario, id_permissao) values (2, 10);
+INSERT INTO USUARIO_PERMISSAO (id_usuario, id_permissao) values (2, 11);

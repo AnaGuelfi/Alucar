@@ -68,11 +68,13 @@ export class AluguelRegisterComponent {
 
     save(aluguelForm: NgForm) {
 
-      this.enderecoService.add(this.createEndereco(this.aluguel, 'localRetirada')).catch(error => this.errorHandler.handle(error));
-      this.enderecoService.add(this.createEndereco(this.aluguel, 'localEntrega')).catch(error => this.errorHandler.handle(error));
+      //this.enderecoService.add(this.createEndereco(this.aluguel, 'localRetirada')).catch(error => this.errorHandler.handle(error));
+      //this.enderecoService.add(this.createEndereco(this.aluguel, 'localEntrega')).catch(error => this.errorHandler.handle(error));
 
       this.aluguel.localRetirada = this.createEndereco(this.aluguel, 'localRetirada');
       this.aluguel.localEntrega = this.createEndereco(this.aluguel, 'localEntrega');
+
+      this.aluguel.veiculo = this.createVeiculo(this.aluguel);
 
       this.aluguelService.add(this.aluguel)
         .then(addedAluguel => {
@@ -98,5 +100,16 @@ export class AluguelRegisterComponent {
       endereco.numero = aux.numero;
 
       return endereco;
+    }
+
+    createVeiculo(aluguel: Aluguel) : Veiculo{
+      const id = this.route.snapshot.params[`id`];
+      this.veiculoService.findById(id)
+        .then(veiculo => {
+          this.veiculo = veiculo;
+        })
+        .catch(error => this.errorHandler.handle(error));
+
+      return this.veiculo;
     }
 }
