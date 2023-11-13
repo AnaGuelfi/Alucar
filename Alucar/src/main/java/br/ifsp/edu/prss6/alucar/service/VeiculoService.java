@@ -44,13 +44,13 @@ public class VeiculoService {
 		return veiculoSaved;		
 	}
 	
-	public List<Veiculo> listVeiculosDisponiveis(){
+	public List<Veiculo> listVeiculosDisponiveis(String email){
 		List<Veiculo> todosVeiculos = veiculoRepository.findAll();
 		List<Veiculo> veiculosRenavamOK = new ArrayList<>();
 		Long diasValidade;
 		for(Veiculo v: todosVeiculos) {
 			diasValidade = v.getCrlv().getDataEmissao().until(LocalDate.now(), ChronoUnit.DAYS);
-			if(v.getCrlv() != null && diasValidade <= 365) {
+			if(v.getCrlv() != null && diasValidade <= 365 && !v.getUsuario().getEmail().equals(email)) {
 				veiculosRenavamOK.add(v);
 			}
 		}

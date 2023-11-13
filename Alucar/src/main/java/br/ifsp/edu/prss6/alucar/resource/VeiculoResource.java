@@ -41,9 +41,9 @@ public class VeiculoResource {
 	}
 	
 	@PreAuthorize("hasAuthority('ROLE_SEARCH_CAR') and #oauth2.hasScope('read')")
-	@GetMapping("/disponiveis")
-	public List<Veiculo> listVeiculosDisponiveis(){
-		return veiculoService.listVeiculosDisponiveis();
+	@GetMapping("/disponiveis/{email}")
+	public List<Veiculo> listVeiculosDisponiveis(@PathVariable String email){
+		return veiculoService.listVeiculosDisponiveis(email);
 	}
 	
 	@PreAuthorize("hasAuthority('ROLE_REGISTER_CAR') and #oauth2.hasScope('write')")
