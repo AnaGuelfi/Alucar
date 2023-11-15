@@ -42,11 +42,11 @@ public class UsuarioResource {
 		return usuarioRepository.findAll();
 	}
 	
-	@PreAuthorize("hasAuthority('ROLE_REGISTER_USER') and #oauth2.hasScope('write')")
+	//@PreAuthorize("hasAuthority('ROLE_REGISTER_USER') and #oauth2.hasScope('write')")
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public Usuario create(@Valid @RequestBody Usuario usuario, HttpServletResponse response) {
-		return usuarioRepository.save(usuario);
+		return usuarioService.save(usuario);
 	}
 	
 	@PreAuthorize("hasAuthority('ROLE_SEARCH_USER') and #oauth2.hasScope('read')")
