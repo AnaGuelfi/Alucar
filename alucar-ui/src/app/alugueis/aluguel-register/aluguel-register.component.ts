@@ -11,9 +11,6 @@ import { EnderecoService } from './../endereco.service';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 import { VeiculoService } from 'src/app/veiculos/veiculo.service';
 
-
-
-
 @Component({
   selector: 'app-aluguel-register',
   templateUrl: './aluguel-register.component.html',
@@ -67,13 +64,6 @@ export class AluguelRegisterComponent {
     }
 
     save(aluguelForm: NgForm) {
-
-      //this.enderecoService.add(this.createEndereco(this.aluguel, 'localRetirada')).catch(error => this.errorHandler.handle(error));
-      //this.enderecoService.add(this.createEndereco(this.aluguel, 'localEntrega')).catch(error => this.errorHandler.handle(error));
-
-      this.aluguel.localRetirada = this.createEndereco(this.aluguel, 'localRetirada');
-      this.aluguel.localEntrega = this.createEndereco(this.aluguel, 'localEntrega');
-
       this.aluguel.veiculo = this.createVeiculo(this.aluguel);
 
       this.aluguelService.add(this.aluguel)
@@ -82,24 +72,6 @@ export class AluguelRegisterComponent {
           this.router.navigate(['/alugueis', addedAluguel.id]);
       })
       .catch(error => this.errorHandler.handle(error));
-    }
-
-    createEndereco(aluguel: Aluguel, tipo: String): Endereco{
-      var endereco = new Endereco();
-      var aux = new Endereco();
-      if(tipo == "localRetirada"){
-        aux = this.aluguel.localRetirada;
-      } else{
-        aux = this.aluguel.localEntrega;
-      }
-      endereco.bairro = aux.bairro;
-      endereco.cep = aux.cep;
-      endereco.cidade = aux.cidade
-      endereco.estado = aux.estado;
-      endereco.logradouro = aux.logradouro;
-      endereco.numero = aux.numero;
-
-      return endereco;
     }
 
     createVeiculo(aluguel: Aluguel) : Veiculo{

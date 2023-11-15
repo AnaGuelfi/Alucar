@@ -39,10 +39,8 @@ export class AluguelService {
     const headers = new HttpHeaders()
       .append('Content-Type', 'application/json');
 
-
     return this.http.post<any>(this.alugueisUrl, Aluguel.toJson(aluguel), { headers })
       .toPromise();
 
   }
-
 }

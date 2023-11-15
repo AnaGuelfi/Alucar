@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { MessageService } from 'primeng/api';
-import { Usuario, Endereco } from 'src/app/core/model';
+import { Usuario } from 'src/app/core/model';
 import { UsuarioService } from '../usuario.service';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 
