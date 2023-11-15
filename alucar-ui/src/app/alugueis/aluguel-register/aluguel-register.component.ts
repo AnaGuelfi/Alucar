@@ -1,6 +1,7 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 
 import { MessageService } from 'primeng/api';
 
@@ -46,13 +47,14 @@ export class AluguelRegisterComponent {
     private errorHandler: ErrorHandlerService,
     private messageService: MessageService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private title: Title
     ){}
 
     ngOnInit(): void {
       const id = this.route.snapshot.params[`id`];
         this.loadVeiculo(id);
-
+        this.title.setTitle('Cadastrar Aluguel');
     }
 
     loadVeiculo(id: number) {
@@ -69,7 +71,7 @@ export class AluguelRegisterComponent {
       this.aluguelService.add(this.aluguel)
         .then(addedAluguel => {
           this.messageService.add({ severity: 'success', detail: 'Aluguel adicionado com sucesso!' });
-          this.router.navigate(['/alugueis', addedAluguel.id]);
+          this.router.navigate(['/alugueis']);
       })
       .catch(error => this.errorHandler.handle(error));
     }

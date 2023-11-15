@@ -1,6 +1,7 @@
 import { CommonModule, registerLocaleData } from '@angular/common';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 import localePt from '@angular/common/locales/pt';
 
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
@@ -10,13 +11,15 @@ import { ToastModule} from 'primeng/toast';
 import { AuthService } from '../security/auth.service';
 import { ErrorHandlerService } from './error-handler.service';
 import { NavbarComponent } from './navbar/navbar.component';
+import { PageNotFoundComponent } from './page-not-found.component';
 import { VeiculoService } from '../veiculos/veiculo.service';
 
 registerLocaleData(localePt);
 
 @NgModule({
   declarations: [
-    NavbarComponent
+    NavbarComponent,
+    PageNotFoundComponent
   ],
   imports: [
     CommonModule,
@@ -35,6 +38,7 @@ registerLocaleData(localePt);
     MessageService,
     ErrorHandlerService,
     ConfirmationService,
+    Title,
     { provide: LOCALE_ID, useValue: 'pt-BR' }
   ]
 })

@@ -13,10 +13,6 @@ export class ErrorHandlerService {
   handle(errorResponse: any): void {
     let msg: string;
 
-    if (errorResponse.status === 404) {
-      msg = 'Nenhum item cadastrado.';
-    }
-
     if (typeof errorResponse === 'string') {
       msg = errorResponse;
     } else if (errorResponse instanceof HttpErrorResponse
@@ -36,6 +32,10 @@ export class ErrorHandlerService {
     } else {
       msg = 'Erro ao processar serviço remoto. Tente novamente.';
       console.error('Ocorreu um erro', errorResponse);
+    }
+
+    if (errorResponse.status === 404) {
+      msg = 'Nenhum item cadastrado.';
     }
 
     this.messageService.add({ severity: 'error', detail: msg });

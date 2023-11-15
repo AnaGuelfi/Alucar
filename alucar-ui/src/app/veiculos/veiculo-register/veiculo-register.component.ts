@@ -1,6 +1,7 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 
 import { MessageService } from 'primeng/api';
 
@@ -8,8 +9,6 @@ import { AuthService } from 'src/app/security/auth.service';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 import { Veiculo } from 'src/app/core/model';
 import { VeiculoService } from '../veiculo.service';
-
-
 
 @Component({
   selector: 'app-veiculo-register',
@@ -34,7 +33,8 @@ export class VeiculoRegisterComponent {
     private errorHandler: ErrorHandlerService,
     private messageService: MessageService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private title: Title
     ){}
 
     ngOnInit(): void {
@@ -42,6 +42,7 @@ export class VeiculoRegisterComponent {
       if(id != 'new'){
         this.loadVeiculo(id);
       }
+      this.title.setTitle('Cadastro de Veículo');
     }
 
     get editing(): boolean {

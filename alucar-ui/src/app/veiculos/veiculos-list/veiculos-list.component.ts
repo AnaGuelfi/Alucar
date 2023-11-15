@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 import { ConfirmationService, MessageService } from 'primeng/api';
 
@@ -16,11 +17,14 @@ export class VeiculosListComponent {
     private VeiculoService: VeiculoService,
     private confirmation: ConfirmationService,
     private messageService: MessageService,
-    private errorHandler: ErrorHandlerService
+    private errorHandler: ErrorHandlerService,
+    private title: Title
     ){ }
 
   ngOnInit(): void {
     this.list();
+    this.title.setTitle('Meus Veículos');
+
   }
 
   list(): void {

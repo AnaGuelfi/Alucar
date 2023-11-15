@@ -23,3 +23,7 @@ body {
 .col-actions .p-button {
   margin: 1px;
 }
+
+a {
+  text-decoration: none;
+}

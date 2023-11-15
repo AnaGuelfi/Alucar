@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+
 import { AluguelService } from '../aluguel.service';
 
 @Component({
@@ -9,10 +11,13 @@ import { AluguelService } from '../aluguel.service';
 export class AlugueisListComponent {
   alugueis = [];
 
-  constructor(private aluguelService: AluguelService){ }
+  constructor(
+    private aluguelService: AluguelService,
+    private title: Title){ }
 
   ngOnInit(): void {
     this.list();
+    this.title.setTitle('Aluguéis');
   }
 
   list(): void {

@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 import { AuthService } from '../auth.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
@@ -14,8 +15,13 @@ export class LoginFormComponent {
 
   constructor(
     private auth: AuthService,
-    private router: Router
+    private router: Router,
+    private title: Title
   ) {}
+
+  ngOnInit(): void {
+    this.title.setTitle('Login de Usuário');
+  }
 
   login(user: string, password: string) {
     this.auth.login(user, password)

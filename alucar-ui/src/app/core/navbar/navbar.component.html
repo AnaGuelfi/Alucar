@@ -10,11 +10,11 @@
   </div>
 
   <ul class="navbar-menu" [hidden]="!displayingMenu">
-    <li class="navbar-usuario">Fernando Duarte</li>
-    <li class="navbar-menuitem"><a href="#">Alugar um Veículo</a></li>
-    <li class="navbar-menuitem"><a href="#">Seus Veículos</a></li>
-    <li class="navbar-menuitem"><a href="#">Seus Aluguéis</a></li>
-    <li class="navbar-menuitem"><a href="#">Logout</a></li>
+    <li class="navbar-usuario">{{ auth.jwtPayload?.nome }}</li>
+    <li class="navbar-menuitem" routerLinkActive="active"><a routerLink="/veiculos/disponiveis">Alugar um Veículo</a></li>
+    <li class="navbar-menuitem" routerLinkActive="active"><a routerLink="/veiculos">Seus Veículos</a></li>
+    <li class="navbar-menuitem" routerLinkActive="active"><a routerLink="/alugueis">Seus Aluguéis</a></li>
+    <li class="navbar-menuitem" routerLinkActive="active"><a href="#">Logout</a></li>
   </ul>
 
 </nav>

@@ -1,6 +1,7 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { ButtonModule } from 'primeng/button';
@@ -8,6 +9,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 
 import { LoginFormComponent } from './login-form/login-form.component';
+import { AlucarHttpInterceptor } from './alucar-http-interceptor';
 
 export function tokenGetter(): any {
   return localStorage.getItem('token');
@@ -31,7 +33,12 @@ export function tokenGetter(): any {
   ],
   exports: [LoginFormComponent],
   providers: [
-    JwtHelperService
+    JwtHelperService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AlucarHttpInterceptor,
+      multi: true
+    }
   ],
 })
 export class SecurityModule { }

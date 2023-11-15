@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AlugueisListComponent } from './alugueis/alugueis-list/alugueis-list.component';
 import { AluguelRegisterComponent } from './alugueis/aluguel-register/aluguel-register.component';
 import { LoginFormComponent } from './security/login-form/login-form.component';
+import { PageNotFoundComponent } from './core/page-not-found.component';
 import { UsuarioRegisterComponent } from './usuarios/usuario-register/usuario-register.component';
 import { VeiculosListComponent } from './veiculos/veiculos-list/veiculos-list.component';
 import { VeiculoRegisterComponent } from './veiculos/veiculo-register/veiculo-register.component';
@@ -11,6 +12,7 @@ import { VeiculoUpdateCrlvComponent } from './veiculos/veiculo-update-crlv/veicu
 import { VeiculosDisponiveisListComponent } from './veiculos/veiculos-disponiveis-list/veiculos-disponiveis-list.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'veiculos/disponiveis', pathMatch: 'full' },
   { path: 'alugueis', component: AlugueisListComponent },
   { path: 'alugueis/new/:id', component: AluguelRegisterComponent },
   { path: 'usuarios/new', component: UsuarioRegisterComponent },
@@ -20,6 +22,8 @@ const routes: Routes = [
   { path: 'veiculos/:id', component: VeiculoRegisterComponent },
   { path: 'veiculos/new', component: VeiculoRegisterComponent},
   { path: 'veiculos/:id/crlv', component: VeiculoUpdateCrlvComponent },
+  { path: 'page-not-found', component: PageNotFoundComponent },
+  { path: '**', redirectTo: 'page-not-found'}
 
 ];
 @NgModule({
