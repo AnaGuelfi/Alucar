@@ -11,6 +11,7 @@ import { CoreModule } from './core/core.module';
 import { NavbarComponent } from './core/navbar/navbar.component';
 import { SecurityModule } from './security/security.module';
 import { VeiculosModule } from './veiculos/veiculos.module';
+import { UsuariosModule } from './usuarios/usuarios.module';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { VeiculosModule } from './veiculos/veiculos.module';
     AlugueisModule,
     VeiculosModule,
     SecurityModule,
-    CoreModule
+    CoreModule,
+    UsuariosModule
   ],
   exports:[
     NavbarComponent
