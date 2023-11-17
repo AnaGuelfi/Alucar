@@ -79,7 +79,7 @@
               <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
                 [routerLink]="['/veiculos', veiculos.id]"></a>
               <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
-                (click)="confirmRemoval(veiculos)"></button>
+                (click)="confirmRemoval(veiculos)"   [disabled]="!auth.hasPermission('ROLE_REMOVE_CAR')"></button>
             </td>
           </tr>
         </ng-template>

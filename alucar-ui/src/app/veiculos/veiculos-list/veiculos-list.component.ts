@@ -5,6 +5,7 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 import { VeiculoService } from './../veiculo.service';
+import { AuthService } from 'src/app/security/auth.service';
 
 @Component({
   selector: 'app-veiculos-list',
@@ -18,6 +19,7 @@ export class VeiculosListComponent {
     private confirmation: ConfirmationService,
     private messageService: MessageService,
     private errorHandler: ErrorHandlerService,
+    public auth: AuthService,
     private title: Title
     ){ }
 

@@ -13,13 +13,15 @@ import { ErrorHandlerService } from './error-handler.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PageNotFoundComponent } from './page-not-found.component';
 import { VeiculoService } from '../veiculos/veiculo.service';
+import { NotAuthorizedComponent } from './not-authorized.component';
 
 registerLocaleData(localePt);
 
 @NgModule({
   declarations: [
     NavbarComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    NotAuthorizedComponent
   ],
   imports: [
     CommonModule,

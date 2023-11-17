@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AlugueisListComponent } from './alugueis/alugueis-list/alugueis-list.component';
 import { AluguelRegisterComponent } from './alugueis/aluguel-register/aluguel-register.component';
+import { AuthGuard } from './security/auth.guard';
 import { LoginFormComponent } from './security/login-form/login-form.component';
 import { PageNotFoundComponent } from './core/page-not-found.component';
 import { UsuarioRegisterComponent } from './usuarios/usuario-register/usuario-register.component';
@@ -10,19 +11,60 @@ import { VeiculosListComponent } from './veiculos/veiculos-list/veiculos-list.co
 import { VeiculoRegisterComponent } from './veiculos/veiculo-register/veiculo-register.component';
 import { VeiculoUpdateCrlvComponent } from './veiculos/veiculo-update-crlv/veiculo-update-crlv.component';
 import { VeiculosDisponiveisListComponent } from './veiculos/veiculos-disponiveis-list/veiculos-disponiveis-list.component';
+import { NotAuthorizedComponent } from './core/not-authorized.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: 'veiculos/disponiveis', pathMatch: 'full' },
-  { path: 'alugueis', component: AlugueisListComponent },
-  { path: 'alugueis/new/:id', component: AluguelRegisterComponent },
-  { path: 'usuarios/new', component: UsuarioRegisterComponent },
+  {
+    path: 'alugueis',
+    component: AlugueisListComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_SEARCH_RENTAL']}
+  },
+  {
+    path: 'alugueis/new/:id',
+    component: AluguelRegisterComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_REGISTER_RENTAL']}
+  },
+  {
+    path: 'usuarios/new',
+    component: UsuarioRegisterComponent
+  },
   { path: 'login', component: LoginFormComponent },
-  { path: 'veiculos', component: VeiculosListComponent },
-  { path: 'veiculos/disponiveis', component: VeiculosDisponiveisListComponent },
-  { path: 'veiculos/:id', component: VeiculoRegisterComponent },
-  { path: 'veiculos/new', component: VeiculoRegisterComponent},
-  { path: 'veiculos/:id/crlv', component: VeiculoUpdateCrlvComponent },
+  {
+    path: 'veiculos',
+    component: VeiculosListComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_SEARCH_CAR']}
+  },
+  {
+    path: 'veiculos/disponiveis',
+    component: VeiculosDisponiveisListComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_SEARCH_CAR']}
+  },
+  {
+    path: 'veiculos/:id',
+    component: VeiculoRegisterComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_REGISTER_CAR']}
+  },
+  {
+    path: 'veiculos/new',
+    component: VeiculoRegisterComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_REGISTER_CAR']}
+  },
+  {
+    path: 'veiculos/:id/crlv',
+    component: VeiculoUpdateCrlvComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_REGISTER_CAR']}
+  },
   { path: 'page-not-found', component: PageNotFoundComponent },
+  { path: 'not-authorized', component: NotAuthorizedComponent },
   { path: '**', redirectTo: 'page-not-found'}
 
 ];
