@@ -48,6 +48,9 @@
             <td>
               <span class="p-column-title">Data de Entrega</span>
               {{ aluguel.dataEntrega }}
+              <span *ngIf="usuario === aluguel.locador.id && aluguel.dataEntrega == null && aluguel.dataPrevistaEntrega <= data_hoje" >
+                <a class="a-row-edit" [routerLink]="['/alugueis', aluguel.id, 'entrega']">Registrar Devolução</a>
+              </span>
             </td>
             <td>
               <span class="p-column-title">Data Prevista de Entrega</span>
@@ -73,7 +76,7 @@
               <span class="p-column-title">Termo Comprometimento</span>
               Mensagem: {{ aluguel.termoComprometimento.mensagem }}
               Data Assinatura: {{ aluguel.termoComprometimento.assinaturaLocador }}
-              <span *ngIf="usuario === aluguel.locador.id">
+              <span *ngIf="usuario === aluguel.locador.id && aluguel.termoComprometimento.assinaturaLocador == null">
                 <a class="a-row-edit" [routerLink]="['/alugueis', aluguel.id, 'comprometimento']">Assinar Termo</a>
               </span>
             </td>

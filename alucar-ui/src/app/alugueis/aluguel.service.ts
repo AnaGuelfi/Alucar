@@ -54,6 +54,14 @@ export class AluguelService {
       .toPromise();
   }
 
+  entregarVeiculo(aluguel: Aluguel): Promise<any>{
+    const headers = new HttpHeaders()
+      .append('Content-Type', 'application/json');
+
+    return this.http.put<any>(`${this.alugueisUrl}/${aluguel.id}/entrega`, { headers })
+      .toPromise();
+  }
+
 
   findById(id: number): Promise<Aluguel> {
     return this.http.get<Aluguel>(`${this.alugueisUrl}/${id}`)

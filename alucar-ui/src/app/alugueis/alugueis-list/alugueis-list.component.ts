@@ -4,6 +4,8 @@ import { Title } from '@angular/platform-browser';
 import { AluguelService } from '../aluguel.service';
 import { AuthService } from 'src/app/security/auth.service';
 
+import * as moment from 'moment';
+
 @Component({
   selector: 'app-alugueis-list',
   templateUrl: './alugueis-list.component.html',
@@ -12,6 +14,7 @@ import { AuthService } from 'src/app/security/auth.service';
 export class AlugueisListComponent {
   alugueis = [];
   usuario = this.auth.jwtPayload?.usuario_id;
+  data_hoje = moment().format('DD/MM/YYYY');
   constructor(
     private aluguelService: AluguelService,
     private title: Title,

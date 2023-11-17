@@ -17,6 +17,7 @@ import { SharedModule } from '../shared/shared.module';
 import { AlugueisListComponent } from './alugueis-list/alugueis-list.component';
 import { AluguelRegisterComponent } from './aluguel-register/aluguel-register.component';
 import { AluguelTermoComprometimentoComponent } from './aluguel-termo-comprometimento/aluguel-termo-comprometimento.component';
+import { AluguelEntregarComponent } from './aluguel-entregar/aluguel-entregar.component';
 
 
 
@@ -24,7 +25,8 @@ import { AluguelTermoComprometimentoComponent } from './aluguel-termo-comprometi
   declarations: [
     AlugueisListComponent,
     AluguelRegisterComponent,
-    AluguelTermoComprometimentoComponent
+    AluguelTermoComprometimentoComponent,
+    AluguelEntregarComponent
   ],
   imports: [
     BrowserModule,
