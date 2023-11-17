@@ -5,6 +5,8 @@ import { AuthService } from '../security/auth.service';
 
 import { Aluguel } from '../core/model';
 
+import * as moment from 'moment';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -42,5 +44,29 @@ export class AluguelService {
     return this.http.post<any>(this.alugueisUrl, Aluguel.toJson(aluguel), { headers })
       .toPromise();
 
+  }
+
+  assinarTermoComprometimento(aluguel: Aluguel): Promise<any> {
+    const headers = new HttpHeaders()
+      .append('Content-Type', 'application/json');
+
+    return this.http.put<any>(`${this.alugueisUrl}/${aluguel.id}/comprometimento`, { headers })
+      .toPromise();
+  }
+
+
+  findById(id: number): Promise<Aluguel> {
+    return this.http.get<Aluguel>(`${this.alugueisUrl}/${id}`)
+      .toPromise()
+      .then((response: any) => {
+        const aluguel = response;
+
+        aluguel.dataRetirada = moment(aluguel.dataRetirada, 'DD/MM/YYYY').toDate();
+        aluguel.dataEntrega = moment(aluguel.dataEntrega, 'DD/MM/YYYY').toDate();
+        aluguel.dataPrevistaEntrega = moment(aluguel.dataPrevistaEntrega, 'DD/MM/YYYY').toDate();
+        aluguel.assinaturaLocador = moment(aluguel.assinaturaLocador, 'DD/MM/YYYY').toDate();
+
+        return aluguel;
+      });
   }
 }

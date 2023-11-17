@@ -16,13 +16,15 @@ import { TooltipModule } from 'primeng/tooltip';
 import { SharedModule } from '../shared/shared.module';
 import { AlugueisListComponent } from './alugueis-list/alugueis-list.component';
 import { AluguelRegisterComponent } from './aluguel-register/aluguel-register.component';
+import { AluguelTermoComprometimentoComponent } from './aluguel-termo-comprometimento/aluguel-termo-comprometimento.component';
 
 
 
 @NgModule({
   declarations: [
     AlugueisListComponent,
-    AluguelRegisterComponent
+    AluguelRegisterComponent,
+    AluguelTermoComprometimentoComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,9 @@ import { AluguelRegisterComponent } from './aluguel-register/aluguel-register.co
   ],
   exports:[
     AlugueisListComponent,
-    AluguelRegisterComponent
+    AluguelRegisterComponent,
+    AluguelTermoComprometimentoComponent
+
   ]
 })
 export class AlugueisModule { }

@@ -22,9 +22,7 @@
             <th>Locatário</th>
             <th>Veículo</th>
             <th>Termo Comprometimento</th>
-            <th>Assinatura Locador</th>
             <th>Termo Consentimento</th>
-            <th>Assinatura Locatário</th>
             <th>Valor da Multa</th>
             <th>Status Aluguel</th>
           </tr>
@@ -72,20 +70,17 @@
               {{ aluguel.veiculo.marca }} {{ aluguel.veiculo.modelo }}
             </td>
             <td>
-              <span class="p-column-title">Mensagem Comprometimento</span>
-              {{ aluguel.termoComprometimento.mensagem }}
+              <span class="p-column-title">Termo Comprometimento</span>
+              Mensagem: {{ aluguel.termoComprometimento.mensagem }}
+              Data Assinatura: {{ aluguel.termoComprometimento.assinaturaLocador }}
+              <span *ngIf="usuario === aluguel.locador.id">
+                <a class="a-row-edit" [routerLink]="['/alugueis', aluguel.id, 'comprometimento']">Assinar Termo</a>
+              </span>
             </td>
             <td>
-              <span class="p-column-title">Assinatura Locador</span>
-              {{ aluguel.termoComprometimento.assinaturaLocador }}
-            </td>
-            <td>
-              <span class="p-column-title">Mensagem Consentimento</span>
-              {{ aluguel.termoConsentimento.mensagem }}
-            </td>
-            <td>
-              <span class="p-column-title">Assinatura Locatário</span>
-              {{ aluguel.termoConsentimento.assinaturaLocatario }}
+              <span class="p-column-title">Termo Consentimento</span>
+              Mensagem: {{ aluguel.termoConsentimento.mensagem }}
+              Data Assinatura: {{ aluguel.termoConsentimento.assinaturaLocatario }}
             </td>
             <td>
               <span class="p-column-title">Valor da Multa</span>

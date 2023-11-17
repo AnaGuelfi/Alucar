@@ -1,0 +1,17 @@
+<div class="container">
+  <form #f="ngForm" autocomplete="off" (ngSubmit)="assinarTermoComprometimento(f)">
+
+    <div class="p-grid">
+      <div class="p-col-12">
+        <h1>Assinar Termo de Comprometimento</h1>
+      </div>
+
+      <div class="p-col-12">
+        <p>
+          <button pButton type="submit" label="Assinar" [disabled]="f.invalid"></button>
+          <a routerLink="/alugueis"> Voltar</a>
+        </p>
+      </div>
+    </div>
+  </form>
+</div>
