@@ -62,6 +62,13 @@ export class AluguelService {
       .toPromise();
   }
 
+  cancelarAluguel(aluguel: Aluguel): Promise<any>{
+    const headers = new HttpHeaders()
+      .append('Content-Type', 'application/json');
+
+    return this.http.put<any>(`${this.alugueisUrl}/${aluguel.id}/cancelamento`, { headers })
+      .toPromise();
+  }
 
   findById(id: number): Promise<Aluguel> {
     return this.http.get<Aluguel>(`${this.alugueisUrl}/${id}`)

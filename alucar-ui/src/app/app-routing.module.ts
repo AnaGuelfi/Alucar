@@ -14,6 +14,7 @@ import { VeiculosDisponiveisListComponent } from './veiculos/veiculos-disponivei
 import { NotAuthorizedComponent } from './core/not-authorized.component';
 import { AluguelTermoComprometimentoComponent } from './alugueis/aluguel-termo-comprometimento/aluguel-termo-comprometimento.component';
 import { AluguelEntregarComponent } from './alugueis/aluguel-entregar/aluguel-entregar.component';
+import { AluguelCancelamentoComponent } from './alugueis/aluguel-cancelamento/aluguel-cancelamento.component';
 
 
 const routes: Routes = [
@@ -33,6 +34,12 @@ const routes: Routes = [
   {
     path: 'alugueis/:id/comprometimento',
     component: AluguelTermoComprometimentoComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_REGISTER_RENTAL']}
+  },
+  {
+    path: 'alugueis/:id/cancelamento',
+    component: AluguelCancelamentoComponent,
     canActivate: [AuthGuard],
     data: { roles: ['ROLE_REGISTER_RENTAL']}
   },

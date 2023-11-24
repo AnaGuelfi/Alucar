@@ -18,6 +18,7 @@ import { AlugueisListComponent } from './alugueis-list/alugueis-list.component';
 import { AluguelRegisterComponent } from './aluguel-register/aluguel-register.component';
 import { AluguelTermoComprometimentoComponent } from './aluguel-termo-comprometimento/aluguel-termo-comprometimento.component';
 import { AluguelEntregarComponent } from './aluguel-entregar/aluguel-entregar.component';
+import { AluguelCancelamentoComponent } from './aluguel-cancelamento/aluguel-cancelamento.component';
 
 
 
@@ -26,7 +27,8 @@ import { AluguelEntregarComponent } from './aluguel-entregar/aluguel-entregar.co
     AlugueisListComponent,
     AluguelRegisterComponent,
     AluguelTermoComprometimentoComponent,
-    AluguelEntregarComponent
+    AluguelEntregarComponent,
+    AluguelCancelamentoComponent
   ],
   imports: [
     BrowserModule,
@@ -45,8 +47,9 @@ import { AluguelEntregarComponent } from './aluguel-entregar/aluguel-entregar.co
   exports:[
     AlugueisListComponent,
     AluguelRegisterComponent,
-    AluguelTermoComprometimentoComponent
-
+    AluguelTermoComprometimentoComponent,
+    AluguelEntregarComponent,
+    AluguelCancelamentoComponent
   ]
 })
 export class AlugueisModule { }

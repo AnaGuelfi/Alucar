@@ -25,6 +25,7 @@
             <th>Termo Consentimento</th>
             <th>Valor da Multa</th>
             <th>Status Aluguel</th>
+            <th>Cancelar</th>
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-aluguel>
@@ -48,7 +49,7 @@
             <td>
               <span class="p-column-title">Data de Entrega</span>
               {{ aluguel.dataEntrega }}
-              <span *ngIf="usuario === aluguel.locador.id && aluguel.dataEntrega == null && aluguel.dataPrevistaEntrega <= data_hoje" >
+              <span *ngIf="usuario === aluguel.locador.id && aluguel.termoComprometimento != null && dataEntrega == null && aluguel.dataPrevistaEntrega <= data_hoje" >
                 <a class="a-row-edit" [routerLink]="['/alugueis', aluguel.id, 'entrega']">Registrar Devolução</a>
               </span>
             </td>
@@ -74,9 +75,11 @@
             </td>
             <td>
               <span class="p-column-title">Termo Comprometimento</span>
+              <span *ngIf="aluguel.termoComprometimento != null">
               Mensagem: {{ aluguel.termoComprometimento.mensagem }}
               Data Assinatura: {{ aluguel.termoComprometimento.assinaturaLocador }}
-              <span *ngIf="usuario === aluguel.locador.id && aluguel.termoComprometimento.assinaturaLocador == null">
+              </span>
+              <span *ngIf="usuario === aluguel.locador.id && aluguel.termoComprometimento == null">
                 <a class="a-row-edit" [routerLink]="['/alugueis', aluguel.id, 'comprometimento']">Assinar Termo</a>
               </span>
             </td>
@@ -84,7 +87,7 @@
               <span class="p-column-title">Termo Consentimento</span>
               Mensagem: {{ aluguel.termoConsentimento.mensagem }}
               Data Assinatura: {{ aluguel.termoConsentimento.assinaturaLocatario }}
-            </td>
+           </td>
             <td>
               <span class="p-column-title">Valor da Multa</span>
               R${{ aluguel.termoConsentimento.valorMulta }}
@@ -95,8 +98,9 @@
             </td>
 
             <td class="col-actions">
-              <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"></a>
-              <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"></button>
+              <span *ngIf="aluguel.status !== 'CANCELADO'">
+                <button pButton icon="pi pi-times-circle" pTooltip="Cancelar" tooltipPosition="top" [routerLink]="['/alugueis', aluguel.id, 'cancelamento']"></button>
+              </span>
             </td>
           </tr>
         </ng-template>
