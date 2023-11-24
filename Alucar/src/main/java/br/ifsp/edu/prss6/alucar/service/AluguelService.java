@@ -110,7 +110,7 @@ public class AluguelService {
 			if (aluguel.getDataRetirada().isAfter(LocalDate.now())) {
 				aluguel.setStatus(StatusAluguel.PENDENTE);
 			}
-			else if((aluguel.getDataPrevistaEntrega().isAfter(LocalDate.now()) || aluguel.getDataPrevistaEntrega().equals(LocalDate.now())) && (aluguel.getDataRetirada().equals(LocalDate.now()))){
+			else if(aluguel.getDataPrevistaEntrega().isAfter(LocalDate.now()) || aluguel.getDataPrevistaEntrega().equals(LocalDate.now())){
 				aluguel.setStatus(StatusAluguel.ATIVO);
 			}else {
 				aluguel.setStatus(StatusAluguel.ATRASADO);
@@ -136,15 +136,12 @@ public class AluguelService {
 	
 	public void setCancelamento(Long id) {
 		Aluguel aluguel = findAluguelById(id);
-		if(aluguel.getDataRetirada().isAfter(LocalDate.now())){
-			aluguel.setStatus(StatusAluguel.CANCELADO);
-			
-			LocalDate dataRetirada = aluguel.getDataRetirada();
-			if(dataRetirada.equals(LocalDate.now())) {
-				aluguel.getTermoConsentimento().setValorMulta(aluguel.getValor());
-			}
-			aluguelRepository.save(aluguel);
+		aluguel.setStatus(StatusAluguel.CANCELADO);
+		if(aluguel.getDataRetirada().isBefore(LocalDate.now()) || aluguel.getDataRetirada().equals(LocalDate.now())){
+			aluguel.getTermoConsentimento().setValorMulta(aluguel.getValor());	
 		}
+		aluguelRepository.save(aluguel);
+
 	}
 	
 	public void setEntrega(Long id) {
