@@ -14,10 +14,12 @@ import { TooltipModule } from 'primeng/tooltip';
 
 import { SharedModule } from '../shared/shared.module';
 import { UsuarioRegisterComponent } from './usuario-register/usuario-register.component';
+import { UsuarioPerfilComponent } from './usuario-perfil/usuario-perfil.component';
 
 @NgModule({
   declarations: [
-    UsuarioRegisterComponent
+    UsuarioRegisterComponent,
+    UsuarioPerfilComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,8 @@ import { UsuarioRegisterComponent } from './usuario-register/usuario-register.co
     RouterModule
   ],
   exports: [
-    UsuarioRegisterComponent
+    UsuarioRegisterComponent,
+    UsuarioPerfilComponent
   ]
 })
 export class UsuariosModule { }

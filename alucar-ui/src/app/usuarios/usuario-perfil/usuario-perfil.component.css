@@ -1,0 +1,58 @@
+table{
+  margin: 0 auto;
+  width: 30%;
+}
+
+h4 {
+  font-size: 20px;
+  margin-top: 0
+}
+
+small {
+  display: block;
+  font-size: 12px;
+  font-weight: 400;
+  margin-top: 5px
+}
+
+td, th {
+  padding-top: 7px;
+  padding-bottom: 7px;
+  white-space: nowrap;
+}
+
+button{
+  margin: 0 auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+.field, .highlight-title{
+  font-weight: 600;
+  color: #2d353c;
+  width: 20%;
+}
+
+.field {
+  text-align: left;
+}
+
+.data{
+  text-align: right;
+}
+
+.highlight-title{
+  text-align: center;
+  font-size: 20px;
+}
+
+.highlight, .cnh{
+  text-align: center;
+}
+
+.table.table-profile>tbody>tr.highlight>td {
+  border-top: 1px solid #b9c3ca;
+  border-bottom: 1px solid #b9c3ca
+}

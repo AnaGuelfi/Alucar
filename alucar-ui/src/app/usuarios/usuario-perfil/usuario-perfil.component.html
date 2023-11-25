@@ -1,0 +1,105 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div id="content" class="content content-full-width">
+        <div class="profile-content">
+          <div class="tab-content p-0">
+            <div class="tab-pane fade in active show" id="profile-about">
+              <div class="table-responsive">
+                <table class="table table-profile">
+                  <thead>
+                    <tr>
+                      <th colspan="2"> <h4>{{ user.nome }} <small>{{ user.cpf }}</small></h4> </th>
+                    </tr>
+                  </thead>
+                  <!--Sobre mim-->
+                  <tbody>
+                    <tr class="highlight">
+                      <td colspan="2" class="highlight-title">Sobre mim</td>
+                    </tr>
+                    <tr class="divider">
+                      <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                      <td class="field">Data de Nascimento</td>
+                      <td class="data">{{ user.dataNascimento }}</td>
+                    </tr>
+                    <tr>
+                      <td class="field">Telefone</td>
+                      <td class="data">{{ user.telefone }}
+                    </tr>
+                    <tr>
+                      <td class="field">E-mail</td>
+                      <td class="data">{{ user.email }}</td>
+                    </tr>
+                    <!--Minha Localização-->
+                    <tr class="divider">
+                      <td colspan="2"></td>
+                    </tr>
+                    <tr class="highlight">
+                      <td colspan="2" class="highlight-title">Minha Localização</td>
+                    </tr>
+                    <tr class="divider">
+                      <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                      <td class="field">Endereço</td>
+                      <td class="data">
+                        {{ user.endereco.logradouro }}, {{ user.endereco.numero }}, {{ user.endereco.bairro }}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="field">Cidade</td>
+                      <td class="data">{{ user.endereco.cidade }}</td>
+                    </tr>
+                    <tr>
+                      <td class="field">Estado</td>
+                      <td class="data">{{ user.endereco.estado }}</td>
+                    </tr>
+                    <tr>
+                      <td class="field">CEP</td>
+                      <td class="data">{{ user.endereco.cep }}</td>
+                    </tr>
+                    <!--Minha CNH-->
+                    <tr class="divider">
+                      <td colspan="2"></td>
+                    </tr>
+                    <tr class="highlight">
+                      <td colspan="2" class="highlight-title">Minha CNH</td>
+                    </tr>
+                    <tr class="divider">
+                      <td colspan="2"></td>
+                    </tr>
+                    <tr *ngIf="user.cnh == null">
+                      <td colspan="2" class="cnh"> Cadastrar CNH </td>
+                    </tr>
+                    <tr *ngIf="user.cnh != null">
+                      <td class="field">Número de Registro</td>
+                      <td class="data"> {{ user.cnh.numeroRegistro }} </td>
+                    </tr>
+                    <tr *ngIf="user.cnh != null">
+                      <td class="field">Categoria</td>
+                      <td class="data">{{ user.cnh.categoria }}</td>
+                    </tr>
+                    <tr *ngIf="user.cnh != null">
+                      <td class="field">Validade</td>
+                      <td class="data">{{ user.cnh.dataValidade }}</td>
+                    </tr>
+                    <tr class="divider">
+                      <td colspan="2"></td>
+                    </tr>
+                    <tr class="highlight">
+                      <td colspan="2">
+                        <a pButton label="Editar" [routerLink]="['/usuarios', user.id]"></a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

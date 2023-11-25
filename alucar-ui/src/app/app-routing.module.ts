@@ -15,6 +15,7 @@ import { NotAuthorizedComponent } from './core/not-authorized.component';
 import { AluguelTermoComprometimentoComponent } from './alugueis/aluguel-termo-comprometimento/aluguel-termo-comprometimento.component';
 import { AluguelEntregarComponent } from './alugueis/aluguel-entregar/aluguel-entregar.component';
 import { AluguelCancelamentoComponent } from './alugueis/aluguel-cancelamento/aluguel-cancelamento.component';
+import { UsuarioPerfilComponent } from './usuarios/usuario-perfil/usuario-perfil.component';
 
 
 const routes: Routes = [
@@ -52,6 +53,12 @@ const routes: Routes = [
   {
     path: 'usuarios/new',
     component: UsuarioRegisterComponent
+  },
+  {
+    path: 'usuarios/:id',
+    component: UsuarioPerfilComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_SEARCH_USER']}
   },
   { path: 'login', component: LoginFormComponent },
   {
