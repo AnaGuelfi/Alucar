@@ -1,33 +1,36 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
 import { MessageService } from 'primeng/api';
 
+import { AuthService } from 'src/app/security/auth.service';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 import { Usuario } from 'src/app/core/model';
 import { UsuarioService } from '../usuario.service';
 
 @Component({
-  selector: 'app-usuario-update',
-  templateUrl: './usuario-update.component.html',
-  styleUrls: ['./usuario-update.component.css']
+  selector: 'app-usuario-update-data-validade',
+  templateUrl: './usuario-update-data-validade.component.html',
+  styleUrls: ['./usuario-update-data-validade.component.css']
 })
-export class UsuarioUpdateComponent {
+export class UsuarioUpdateDataValidadeComponent {
   user = new Usuario();
 
   constructor(
     private userService: UsuarioService,
+    private auth: AuthService,
     private errorHandler: ErrorHandlerService,
     private messageService: MessageService,
+    private route: ActivatedRoute,
+    private router: Router,
     private title: Title,
-    private router: Router
-  ){}
+  ) {}
 
   ngOnInit(): void {
     this.loadUser();
-    this.title.setTitle('Atualização de Perfil');
+    this.title.setTitle('Atualização da Data de Validade da CNH');
   }
 
   loadUser() {
@@ -38,19 +41,12 @@ export class UsuarioUpdateComponent {
       .catch(error => this.errorHandler.handle(error));
   }
 
-  save(userForm: NgForm) {
-    this.updateUser(userForm);
-  }
-
-  updateUser(userForm: NgForm) {
-    this.userService.update(this.user)
+  updateDataValidade(userForm: NgForm): void {
+    this.userService.updateDataValidadeCNH(this.user)
       .then( user => {
-        this.messageService.add({ severity: 'success', detail: 'Perfil atualizado com sucesso!' });
-        this.user = user;
-        this.loadUser();
-        this.router.navigate(['/usuarios', user.id]);
+        this.messageService.add({ severity: 'success', detail: 'Data de Validade da CNH editada com sucesso!' });
+        this.router.navigate(['/usuarios', this.user.id]);
       })
       .catch(error => this.errorHandler.handle(error));
   }
-
 }

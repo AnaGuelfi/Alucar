@@ -44,6 +44,10 @@ export class Usuario {
       endereco: usuario.endereco
     }
   }
+
+  static dataValidadeToJson(usuario: Usuario): any {
+    return moment(usuario.cnh.dataValidade, 'DD/MM/YYYY').toDate();
+  }
 }
 
 export class CNH {

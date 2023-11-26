@@ -72,4 +72,12 @@ export class UsuarioService {
         return updated;
       });
   }
+
+  updateDataValidadeCNH(user: Usuario): Promise<any> {
+    const headers = new HttpHeaders()
+      .append('Content-Type', 'application/json');
+
+    return this.http.put<any>(`${this.usersUrl}/${user.id}/datacnh`, Usuario.dataValidadeToJson(user), { headers })
+      .toPromise();
+  }
 }

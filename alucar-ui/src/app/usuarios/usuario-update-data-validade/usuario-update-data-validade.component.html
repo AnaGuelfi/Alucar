@@ -1,0 +1,23 @@
+<div class="container">
+  <form #f="ngForm" autocomplete="off" (ngSubmit)="updateDataValidade(f)">
+
+    <div class="p-grid">
+      <div class="p-col-12">
+        <h1>Atualizar Data de Validade da CNH</h1>
+      </div>
+
+      <div class="p-col-6 p-md-3 p-fluid">
+        <label>Data de Validade da CNH</label>
+        <p-calendar name="data" dateFormat="dd/mm/yy" [inline]="false"  [(ngModel)]="user.cnh.dataValidade" #data="ngModel" required></p-calendar>
+      </div>
+
+      <div class="p-col-12">
+        <p>
+          <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
+          <a [routerLink]="['/usuarios', user.id]">Meu Perfil</a>
+        </p>
+      </div>
+    </div>
+
+  </form>
+</div>

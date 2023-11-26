@@ -16,12 +16,14 @@ import { SharedModule } from '../shared/shared.module';
 import { UsuarioRegisterComponent } from './usuario-register/usuario-register.component';
 import { UsuarioPerfilComponent } from './usuario-perfil/usuario-perfil.component';
 import { UsuarioUpdateComponent } from './usuario-update/usuario-update.component';
+import { UsuarioUpdateDataValidadeComponent } from './usuario-update-data-validade/usuario-update-data-validade.component';
 
 @NgModule({
   declarations: [
     UsuarioRegisterComponent,
     UsuarioPerfilComponent,
-    UsuarioUpdateComponent
+    UsuarioUpdateComponent,
+    UsuarioUpdateDataValidadeComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,8 @@ import { UsuarioUpdateComponent } from './usuario-update/usuario-update.componen
   exports: [
     UsuarioRegisterComponent,
     UsuarioPerfilComponent,
-    UsuarioUpdateComponent
+    UsuarioUpdateComponent,
+    UsuarioUpdateDataValidadeComponent
   ]
 })
 export class UsuariosModule { }

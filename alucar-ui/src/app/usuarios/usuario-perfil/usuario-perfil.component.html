@@ -83,7 +83,9 @@
                     </tr>
                     <tr *ngIf="user.cnh != null">
                       <td class="field">Validade</td>
-                      <td class="data">{{ user.cnh.dataValidade }}</td>
+                      <td class="data">{{ user.cnh.dataValidade }}
+                        <br />
+                        <a class="a-row-edit" [routerLink]="['/usuarios', user.id, 'datacnh']">Atualizar</a></td>
                     </tr>
                     <tr class="divider">
                       <td colspan="2"></td>
