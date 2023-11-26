@@ -1,0 +1,108 @@
+<div class="container">
+  <form #f="ngForm" autocomplete="off" (ngSubmit)="save(f)">
+    <div class="p-grid">
+      <div class="p-col-12">
+        <h1>Atualizar Perfil</h1>
+      </div>
+
+      <div class="p-col-12 p-md-9 p-fluid">
+        <label>CPF</label>
+        <input pInputText name="cpf" type="text" pattern="(\d{3}\.\d{3}\.\d{3}-\d{2})|(\d{11})"
+          placeholder="000.000.000-00" [(ngModel)]="user.cpf" #cpf="ngModel" required>
+        <app-message [control]="cpf" error="required" text="Informe seu CPF"></app-message>
+      </div>
+
+      <div class="p-col-12 p-md-9 p-fluid">
+        <label>Nome</label>
+        <input pInputText name="nome" type="text" [(ngModel)]="user.nome" #nome="ngModel" required>
+        <app-message [control]="nome" error="required" text="Informe seu Nome"></app-message>
+      </div>
+
+      <div class="p-col-12 p-md-9 p-fluid">
+        <label>E-mail</label>
+        <input pInputText name="email" type="email" [(ngModel)]="user.email" #email="ngModel" required>
+        <app-message [control]="email" error="required" text="Informe seu E-mail"></app-message>
+      </div>
+
+
+      <div class="p-col-12 p-md-9 p-fluid">
+        <input name="senha" type="hidden" [(ngModel)]="user.senha" #senha="ngModel" required>
+      </div>
+
+      <div class="p-col-12 p-md-9 p-fluid">
+        <label>Telefone</label>
+        <input pInputText name="telefone" type="tel" [(ngModel)]="user.telefone" #telefone="ngModel" required>
+        <app-message [control]="telefone" error="required" text="Informe seu Telefone"></app-message>
+      </div>
+
+      <div class="p-col-6 p-md-3 p-fluid">
+        <label>Data de Nascimento</label>
+        <p-calendar name="dataNascimento" dateFormat="dd/mm/yy" [inline]="false" [(ngModel)]="user.dataNascimento" #dataNascimento="ngModel" required></p-calendar>
+        <app-message [control]="dataNascimento" error="required" text="Informe sua Data Nascimento"></app-message>
+      </div>
+
+      <div class="p-col-12 p-md-9 p-fluid">
+        <label>Número de Registro da CNH</label>
+        <input pInputText name="numeroRegistro" type="text"
+        [(ngModel)]="user.cnh.numeroRegistro" #numeroRegistro="ngModel">
+        <app-message [control]="numeroRegistro" error="required" text="Informe o Número de Registro da sua CNH"></app-message>
+      </div>
+
+      <div class="p-col-6 p-md-3 p-fluid">
+        <label>Data de Validade da CNH</label>
+        <p-calendar name="dataValidade" dateFormat="dd/mm/yy" [inline]="false" [(ngModel)]="user.cnh.dataValidade" #dataValidade="ngModel"></p-calendar>
+        <app-message [control]="dataValidade" error="required" text="Informe a Data de Validade da sua CNH"></app-message>
+      </div>
+
+      <div class="p-col-12 p-md-9 p-fluid">
+        <label>Categoria da CNH</label>
+        <input pInputText name="categoria" type="text"
+        [(ngModel)]="user.cnh.categoria" #categoria="ngModel">
+        <app-message [control]="categoria" error="required" text="Informe a Categoria da sua CNH"></app-message>
+      </div>
+
+      <div class="p-col-12 p-md-9 p-fluid">
+        <label>Logradouro da sua Residência</label>
+        <input pInputText name="logradouro" type="text" [(ngModel)]="user.endereco.logradouro" #logradouro="ngModel">
+        <app-message [control]="logradouro" error="required" text="Informe o Logradouro da sua Residência"></app-message>
+      </div>
+
+      <div class="p-col-12 p-md-9 p-fluid">
+        <label>Número da sua Residência</label>
+        <input pInputText name="numero" type="number" [(ngModel)]="user.endereco.numero" #numero="ngModel" required>
+        <app-message [control]="numero" error="required" text="Informe o Número da sua Residência"></app-message>
+      </div>
+
+      <div class="p-col-12 p-md-9 p-fluid">
+        <label>Bairro da sua Residência</label>
+        <input pInputText name="bairro" type="text" [(ngModel)]="user.endereco.bairro" #bairro="ngModel" required>
+        <app-message [control]="bairro" error="required" text="Informe o Bairro da sua Residência"></app-message>
+      </div>
+
+      <div class="p-col-12 p-md-9 p-fluid">
+        <label>CEP da sua Residência</label>
+        <input pInputText name="cep" type="text" [(ngModel)]="user.endereco.cep" #cep="ngModel" required>
+        <app-message [control]="cep" error="required" text="Informe o CEP da sua Residência"></app-message>
+      </div>
+
+      <div class="p-col-12 p-md-9 p-fluid">
+        <label>Cidade da sua Residência</label>
+        <input pInputText name="cidade" type="text" [(ngModel)]="user.endereco.cidade" #cidade="ngModel" required>
+        <app-message [control]="cidade" error="required" text="Informe a Cidade da sua Residência"></app-message>
+      </div>
+
+      <div class="p-col-12 p-md-9 p-fluid">
+        <label>Estado da sua Residência</label>
+        <input pInputText name="estado" type="text" [(ngModel)]="user.endereco.estado" #estado="ngModel" required>
+        <app-message [control]="estado" error="required" text="Informe o Estado da sua Residência"></app-message>
+      </div>
+
+      <div class="p-col-12">
+        <p>
+          <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
+        </p>
+      </div>
+    </div>
+
+  </form>
+</div>

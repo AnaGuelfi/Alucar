@@ -14,6 +14,23 @@ export class Usuario {
   static toJson(usuario: Usuario): any {
     usuario.dataNascimento = moment(usuario.dataNascimento).format('DD/MM/YYYY');
     //usuario.cnh.dataValidade = moment(usuario.cnh.dataValidade).format('DD/MM/YYYY');
+    //moment(usuario.cnh.dataValidade, 'DD/MM/YYYY').toDate();
+    return {
+      id: usuario.id,
+      cpf: usuario.cpf,
+      nome: usuario.nome,
+      email: usuario.email,
+      senha: usuario.senha,
+      telefone: usuario.telefone,
+      dataNascimento: usuario.dataNascimento,
+      cnh: usuario.cnh,
+      endereco: usuario.endereco
+    }
+  }
+
+  static toJsonUpdate(usuario: Usuario): any {
+    usuario.dataNascimento = moment(usuario.dataNascimento).format('DD/MM/YYYY');
+    //usuario.cnh.dataValidade = moment(usuario.cnh.dataValidade).format('DD/MM/YYYY');
     moment(usuario.cnh.dataValidade, 'DD/MM/YYYY').toDate();
     return {
       id: usuario.id,

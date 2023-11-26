@@ -1,22 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { AluguelCancelamentoComponent } from './alugueis/aluguel-cancelamento/aluguel-cancelamento.component';
+import { AluguelEntregarComponent } from './alugueis/aluguel-entregar/aluguel-entregar.component';
 import { AlugueisListComponent } from './alugueis/alugueis-list/alugueis-list.component';
 import { AluguelRegisterComponent } from './alugueis/aluguel-register/aluguel-register.component';
+import { AluguelTermoComprometimentoComponent } from './alugueis/aluguel-termo-comprometimento/aluguel-termo-comprometimento.component';
 import { AuthGuard } from './security/auth.guard';
 import { LoginFormComponent } from './security/login-form/login-form.component';
+import { NotAuthorizedComponent } from './core/not-authorized.component';
 import { PageNotFoundComponent } from './core/page-not-found.component';
+import { UsuarioPerfilComponent } from './usuarios/usuario-perfil/usuario-perfil.component';
+import { UsuarioUpdateComponent } from './usuarios/usuario-update/usuario-update.component';
 import { UsuarioRegisterComponent } from './usuarios/usuario-register/usuario-register.component';
 import { VeiculosListComponent } from './veiculos/veiculos-list/veiculos-list.component';
 import { VeiculoRegisterComponent } from './veiculos/veiculo-register/veiculo-register.component';
 import { VeiculoUpdateCrlvComponent } from './veiculos/veiculo-update-crlv/veiculo-update-crlv.component';
 import { VeiculosDisponiveisListComponent } from './veiculos/veiculos-disponiveis-list/veiculos-disponiveis-list.component';
-import { NotAuthorizedComponent } from './core/not-authorized.component';
-import { AluguelTermoComprometimentoComponent } from './alugueis/aluguel-termo-comprometimento/aluguel-termo-comprometimento.component';
-import { AluguelEntregarComponent } from './alugueis/aluguel-entregar/aluguel-entregar.component';
-import { AluguelCancelamentoComponent } from './alugueis/aluguel-cancelamento/aluguel-cancelamento.component';
-import { UsuarioPerfilComponent } from './usuarios/usuario-perfil/usuario-perfil.component';
-
 
 const routes: Routes = [
   { path: '', redirectTo: 'veiculos/disponiveis', pathMatch: 'full' },
@@ -59,6 +59,12 @@ const routes: Routes = [
     component: UsuarioPerfilComponent,
     canActivate: [AuthGuard],
     data: { roles: ['ROLE_SEARCH_USER']}
+  },
+  {
+    path: 'usuarios/update/:id',
+    component: UsuarioUpdateComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_UPDATE_USER']}
   },
   { path: 'login', component: LoginFormComponent },
   {
