@@ -45,6 +45,7 @@ public class UsuarioService {
 	public Usuario update (Long id, Usuario usuario) {
 		Usuario usuarioSaved = findUsuarioById(id);
 		BeanUtils.copyProperties(usuario, usuarioSaved, "id");
+		usuarioSaved.setPermissoes(addCommonUserPermissions());
 		return usuarioRepository.save(usuarioSaved);
 	}
 	

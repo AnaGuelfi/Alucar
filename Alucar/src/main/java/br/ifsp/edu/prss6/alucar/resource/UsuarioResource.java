@@ -66,20 +66,20 @@ public class UsuarioResource {
 		usuarioRepository.deleteById(id);
 	}
 	
-	@PreAuthorize("hasAuthority('ROLE_REGISTER_USER') and #oauth2.hasScope('write')")
+	@PreAuthorize("hasAuthority('ROLE_UPDATE_USER') and #oauth2.hasScope('write')")
 	@PutMapping("/{id}")
 	public ResponseEntity<Usuario> update(@PathVariable Long id, @Valid @RequestBody Usuario usuario){
 		Usuario usuarioSaved = usuarioService.update(id, usuario);
 		return ResponseEntity.ok(usuarioSaved);
 	}
 	
-	@PreAuthorize("hasAuthority('ROLE_REGISTER_USER') and #oauth2.hasScope('write')")
+	@PreAuthorize("hasAuthority('ROLE_UPDATE_USER') and #oauth2.hasScope('write')")
 	@PutMapping("/{id}/cnh")
 	public void insertCnh(@PathVariable Long id, @Valid @RequestBody CNH cnh){
 		usuarioService.insertCnh(id, cnh);
 	}
 	
-	@PreAuthorize("hasAuthority('ROLE_REGISTER_USER') and #oauth2.hasScope('write')")
+	@PreAuthorize("hasAuthority('ROLE_UPDATE_USER') and #oauth2.hasScope('write')")
 	@PutMapping("/{id}/datacnh")
 	public void updateDataCnh(@PathVariable Long id, @Valid @RequestBody LocalDate novaData){
 		usuarioService.updateDataCnh(id, novaData);
