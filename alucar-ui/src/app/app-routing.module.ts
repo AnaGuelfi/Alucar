@@ -12,6 +12,7 @@ import { NotAuthorizedComponent } from './core/not-authorized.component';
 import { PageNotFoundComponent } from './core/page-not-found.component';
 import { UsuarioPerfilComponent } from './usuarios/usuario-perfil/usuario-perfil.component';
 import { UsuarioRegisterComponent } from './usuarios/usuario-register/usuario-register.component';
+import { UsuarioRegisterCnhComponent } from './usuarios/usuario-register-cnh/usuario-register-cnh.component';
 import { UsuarioUpdateComponent } from './usuarios/usuario-update/usuario-update.component';
 import { UsuarioUpdateDataValidadeComponent } from './usuarios/usuario-update-data-validade/usuario-update-data-validade.component';
 import { VeiculosListComponent } from './veiculos/veiculos-list/veiculos-list.component';
@@ -64,6 +65,12 @@ const routes: Routes = [
   {
     path: 'usuarios/update/:id',
     component: UsuarioUpdateComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_UPDATE_USER']}
+  },
+  {
+    path: 'usuarios/:id/cnh',
+    component: UsuarioRegisterCnhComponent,
     canActivate: [AuthGuard],
     data: { roles: ['ROLE_UPDATE_USER']}
   },

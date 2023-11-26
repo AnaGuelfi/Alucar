@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { Endereco, Usuario } from '../core/model';
+import { CNH, Endereco, Usuario } from '../core/model';
 import { AuthService } from '../security/auth.service';
 
 import * as moment from 'moment';
@@ -78,6 +78,15 @@ export class UsuarioService {
       .append('Content-Type', 'application/json');
 
     return this.http.put<any>(`${this.usersUrl}/${user.id}/datacnh`, Usuario.dataValidadeToJson(user), { headers })
+      .toPromise();
+  }
+
+  saveCNH(cnh: CNH): Promise<any> {
+    this.usuario_id = this.auth.jwtPayload?.usuario_id;
+    const headers = new HttpHeaders()
+      .append('Content-Type', 'application/json');
+
+    return this.http.put<any>(`${this.usersUrl}/${this.usuario_id}/cnh`, Usuario.cnhToJson(cnh), { headers })
       .toPromise();
   }
 }

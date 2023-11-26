@@ -71,7 +71,9 @@
                       <td colspan="2"></td>
                     </tr>
                     <tr *ngIf="user.cnh == null">
-                      <td colspan="2" class="cnh"> Cadastrar CNH </td>
+                      <td colspan="2" class="cnh">
+                        <a class="a-row-edit" [routerLink]="['/usuarios', user.id, 'cnh']">Cadastrar CNH</a>
+                      </td>
                     </tr>
                     <tr *ngIf="user.cnh != null">
                       <td class="field">Número de Registro</td>

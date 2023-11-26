@@ -1,11 +1,10 @@
-import { ActivatedRoute, Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
 import { MessageService } from 'primeng/api';
 
-import { AuthService } from 'src/app/security/auth.service';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 import { Usuario } from 'src/app/core/model';
 import { UsuarioService } from '../usuario.service';
@@ -20,10 +19,8 @@ export class UsuarioUpdateDataValidadeComponent {
 
   constructor(
     private userService: UsuarioService,
-    private auth: AuthService,
     private errorHandler: ErrorHandlerService,
     private messageService: MessageService,
-    private route: ActivatedRoute,
     private router: Router,
     private title: Title,
   ) {}

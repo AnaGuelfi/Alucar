@@ -48,6 +48,15 @@ export class Usuario {
   static dataValidadeToJson(usuario: Usuario): any {
     return moment(usuario.cnh.dataValidade, 'DD/MM/YYYY').toDate();
   }
+
+  static cnhToJson(cnh: CNH): any {
+    moment(cnh.dataValidade, 'DD/MM/YYYY').toDate();
+    return {
+      numeroRegistro: cnh.numeroRegistro,
+      dataValidade: cnh.dataValidade,
+      categoria: cnh.categoria
+    }
+  }
 }
 
 export class CNH {

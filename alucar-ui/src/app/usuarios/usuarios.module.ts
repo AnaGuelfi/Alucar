@@ -17,13 +17,15 @@ import { UsuarioRegisterComponent } from './usuario-register/usuario-register.co
 import { UsuarioPerfilComponent } from './usuario-perfil/usuario-perfil.component';
 import { UsuarioUpdateComponent } from './usuario-update/usuario-update.component';
 import { UsuarioUpdateDataValidadeComponent } from './usuario-update-data-validade/usuario-update-data-validade.component';
+import { UsuarioRegisterCnhComponent } from './usuario-register-cnh/usuario-register-cnh.component';
 
 @NgModule({
   declarations: [
     UsuarioRegisterComponent,
     UsuarioPerfilComponent,
     UsuarioUpdateComponent,
-    UsuarioUpdateDataValidadeComponent
+    UsuarioUpdateDataValidadeComponent,
+    UsuarioRegisterCnhComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +45,8 @@ import { UsuarioUpdateDataValidadeComponent } from './usuario-update-data-valida
     UsuarioRegisterComponent,
     UsuarioPerfilComponent,
     UsuarioUpdateComponent,
-    UsuarioUpdateDataValidadeComponent
+    UsuarioUpdateDataValidadeComponent,
+    UsuarioRegisterCnhComponent
   ]
 })
 export class UsuariosModule { }
