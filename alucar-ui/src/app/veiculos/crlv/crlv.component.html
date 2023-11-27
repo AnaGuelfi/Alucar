@@ -1,0 +1,58 @@
+<div class="container">
+
+  <div class="p-col-12">
+    <h1>CRLV</h1>
+  </div>
+
+  <div class="p-grid">
+    <div class="p-col-12">
+      <p-table [value]="veiculos" responsiveLayout="stack" [breakpoint]="'768px'">
+        <th class="col-actions-header"></th>
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Placa do Veículo</th>
+            <th>CRLV - Renavam</th>
+            <th>CRLV - Data de Emissão</th>
+            <th>CRLV - Cidade de Emissão</th>
+            <th>CRLV - Estado de Emissão</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-veiculos>
+          <tr *ngIf="veiculos.id == veiculo_id">
+            <td>
+              <span class="p-column-title">Placa do Veículo</span>
+              {{ veiculos.placa }}
+            </td>
+            <td>
+              <span class="p-column-title">CRLV</span>
+              {{ veiculos.crlv.renavam }}
+            </td>
+            <td>
+              <span class="p-column-title">Data de Emissão</span>
+              {{ veiculos.crlv.dataEmissao }}
+              <br /><a class="a-row-edit" pTooltip="Atualizar" [routerLink]="['/veiculos', veiculos.id, 'crlv']">Atualizar</a>
+            </td>
+            <td>
+              <span class="p-column-title">Cidade de Emissão</span>
+                {{ veiculos.crlv.cidadeEmissao }}
+            </td>
+            <td>
+              <span class="p-column-title">Estado de Emissão</span>
+                {{ veiculos.crlv.estadoEmissao }}
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage" let-columns>
+          <tr>
+            <td>
+               Nenhuma veículo cadastrado.
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+    <div class="p-col-12">
+      <p><a pButton label="Meus Veículos" routerLink="/veiculos"></a></p>
+    </div>
+  </div>
+</div>

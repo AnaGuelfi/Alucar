@@ -81,7 +81,7 @@
 
       <div class="p-col-12 p-md-9 p-fluid">
         <label>CEP da sua Residência</label>
-        <input pInputText name="cep" type="text" [(ngModel)]="user.endereco.cep" #cep="ngModel" required>
+        <input pInputText name="cep" type="text" [(ngModel)]="user.endereco.cep" pattern= "[0-9]{5}-[0-9]{3}" #cep="ngModel" required>
         <app-message [control]="cep" error="required" text="Informe o CEP da sua Residência"></app-message>
       </div>
 

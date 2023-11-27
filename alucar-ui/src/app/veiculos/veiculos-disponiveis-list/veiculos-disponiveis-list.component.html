@@ -2,6 +2,7 @@
 
   <div class="p-col-12">
     <h1>Alucar</h1>
+    <h2>Alugar um Veículo</h2>
   </div>
 
   <div class="p-grid">
@@ -17,6 +18,7 @@
             <th>Combustível</th>
             <th>Opcionais</th>
             <th>Quilometragem</th>
+            <th>Alugar Veículo</th>
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-veiculos>
@@ -50,7 +52,7 @@
               {{ veiculos.quilometragem }} km
             </td>
             <td>
-              <a class="a-row-edit" [routerLink]="['/alugueis/new', veiculos.id]">Alugar</a>
+              <a pButton icon="pi pi-check" pTooltip="Alugar Veículo" tooltipPosition="top" [routerLink]="['/alugueis/new', veiculos.id]"></a>
             </td>
           </tr>
         </ng-template>

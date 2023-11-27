@@ -1,7 +1,7 @@
 <div class="container">
 
   <div class="p-col-12">
-    <h1>Alucar</h1>
+    <h1>Meus Veículos</h1>
   </div>
 
   <div class="p-grid">
@@ -10,26 +10,20 @@
         <th class="col-actions-header"></th>
         <ng-template pTemplate="header">
           <tr>
-            <th>Usuário</th>
             <th>Marca</th>
             <th>Modelo</th>
             <th>Cor</th>
             <th>Placa</th>
+            <th>Quilometragem</th>
             <th>Combustível</th>
             <th>Opcionais</th>
-            <th>Quilometragem</th>
-            <th>Renavam</th>
-            <th>Data Emissão</th>
-            <th>Cidade Emissão</th>
-            <th>Estado Emissão</th>
+            <th>CRLV</th>
+            <th>Editar</th>
+            <th>Excluir</th>
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-veiculos>
           <tr>
-            <td>
-              <span class="p-column-title">Usuário</span>
-              {{ veiculos.usuario.nome }}
-            </td>
             <td>
               <span class="p-column-title">Marca</span>
               {{ veiculos.marca }}
@@ -47,6 +41,10 @@
               {{ veiculos.placa }}
             </td>
             <td>
+              <span class="p-column-title">Quilometragem</span>
+              {{ veiculos.quilometragem }} km
+            </td>
+            <td>
               <span class="p-column-title">Combustível</span>
               {{ veiculos.combustivel }}
             </td>
@@ -55,31 +53,14 @@
               {{ veiculos.opcionais }}
             </td>
             <td>
-              <span class="p-column-title">Quilometragem</span>
-              {{ veiculos.quilometragem }} km
+              <span class="p-column-title">CRLV</span>
+              <a pTooltip="Visualizar" [routerLink]="['/veiculos/crlv', veiculos.id]">Visualizar CRLV</a>
             </td>
             <td>
-              <span class="p-column-title">Renavam</span>
-              {{ veiculos.crlv.renavam }}
+              <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top" [routerLink]="['/veiculos', veiculos.id]"></a>
             </td>
             <td>
-              <span class="p-column-title">Data de Emissão</span>
-              {{ veiculos.crlv.dataEmissao }}
-              <a class="a-row-edit" [routerLink]="['/veiculos', veiculos.id, 'crlv']">Atualizar</a>
-            </td>
-            <td>
-              <span class="p-column-title">Cidade de Emissão</span>
-              {{ veiculos.crlv.cidadeEmissao }}
-            </td>
-            <td>
-              <span class="p-column-title">Estado de Emissão</span>
-              {{ veiculos.crlv.estadoEmissao }}
-            </td>
-            <td class="col-actions">
-              <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"
-                [routerLink]="['/veiculos', veiculos.id]"></a>
-              <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top"
-                (click)="confirmRemoval(veiculos)"   [disabled]="!auth.hasPermission('ROLE_REMOVE_CAR')"></button>
+              <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top" (click)="confirmRemoval(veiculos)"   [disabled]="!auth.hasPermission('ROLE_REMOVE_CAR')"></button>
             </td>
           </tr>
         </ng-template>

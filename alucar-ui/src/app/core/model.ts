@@ -133,7 +133,6 @@ export class Veiculo {
   }
 }
 
-
 export class Aluguel {
   id!: number;
   valor!: number;

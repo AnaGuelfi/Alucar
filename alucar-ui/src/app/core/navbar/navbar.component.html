@@ -12,8 +12,9 @@
   <ul class="navbar-menu" [hidden]="!displayingMenu">
     <li class="navbar-usuario">{{ auth.jwtPayload?.nome }}</li>
     <li class="navbar-menuitem" routerLinkActive="active" *ngIf="auth.hasPermission('ROLE_SEARCH_CAR')"><a routerLink="/veiculos/disponiveis">Alugar um Veículo</a></li>
-    <li class="navbar-menuitem" routerLinkActive="active" *ngIf="auth.hasPermission('ROLE_SEARCH_CAR')"><a routerLink="/veiculos">Seus Veículos</a></li>
-    <li class="navbar-menuitem" routerLinkActive="active" *ngIf="auth.hasPermission('ROLE_SEARCH_RENTAL')"><a routerLink="/alugueis">Seus Aluguéis</a></li>
+    <li class="navbar-menuitem" routerLinkActive="active" *ngIf="auth.hasPermission('ROLE_SEARCH_CAR')"><a routerLink="/veiculos">Meus Veículos</a></li>
+    <li class="navbar-menuitem" routerLinkActive="active" *ngIf="auth.hasPermission('ROLE_SEARCH_RENTAL')"><a routerLink="/alugueis">Meus Aluguéis</a></li>
+    <li class="navbar-menuitem" routerLinkActive="active" *ngIf="auth.hasPermission('ROLE_SEARCH_RENTAL')"><a [routerLink]="['/usuarios', auth.jwtPayload?.usuario_id]">Meu Perfil</a></li>
     <li class="navbar-menuitem"><a href="javascript:;" (click)="logout()">Logout</a></li>
   </ul>
 

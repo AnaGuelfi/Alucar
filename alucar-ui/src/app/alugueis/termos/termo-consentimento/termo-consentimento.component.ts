@@ -1,28 +1,29 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
-import { AluguelService } from '../aluguel.service';
+import { AluguelService } from '../../aluguel.service';
 import { AuthService } from 'src/app/security/auth.service';
 
-import * as moment from 'moment';
-
 @Component({
-  selector: 'app-alugueis-list',
-  templateUrl: './alugueis-list.component.html',
-  styleUrls: ['./alugueis-list.component.css']
+  selector: 'app-termo-consentimento',
+  templateUrl: './termo-consentimento.component.html',
+  styleUrls: ['./termo-consentimento.component.css']
 })
-export class AlugueisListComponent {
+export class TermoConsentimentoComponent {
   alugueis = [];
   usuario = this.auth.jwtPayload?.usuario_id;
-  data_hoje = moment().format('DD/MM/YYYY');
+  aluguel_id = this.route.snapshot.params[`id`];
+
   constructor(
     private aluguelService: AluguelService,
     private title: Title,
-    private auth: AuthService){ }
+    private auth: AuthService,
+    private route: ActivatedRoute){ }
 
   ngOnInit(): void {
     this.list();
-    this.title.setTitle('Meus Aluguéis');
+    this.title.setTitle('Termo de Consentimento');
   }
 
   list(): void {

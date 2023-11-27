@@ -1,0 +1,41 @@
+
+<div class="container">
+
+  <div class="p-col-12">
+    <h1>Meus Aluguéis</h1>
+  </div>
+
+  <div>
+    <div>
+      <p-table [value]="alugueis">
+        <th class="col-actions-header"></th>
+
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Consentimento do Locatário</th>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-aluguel>
+          <span *ngIf="aluguel.id == aluguel_id">
+            <tr>
+              <td>
+                {{ aluguel.termoConsentimento.mensagem }}
+              </td>
+            </tr>
+          </span>
+        </ng-template>
+        <ng-template pTemplate="emptymessage" let-columns>
+          <tr>
+            <td>
+               Nenhum termo assinado.
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+    <div class="p-col-12">
+      <p><a pButton routerLink="/alugueis">Meus Aluguéis</a></p>
+    </div>
+  </div>
+</div>

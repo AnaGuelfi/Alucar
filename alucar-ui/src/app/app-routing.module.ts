@@ -15,16 +15,31 @@ import { UsuarioRegisterComponent } from './usuarios/usuario-register/usuario-re
 import { UsuarioRegisterCnhComponent } from './usuarios/usuario-register-cnh/usuario-register-cnh.component';
 import { UsuarioUpdateComponent } from './usuarios/usuario-update/usuario-update.component';
 import { UsuarioUpdateDataValidadeComponent } from './usuarios/usuario-update-data-validade/usuario-update-data-validade.component';
+import { TermoConsentimentoComponent } from './alugueis/termos/termo-consentimento/termo-consentimento.component';
+import { TermoComprometimentoComponent } from './alugueis/termos/termo-comprometimento/termo-comprometimento.component';
 import { VeiculosListComponent } from './veiculos/veiculos-list/veiculos-list.component';
 import { VeiculoRegisterComponent } from './veiculos/veiculo-register/veiculo-register.component';
 import { VeiculoUpdateCrlvComponent } from './veiculos/veiculo-update-crlv/veiculo-update-crlv.component';
 import { VeiculosDisponiveisListComponent } from './veiculos/veiculos-disponiveis-list/veiculos-disponiveis-list.component';
+import { CrlvComponent } from './veiculos/crlv/crlv.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'veiculos/disponiveis', pathMatch: 'full' },
   {
     path: 'alugueis',
     component: AlugueisListComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_SEARCH_RENTAL']}
+  },
+  {
+    path: 'alugueis/consentimento/:id',
+    component: TermoConsentimentoComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_SEARCH_RENTAL']}
+  },
+  {
+    path: 'alugueis/comprometimento/:id',
+    component: TermoComprometimentoComponent,
     canActivate: [AuthGuard],
     data: { roles: ['ROLE_SEARCH_RENTAL']}
   },
@@ -84,6 +99,12 @@ const routes: Routes = [
   {
     path: 'veiculos',
     component: VeiculosListComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_SEARCH_CAR']}
+  },
+  {
+    path: 'veiculos/crlv/:id',
+    component: CrlvComponent,
     canActivate: [AuthGuard],
     data: { roles: ['ROLE_SEARCH_CAR']}
   },

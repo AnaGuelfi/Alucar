@@ -2,101 +2,97 @@
 <div class="container">
 
   <div class="p-col-12">
-    <h1>Aluguéis</h1>
+    <h1>Meus Aluguéis</h1>
   </div>
 
-  <div class="p-grid">
-    <div class="p-col-12">
-      <p-table [value]="alugueis" responsiveLayout="stack" [breakpoint]="'768px'">
+  <div>
+    <div>
+      <p-table [value]="alugueis">
         <th class="col-actions-header"></th>
         <ng-template pTemplate="header">
           <tr>
-            <th>Valor</th>
-            <th>Local de Retirada</th>
-            <th>Local de Entrega</th>
-            <th>Data Retirada</th>
-            <th>Data Entrega</th>
-            <th>Data Prevista de Entrega</th>
-            <th>Período</th>
-            <th>Locador</th>
-            <th>Locatário</th>
+            <th>Status</th>
             <th>Veículo</th>
-            <th>Termo Comprometimento</th>
-            <th>Termo Consentimento</th>
-            <th>Valor da Multa</th>
-            <th>Status Aluguel</th>
+            <th>Locador</th>
+            <th>Valor</th>
+            <th>Retirada</th>
+            <th>Local de Retirada</th>
+            <th>Previsão de Entrega</th>
+            <th>Local de Entrega</th>
+            <th>Consentimento do Locatário</th>
+            <th>Comprometimento do Locador</th>
+            <th>Entrega</th>
+            <th>Multa</th>
             <th>Cancelar</th>
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-aluguel>
           <tr>
             <td>
-              <span class="p-column-title">Valor</span>
-              R${{ aluguel.valor }}
-            </td>
-            <td>
-              <span class="p-column-title">Local de Retirada</span>
-              {{ aluguel.localRetirada.logradouro }}, {{ aluguel.localRetirada.numero }}, {{ aluguel.localRetirada.bairro }}
-            </td>
-            <td>
-              <span class="p-column-title">Local de Entrega</span>
-              {{ aluguel.localEntrega.logradouro }}, {{ aluguel.localEntrega.numero }}, {{ aluguel.localEntrega.bairro }}
-            </td>
-            <td>
-              <span class="p-column-title">Data de Retirada</span>
-              {{ aluguel.dataRetirada }}
-            </td>
-            <td>
-              <span class="p-column-title">Data de Entrega</span>
-              {{ aluguel.dataEntrega }}
-              <span *ngIf="usuario === aluguel.locador.id && aluguel.termoComprometimento != null && dataEntrega == null && aluguel.dataPrevistaEntrega <= data_hoje" >
-                <a class="a-row-edit" [routerLink]="['/alugueis', aluguel.id, 'entrega']">Registrar Devolução</a>
-              </span>
-            </td>
-            <td>
-              <span class="p-column-title">Data Prevista de Entrega</span>
-              {{ aluguel.dataPrevistaEntrega }}
-            </td>
-            <td>
-              <span class="p-column-title">Período</span>
-              {{ aluguel.periodo }}
-            </td>
-            <td>
-              <span class="p-column-title">Locador</span>
-              {{ aluguel.locador.nome }}
-            </td>
-            <td>
-              <span class="p-column-title">Locatário</span>
-              {{ aluguel.locatario.nome }}
+              <span class="p-column-title">Status do Aluguel</span>
+              {{ aluguel.status }}
             </td>
             <td>
               <span class="p-column-title">Veículo</span>
               {{ aluguel.veiculo.marca }} {{ aluguel.veiculo.modelo }}
             </td>
             <td>
-              <span class="p-column-title">Termo Comprometimento</span>
+              <span class="p-column-title">Locador</span>
+              {{ aluguel.locador.nome }}
+            </td>
+            <td>
+              <span class="p-column-title">Valor</span>
+              R${{ aluguel.valor }}
+            </td>
+            <td>
+              <span class="p-column-title">Data de Retirada</span>
+              {{ aluguel.dataRetirada }}
+            </td>
+            <td>
+              <span class="p-column-title">Local de Retirada</span>
+              {{ aluguel.localRetirada.logradouro }}, <br />
+              {{ aluguel.localRetirada.numero }}, <br />
+              {{ aluguel.localRetirada.bairro }}
+            </td>
+            <td>
+              <span class="p-column-title">Data Prevista de Entrega</span>
+              {{ aluguel.dataPrevistaEntrega }}
+            </td>
+            <td>
+              <span class="p-column-title">Local de Entrega</span>
+              {{ aluguel.localEntrega.logradouro }}, <br />
+              {{ aluguel.localEntrega.numero }}, <br />
+              {{ aluguel.localEntrega.bairro }}
+            </td>
+            <td>
+              <span class="p-column-title">Consentimento do Locatário</span>
+              <a pTooltip="Exibir Termo de Consentimento" tooltipPosition="top" [routerLink]="['/alugueis/consentimento/', aluguel.id]">Visualizar Termo</a>
+              <br />Assinado em {{ aluguel.termoConsentimento.assinaturaLocatario }}
+            </td>
+            <td>
+              <span class="p-column-title">Comprometimento do Locador</span>
               <span *ngIf="aluguel.termoComprometimento != null">
-              Mensagem: {{ aluguel.termoComprometimento.mensagem }}
-              Data Assinatura: {{ aluguel.termoComprometimento.assinaturaLocador }}
+                <a pTooltip="Exibir Termo de Comprometimento" tooltipPosition="top" [routerLink]="['/alugueis/comprometimento/', aluguel.id]">Visualizar Termo</a>
+                <br />Assinado em {{ aluguel.termoComprometimento.assinaturaLocador }}
               </span>
               <span *ngIf="usuario === aluguel.locador.id && aluguel.termoComprometimento == null">
                 <a class="a-row-edit" [routerLink]="['/alugueis', aluguel.id, 'comprometimento']">Assinar Termo</a>
               </span>
             </td>
             <td>
-              <span class="p-column-title">Termo Consentimento</span>
-              Mensagem: {{ aluguel.termoConsentimento.mensagem }}
-              Data Assinatura: {{ aluguel.termoConsentimento.assinaturaLocatario }}
-           </td>
+              <span class="p-column-title">Data de Entrega</span>
+              {{ aluguel.dataEntrega }}
+              <span *ngIf="usuario === aluguel.locador.id && aluguel.termoComprometimento != null && aluguel.dataEntrega == null && aluguel.dataPrevistaEntrega <= data_hoje" >
+                <a class="a-row-edit" [routerLink]="['/alugueis', aluguel.id, 'entrega']">Registrar Devolução</a>
+              </span>
+            </td>
             <td>
               <span class="p-column-title">Valor da Multa</span>
-              R${{ aluguel.termoConsentimento.valorMulta }}
+              <span *ngIf="aluguel.termoConsentimento.valorMulta != null">
+                R$
+              </span>
+              {{ aluguel.termoConsentimento.valorMulta }}
             </td>
-            <td>
-              <span class="p-column-title">Status do Aluguel</span>
-              {{ aluguel.status }}
-            </td>
-
             <td class="col-actions">
               <span *ngIf="aluguel.status !== 'CANCELADO'">
                 <button pButton icon="pi pi-times-circle" pTooltip="Cancelar" tooltipPosition="top" [routerLink]="['/alugueis', aluguel.id, 'cancelamento']"></button>

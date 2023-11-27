@@ -18,7 +18,7 @@ export class VeiculosDisponiveisListComponent {
 
     ngOnInit(): void {
       this.list();
-      this.title.setTitle('Veículos Disponíveis');
+      this.title.setTitle('Alugar um Veículo');
     }
 
     list(): void {

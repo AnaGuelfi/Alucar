@@ -17,13 +17,15 @@ import { VeiculosListComponent } from './veiculos-list/veiculos-list.component';
 import { VeiculoRegisterComponent } from './veiculo-register/veiculo-register.component';
 import { VeiculoUpdateCrlvComponent } from './veiculo-update-crlv/veiculo-update-crlv.component';
 import { VeiculosDisponiveisListComponent } from './veiculos-disponiveis-list/veiculos-disponiveis-list.component';
+import { CrlvComponent } from './crlv/crlv.component';
 
 @NgModule({
   declarations: [
     VeiculosListComponent,
     VeiculoRegisterComponent,
     VeiculoUpdateCrlvComponent,
-    VeiculosDisponiveisListComponent
+    VeiculosDisponiveisListComponent,
+    CrlvComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +45,8 @@ import { VeiculosDisponiveisListComponent } from './veiculos-disponiveis-list/ve
     VeiculosListComponent,
     VeiculoRegisterComponent,
     VeiculoUpdateCrlvComponent,
-    VeiculosDisponiveisListComponent
+    VeiculosDisponiveisListComponent,
+    CrlvComponent
   ]
 })
 export class VeiculosModule { }
