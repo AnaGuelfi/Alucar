@@ -1,3 +1,7 @@
-a {
-  text-decoration: none;
+.input-hidden{
+  display: none;
+}
+
+.button-style{
+  width: 120px;
 }

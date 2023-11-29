@@ -17,7 +17,7 @@
             <app-message [control]="nome" error="required" text="Informe seu Nome"></app-message>
           </div>
 
-          <div class="col-md-4 mb-3">
+          <div class="col-md-8 mb-3">
             <label for="cpf">CPF</label><br />
             <input pInputText name="cpf" id="cpf" type="text" pattern="(\d{3}\.\d{3}\.\d{3}-\d{2})|(\d{11})" placeholder="000.000.000-00" [(ngModel)]="user.cpf" #cpf="ngModel" required>
             <app-message [control]="cpf" error="required" text="Informe seu CPF"></app-message>

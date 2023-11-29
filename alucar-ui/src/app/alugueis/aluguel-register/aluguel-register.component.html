@@ -1,166 +1,204 @@
 <div class="container">
-  <form #f="ngForm" autocomplete="off" (ngSubmit)="save(f)">
+  <div class="row">
+    <div class="col-md-12 order-md-1">
+      <h1 class="mb-3">Alugar um Veículo</h1>
+      <form #f="ngForm" autocomplete="off" (ngSubmit)="save(f)">
 
-    <div class="p-grid">
-      <div class="p-col-12">
-        <h1>Alugar</h1>
-      </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h4 class="mb-2 text-primary">Veículo Escolhido</h4>
+          </div>
+        </div>
 
-      <div class="p-col-12 p-md-9 p-fluid">
-        <label>Marca do Veículo</label>
-        <input pInputText name="marca" type="text" [(ngModel)]="veiculo.marca" #marca="ngModel" required readonly>
-        <app-message [control]="marca" error="required" text="Informe a Marca do Veículo"></app-message>
-      </div>
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <label for="marca">Marca</label><br />
+            <input pInputText name="marca" id="marca" type="text" [(ngModel)]="veiculo.marca" #marca="ngModel" required readonly>
+            <app-message [control]="marca" error="required" text="Informe a Marca do Veículo"></app-message>
+          </div>
 
-      <div class="p-col-12 p-md-9 p-fluid">
-        <label>Modelo do Veículo</label>
-        <input pInputText name="modelo" type="text" [(ngModel)]="veiculo.modelo" #modelo="ngModel" required readonly>
-        <app-message [control]="modelo" error="required" text="Informe o Modelo do Veículo"></app-message>
-      </div>
+          <div class="col-md-4 mb-3">
+            <label for="modelo">Modelo</label><br />
+            <input pInputText name="modelo" id="modelo" type="text" [(ngModel)]="veiculo.modelo" #modelo="ngModel" required readonly>
+            <app-message [control]="modelo" error="required" text="Informe o Modelo do Veículo"></app-message>
+          </div>
 
-      <div class="p-col-12 p-md-9 p-fluid">
-        <label>Cor do Veículo</label>
-        <input pInputText name="cor" type="text" [(ngModel)]="veiculo.cor" #cor="ngModel" required readonly>
-        <app-message [control]="cor" error="required" text="Informe a Cor do Veículo"></app-message>
-      </div>
+          <div class="col-md-4 mb-3">
+            <label for="cor">Cor</label><br />
+            <input pInputText name="cor" type="text" id="cor" [(ngModel)]="veiculo.cor" #cor="ngModel" required readonly>
+            <app-message [control]="cor" error="required" text="Informe a Cor do Veículo"></app-message>
+          </div>
+        </div>
 
-      <div class="p-col-12 p-md-9 p-fluid">
-        <label>Placa do Veículo</label>
-        <input pInputText name="placa" type="text" [(ngModel)]="veiculo.placa" #placa="ngModel" required readonly>
-        <app-message [control]="placa" error="required" text="Informe a Placa do Veículo"></app-message>
-      </div>
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <label for="placa">Placa do Veículo</label><br />
+            <input pInputText name="placa" id="placa" type="text" [(ngModel)]="veiculo.placa" #placa="ngModel" required readonly>
+            <app-message [control]="placa" error="required" text="Informe a Placa do Veículo"></app-message>
+          </div>
 
-      <div class="p-col-12 p-md-6 p-fluid">
-        <label>Combustível do Veículo</label>
-        <p-dropdown name="combustiveis" [options]="combustiveis" placeholder="Selecione"
-        [(ngModel)]="veiculo.combustivel" #combustivel="ngModel" required readonly></p-dropdown>
-      </div>
+          <div class="col-md-4 mb-3">
+            <label>Combustível do Veículo</label><br />
+            <p-dropdown name="combustiveis" [options]="combustiveis" placeholder="Selecione"
+            [(ngModel)]="veiculo.combustivel" #combustivel="ngModel" required readonly></p-dropdown>
+          </div>
 
-      <div class="p-col-12 p-md-9 p-fluid">
-        <label>Opcionais do Veículo</label>
-        <textarea pInputTextarea readonly name="opcionais" [(ngModel)]="veiculo.opcionais"></textarea>
-      </div>
+          <div class="col-md-4 mb-3">
+            <label for="renavam">Renavam</label><br />
+            <input pInputText name="renavam" id="renavam" type="text" [(ngModel)]="veiculo.crlv.renavam" #renavam="ngModel" required readonly>
+            <app-message [control]="renavam" error="required" text="Informe o Renavam do Veículo"></app-message>
+          </div>
+        </div>
 
-      <div class="p-col-12 p-md-9 p-fluid">
-        <label>Renavam do Veículo</label>
-        <input pInputText name="renavam" type="text" [(ngModel)]="veiculo.crlv.renavam" #renavam="ngModel" required readonly>
-        <app-message [control]="renavam" error="required" text="Informe o Renavam do Veículo"></app-message>
-      </div>
+        <div clas="row">
+          <div class="p-col-12 p-md-9 p-fluid">
+            <label>Opcionais do Veículo</label>
+            <textarea pInputTextarea readonly name="opcionais" [(ngModel)]="veiculo.opcionais"></textarea>
+          </div>
+        </div>
 
-      <div class="p-col-6 p-md-3 p-fluid">
-        <label>Data de Emissão do Renavam do Veículo</label>
-        <p-calendar name="dataE" dateFormat="dd/mm/yy" [inline]="false" [(ngModel)]="veiculo.crlv.dataEmissao" #dataE="ngModel" required></p-calendar>
-        <app-message [control]="dataE" error="required" text="Informe a Data de Emissão do Renavam do Veículo"></app-message>
-      </div>
+        <div>
+          <div class="input-hidden">
+            <!--Data de Emissão do CRLV-->
+            <p-calendar name="dataE" dateFormat="dd/mm/yy" [inline]="false" [(ngModel)]="veiculo.crlv.dataEmissao" #dataE="ngModel" required></p-calendar>
+            <app-message [control]="dataE" error="required" text="Informe a Data de Emissão do Renavam do Veículo"></app-message>
+          </div>
 
-      <div class="p-col-12 p-md-9 p-fluid">
-        <label>Cidade de Emissão do Renavam do Veículo</label>
-        <input pInputText name="cidade" type="text" [(ngModel)]="veiculo.crlv.cidadeEmissao" #cidade="ngModel" required>
-        <app-message [control]="cidade" error="required" text="Informe a Cidade de Emissão do Renavam do Veículo"></app-message>
-      </div>
+          <div>
+            <!--Cidade de Emissão do CRLV-->
+            <input pInputText name="cidade" type="hidden" [(ngModel)]="veiculo.crlv.cidadeEmissao" #cidade="ngModel" required>
+          </div>
 
-      <div class="p-col-12 p-md-9 p-fluid">
-        <label>Estado de Emissão do Renavam do Veículo</label>
-        <input pInputText name="estado" type="text" [(ngModel)]="veiculo.crlv.estadoEmissao" #estado="ngModel" required>
-        <app-message [control]="estado" error="required" text="Informe o Estado de Emissão do Renavam do Veículo"></app-message>
-      </div>
+          <div>
+            <!--Estado de Emissão do CRLV-->
+            <input pInputText name="estado" type="hidden" [(ngModel)]="veiculo.crlv.estadoEmissao" #estado="ngModel" required>
+          </div>
+        </div>
 
-      <div class="p-col-12 p-md-9 p-fluid">
-        <label>Valor do Aluguel</label>
-        <input pInputText name="valor" type="number" [(ngModel)]="aluguel.valor" #valor="ngModel" required>
-        <app-message [control]="valor" error="required" text="Informe o Valor do Aluguel"></app-message>
-      </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h4 class="mb-2 text-primary">Dados Gerais do Aluguel</h4>
+          </div>
+        </div>
 
-      <div class="p-col-12 p-md-9 p-fluid">
-        <label>Logradouro da Retirada do Veiculo</label>
-        <input pInputText name="logradouroRetirada" type="text" [(ngModel)]="aluguel.localRetirada.logradouro" #logradouroRetirada="ngModel" required>
-        <app-message [control]="logradouroRetirada" error="required" text="Informe o Logradouro da Retirada"></app-message>
-      </div>
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <label for="valor">Valor, em Reais, do Aluguel</label><br />
+            <input pInputText name="valor" id="valor" type="number" [(ngModel)]="aluguel.valor" #valor="ngModel" required>
+            <app-message [control]="valor" error="required" text="Informe o Valor do Aluguel"></app-message>
+          </div>
 
-      <div class="p-col-12 p-md-9 p-fluid">
-        <label>Número do Local da Retirada do Veiculo</label>
-        <input pInputText name="numeroRetirada" type="number" [(ngModel)]="aluguel.localRetirada.numero" #numeroRetirada="ngModel" required>
-        <app-message [control]="numeroRetirada" error="required" text="Informe o Número do Local da Retirada"></app-message>
-      </div>
+          <div class="col-md-4 mb-3">
+            <label>Data de Retirada do Veículo</label><br />
+            <p-calendar name="dataR" dateFormat="dd/mm/yy" [inline]="false" [(ngModel)]="aluguel.dataRetirada" #dataR="ngModel" required></p-calendar>
+            <app-message [control]="dataR" error="required" text="Informe a Data de Retirada do Aluguel"></app-message>
+          </div>
 
-      <div class="p-col-12 p-md-9 p-fluid">
-        <label>Bairro do Local da Retirada do Veiculo</label>
-        <input pInputText name="bairroRetirada" type="text" [(ngModel)]="aluguel.localRetirada.bairro" #bairroRetirada="ngModel" required>
-        <app-message [control]="bairroRetirada" error="required" text="Informe o Bairro do Local da Retirada"></app-message>
-      </div>
+          <div class="col-md-4 mb-3">
+            <label for="periodo">Período, em Dias, do Aluguel</label><br />
+            <input pInputText name="periodo" id="periodo" type="number" [(ngModel)]="aluguel.periodo" #periodo="ngModel" required>
+            <app-message [control]="periodo" error="required" text="Informe o Período do Aluguel"></app-message>
+          </div>
+        </div>
 
-      <div class="p-col-12 p-md-9 p-fluid">
-        <label>Cidade do Local da Retirada do Veiculo</label>
-        <input pInputText name="cidadeRetirada" type="text" [(ngModel)]="aluguel.localRetirada.cidade" #cidadeRetirada="ngModel" required>
-        <app-message [control]="cidadeRetirada" error="required" text="Informe a Cidade do Local da Retirada"></app-message>
-      </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h4 class="mb-2 text-primary">Local de Retirada do Veículo</h4>
+          </div>
+        </div>
 
-      <div class="p-col-12 p-md-9 p-fluid">
-        <label>CEP do Local da Retirada do Veiculo</label>
-        <input pInputText name="cepRetirada" type="text" [(ngModel)]="aluguel.localRetirada.cep" #cepRetirada="ngModel" required>
-        <app-message [control]="cepRetirada" error="required" text="Informe o CEP do Local da Retirada"></app-message>
-      </div>
+        <div class="row">
+            <div class="col-md-4 mb-3">
+              <label for="logradouroRetirada">Endereço</label><br />
+              <input pInputText name="logradouroRetirada" id="logradouroRetirada" type="text" [(ngModel)]="aluguel.localRetirada.logradouro" #logradouroRetirada="ngModel" required>
+              <app-message [control]="logradouroRetirada" error="required" text="Informe o Endereço da Retirada"></app-message>
+            </div>
 
-      <div class="p-col-12 p-md-9 p-fluid">
-        <label>Estado do Local da Retirada do Veiculo</label>
-        <input pInputText name="estadoRetirada" type="text" [(ngModel)]="aluguel.localRetirada.estado" #estadoRetirada="ngModel" required>
-        <app-message [control]="estadoRetirada" error="required" text="Informe o Estado do Local da Retirada"></app-message>
-      </div>
+            <div class="col-md-4 mb-3">
+              <label for="numeroRetirada">Número</label><br />
+              <input pInputText name="numeroRetirada" id="numeroRetirada" type="number" [(ngModel)]="aluguel.localRetirada.numero" #numeroRetirada="ngModel" required>
+              <app-message [control]="numeroRetirada" error="required" text="Informe o Número do Local da Retirada"></app-message>
+            </div>
 
-      <div class="p-col-12 p-md-9 p-fluid">
-        <label>Logradouro da Entrega do Veiculo</label>
-        <input pInputText name="logradouroEntrega" type="text" [(ngModel)]="aluguel.localEntrega.logradouro" #logradouroEntrega="ngModel" required>
-        <app-message [control]="logradouroEntrega" error="required" text="Informe o Logradouro da Entrega"></app-message>
-      </div>
+            <div class="col-md-4 mb-3">
+              <label for="bairroRetirada">Bairro</label><br />
+              <input pInputText name="bairroRetirada" id="bairroRetirada" type="text" [(ngModel)]="aluguel.localRetirada.bairro" #bairroRetirada="ngModel" required>
+              <app-message [control]="bairroRetirada" error="required" text="Informe o Bairro do Local da Retirada"></app-message>
+            </div>
+        </div>
 
-      <div class="p-col-12 p-md-9 p-fluid">
-        <label>Número do Local da Entrega do Veiculo</label>
-        <input pInputText name="numeroEntrega" type="number" [(ngModel)]="aluguel.localEntrega.numero" #numeroEntrega="ngModel" required>
-        <app-message [control]="numeroEntrega" error="required" text="Informe o Número do Local da Entrega"></app-message>
-      </div>
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <label for="cidadeRetirada">Cidade</label><br />
+            <input pInputText name="cidadeRetirada" id="cidadeRetirada" type="text" [(ngModel)]="aluguel.localRetirada.cidade" #cidadeRetirada="ngModel" required>
+            <app-message [control]="cidadeRetirada" error="required" text="Informe a Cidade do Local da Retirada"></app-message>
+          </div>
 
-      <div class="p-col-12 p-md-9 p-fluid">
-        <label>Bairro do Local da Entrega do Veiculo</label>
-        <input pInputText name="bairroEntrega" type="text" [(ngModel)]="aluguel.localEntrega.bairro" #bairroEntrega="ngModel" required>
-        <app-message [control]="bairroEntrega" error="required" text="Informe o Bairro do Local da Entrega"></app-message>
-      </div>
+          <div class="col-md-4 mb-3">
+            <label for="cepRetirada">CEP</label><br />
+            <input pInputText name="cepRetirada" id="cepRetirada" type="text" [(ngModel)]="aluguel.localRetirada.cep" #cepRetirada="ngModel" required>
+            <app-message [control]="cepRetirada" error="required" text="Informe o CEP do Local da Retirada"></app-message>
+          </div>
 
-      <div class="p-col-12 p-md-9 p-fluid">
-        <label>Cidade do Local da Entrega do Veiculo</label>
-        <input pInputText name="cidadeEntrega" type="text" [(ngModel)]="aluguel.localEntrega.cidade" #cidadeEntrega="ngModel" required>
-        <app-message [control]="numeroRetirada" error="required" text="Informe a Cidde do Local da Entrega"></app-message>
-      </div>
+          <div class="col-md-4 mb-3">
+            <label for="estadoRetirada">Estado</label><br />
+            <input pInputText name="estadoRetirada" id="estadoRetirada" type="text" [(ngModel)]="aluguel.localRetirada.estado" #estadoRetirada="ngModel" required>
+            <app-message [control]="estadoRetirada" error="required" text="Informe o Estado do Local da Retirada"></app-message>
+          </div>
+        </div>
 
-      <div class="p-col-12 p-md-9 p-fluid">
-        <label>CEP do Local da Entrega do Veiculo</label>
-        <input pInputText name="cepEntrega" type="text" [(ngModel)]="aluguel.localEntrega.cep" #cepEntrega="ngModel" required>
-        <app-message [control]="cepEntrega" error="required" text="Informe o CEP do Local da Entrega"></app-message>
-      </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h4 class="mb-2 text-primary">Local de Entrega do Veículo</h4>
+          </div>
+        </div>
 
-      <div class="p-col-12 p-md-9 p-fluid">
-        <label>Estado do Local da Entrega do Veiculo</label>
-        <input pInputText name="estadoEntrega" type="text" [(ngModel)]="aluguel.localEntrega.estado" #estadoEntrega="ngModel" required>
-        <app-message [control]="estadoEntrega" error="required" text="Informe o Estado do Local da Entrega"></app-message>
-      </div>
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <label for="logradouroEntrega">Endereço</label><br />
+            <input pInputText name="logradouroEntrega" id="logradouroEntrega" type="text" [(ngModel)]="aluguel.localEntrega.logradouro" #logradouroEntrega="ngModel" required>
+            <app-message [control]="logradouroEntrega" error="required" text="Informe o Logradouro da Entrega"></app-message>
+          </div>
 
-      <div class="p-col-6 p-md-3 p-fluid">
-        <label>Data de Retirada do Veiculo</label>
-        <p-calendar name="dataR" dateFormat="dd/mm/yy" [inline]="false" [(ngModel)]="aluguel.dataRetirada" #dataR="ngModel" required></p-calendar>
-        <app-message [control]="dataR" error="required" text="Informe a Data de Retirada do Aluguel"></app-message>
-      </div>
+          <div class="col-md-4 mb-3">
+            <label for="numeroEntrega">Número</label><br />
+            <input pInputText name="numeroEntrega" id="numeroEntrega" type="number" [(ngModel)]="aluguel.localEntrega.numero" #numeroEntrega="ngModel" required>
+            <app-message [control]="numeroEntrega" error="required" text="Informe o Número do Local da Entrega"></app-message>
+          </div>
 
-      <div class="p-col-12 p-md-9 p-fluid">
-        <label>Período do Aluguel</label>
-        <input pInputText name="periodo" type="number" [(ngModel)]="aluguel.periodo" #periodo="ngModel" required>
-        <app-message [control]="periodo" error="required" text="Informe o Período do Aluguel"></app-message>
-      </div>
+          <div class="col-md-4 mb-3">
+            <label for="bairroEntrega">Bairro</label><br />
+            <input pInputText name="bairroEntrega" id="bairroEntrega" type="text" [(ngModel)]="aluguel.localEntrega.bairro" #bairroEntrega="ngModel" required>
+            <app-message [control]="bairroEntrega" error="required" text="Informe o Bairro do Local da Entrega"></app-message>
+          </div>
+        </div>
 
-      <div class="p-col-12">
-        <p>
-          <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
-        </p>
-      </div>
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <label for="cidadeEntrega">Cidade</label><br />
+            <input pInputText name="cidadeEntrega" id="cidadeEntrega" type="text" [(ngModel)]="aluguel.localEntrega.cidade" #cidadeEntrega="ngModel" required>
+            <app-message [control]="numeroRetirada" error="required" text="Informe a Cidde do Local da Entrega"></app-message>
+          </div>
+
+          <div class="col-md-4 mb-3">
+            <label for="cidadeEntrega">CEP</label><br />
+            <input pInputText name="cepEntrega" id="cidadeEntrega" type="text" [(ngModel)]="aluguel.localEntrega.cep" #cepEntrega="ngModel" required>
+            <app-message [control]="cepEntrega" error="required" text="Informe o CEP do Local da Entrega"></app-message>
+          </div>
+
+          <div class="col-md-4 mb-3">
+            <label for="cidadeEntrega">Estado</label><br />
+            <input pInputText name="estadoEntrega" id="cidadeEntrega" type="text" [(ngModel)]="aluguel.localEntrega.estado" #estadoEntrega="ngModel" required>
+            <app-message [control]="estadoEntrega" error="required" text="Informe o Estado do Local da Entrega"></app-message>
+          </div>
+        </div>
+
+        <div>
+          <p>
+            <button  class="btn btn-primary btn-lg button-style" pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
+          </p>
+        </div>
+      </form>
     </div>
-
-  </form>
+  </div>
 </div>

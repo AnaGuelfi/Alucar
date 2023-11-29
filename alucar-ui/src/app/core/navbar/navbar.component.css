@@ -1,10 +1,10 @@
 .navbar {
   padding: 20px 0 10px;
-  background-color: #1e94d2;
+  background-color: #8aa8cd;
 }
 
 .navbar-toggle {
-  color: #fff;
+  color: #000;
 }
 
 .navbar-menu {
@@ -17,7 +17,7 @@
   padding: 0;
   z-index: 9998;
 
-  background-color: #3a3633;
+  background-color: #a1c4ee;
 
   list-style: none;
 }
@@ -25,11 +25,11 @@
 .navbar-usuario {
   padding: 15px;
   margin-bottom: 15px;
-  border-bottom: 1px solid #525151;
+  border-bottom: 1px solid #d2d1d1;
 
   text-transform: uppercase;
   font-weight: bold;
-  color: #fff;
+  color: #000;
 }
 
 .navbar-menuitem {
@@ -37,7 +37,7 @@
 }
 
 .navbar-menuitem a {
-  color: #c0bbb7;
+  color: #000;
   text-decoration: none;
 }
 
@@ -46,5 +46,5 @@
 }
 
 .navbar-menuitem.active {
-  background-color: #494541;
+  background-color: #8aa8cd;
 }
