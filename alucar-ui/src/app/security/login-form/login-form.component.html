@@ -1,36 +1,25 @@
 {{ msg | json }}
 
-<div class="container">
+<div class="text-center">
 
-  <form autocomplete="off" #f="ngForm">
-    <div class="p-grid p-fluid">
+  <form autocomplete="off" #f="ngForm" class="form-signin">
 
-      <div class="p-col-12">
-        <h1>Login</h1>
-      </div>
-
-      <div class="p-col-12">
-        <p><input pInputText type="email" name="user" placeholder="E-mail"
-          ngModel required #user>
-        </p>
-      </div>
-
-      <div class="p-col-12">
-        <p>
-          <input pInputText type="password" name="password" placeholder="Senha"
-          ngModel required #password>
-        </p>
-
-      </div>
-
-      <div class="p-col-12">
-        <p><button pButton type="submit" label="Login" [disabled]="!f.valid"
-          (click)="login(user.value, password.value)"></button>
-        </p>
-        <a pButton label="Cadastrar" routerLink="/usuarios/new"></a>
-      </div>
-
+    <div class="logo">
+      <img class="mb-3" src="assets/logo.png" alt="Logo"  width="366" height="120">
     </div>
+
+    <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+
+    <input class="form-control" pInputText type="email" name="user" placeholder="E-mail" ngModel required #user>
+
+    <input class="form-control" pInputText type="password" name="password" placeholder="Senha" ngModel required #password>
+
+    <div class="p-col-12">
+      <button class="btn btn-primary button-style button-login" pButton type="submit" label="Login" [disabled]="!f.valid"(click)="login(user.value, password.value)"></button>
+      <br/>
+      <a pButton class="btn btn-primary button-style" label="Cadastrar" routerLink="/usuarios/new"></a>
+    </div>
+
   </form>
 
 </div>

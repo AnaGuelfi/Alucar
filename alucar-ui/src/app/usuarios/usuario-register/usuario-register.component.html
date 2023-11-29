@@ -1,107 +1,133 @@
 <div class="container">
-  <form #f="ngForm" autocomplete="off" (ngSubmit)="save(f)">
+  <div class="row">
+    <div class="col-md-12 order-md-1">
+      <h1 class="mb-3">Cadastre-se</h1>
+      <form #f="ngForm" autocomplete="off" (ngSubmit)="save(f)">
 
-    <div class="p-grid">
-      <div class="p-col-12">
-        <h1>Cadastre-se</h1>
-      </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h4 class="mb-2 text-primary">Sobre Mim</h4>
+          </div>
+        </div>
 
-      <div class="p-col-12 p-md-9 p-fluid">
-        <label>Nome</label>
-        <input pInputText name="nome" type="text" [(ngModel)]="user.nome" #nome="ngModel" required>
-        <app-message [control]="nome" error="required" text="Informe seu Nome"></app-message>
-      </div>
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <label for="nome">Nome</label><br />
+            <input pInputText name="nome" id="nome" type="text" [(ngModel)]="user.nome" #nome="ngModel" required>
+            <app-message [control]="nome" error="required" text="Informe seu Nome"></app-message>
+          </div>
 
-      <div class="p-col-12 p-md-9 p-fluid">
-        <label>CPF</label>
-        <input pInputText name="cpf" type="text" pattern="(\d{3}\.\d{3}\.\d{3}-\d{2})|(\d{11})" placeholder="000.000.000-00" [(ngModel)]="user.cpf" #cpf="ngModel" required>
-        <app-message [control]="cpf" error="required" text="Informe seu CPF"></app-message>
-      </div>
+          <div class="col-md-4 mb-3">
+            <label for="cpf">CPF</label><br />
+            <input pInputText name="cpf" id="cpf" type="text" pattern="(\d{3}\.\d{3}\.\d{3}-\d{2})|(\d{11})" placeholder="000.000.000-00" [(ngModel)]="user.cpf" #cpf="ngModel" required>
+            <app-message [control]="cpf" error="required" text="Informe seu CPF"></app-message>
+          </div>
 
-      <div class="p-col-6 p-md-3 p-fluid">
-        <label>Data de Nascimento</label>
-        <p-calendar name="dataNascimento" dateFormat="dd/mm/yy" [inline]="false" [(ngModel)]="user.dataNascimento" #dataNascimento="ngModel" required></p-calendar>
-        <app-message [control]="dataNascimento" error="required" text="Informe sua Data Nascimento"></app-message>
-      </div>
+          <div class="col-md-4 mb-3">
+            <label for="dataNascimento">Data de Nascimento</label><br />
+            <p-calendar name="dataNascimento" dateFormat="dd/mm/yy" [inline]="false" [(ngModel)]="user.dataNascimento" #dataNascimento="ngModel" required></p-calendar>
+            <app-message [control]="dataNascimento" error="required" text="Informe sua Data Nascimento"></app-message>
+          </div>
+        </div>
 
-      <div class="p-col-12 p-md-9 p-fluid">
-        <label>Telefone</label>
-        <input pInputText name="telefone" type="tel" [(ngModel)]="user.telefone" #telefone="ngModel" required>
-        <app-message [control]="telefone" error="required" text="Informe seu Telefone"></app-message>
-      </div>
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <label for="telefone">Telefone</label><br />
+            <input pInputText name="telefone" id="telefone" type="tel" [(ngModel)]="user.telefone" #telefone="ngModel" required>
+            <app-message [control]="telefone" error="required" text="Informe seu Telefone"></app-message>
+          </div>
 
-      <div class="p-col-12 p-md-9 p-fluid">
-        <label>E-mail</label>
-        <input pInputText name="email" type="email" [(ngModel)]="user.email" #email="ngModel" required>
-        <app-message [control]="email" error="required" text="Informe seu E-mail"></app-message>
-      </div>
+          <div class="col-md-4 mb-3">
+            <label for="email">E-mail</label><br />
+            <input pInputText name="email" id="email" type="email" [(ngModel)]="user.email" #email="ngModel" required>
+            <app-message [control]="email" error="required" text="Informe seu E-mail"></app-message>
+          </div>
 
-      <div class="p-col-12 p-md-9 p-fluid">
-        <label>Senha</label>
-        <input pInputText name="senha" type="password" [(ngModel)]="user.senha" #senha="ngModel" required>
-        <app-message [control]="senha" error="required" text="Informe sua Senha."></app-message>
-      </div>
+          <div class="col-md-4 mb-3">
+            <label for="senha">Senha</label><br />
+            <input pInputText name="senha" id="senha" type="password" [(ngModel)]="user.senha" #senha="ngModel" required>
+            <app-message [control]="senha" error="required" text="Informe sua Senha"></app-message>
+          </div>
+        </div>
 
-      <div class="p-col-12 p-md-9 p-fluid">
-        <label>Logradouro da sua Residência</label>
-        <input pInputText name="logradouro" type="text" [(ngModel)]="user.endereco.logradouro" #logradouro="ngModel">
-        <app-message [control]="logradouro" error="required" text="Informe o Logradouro da sua Residência"></app-message>
-      </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h4 class="mb-2 text-primary">Minha Localização</h4>
+          </div>
+        </div>
 
-      <div class="p-col-12 p-md-9 p-fluid">
-        <label>Número da sua Residência</label>
-        <input pInputText name="numero" type="number" [(ngModel)]="user.endereco.numero" #numero="ngModel" required>
-        <app-message [control]="numero" error="required" text="Informe o Número da sua Residência"></app-message>
-      </div>
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <label for="logradouro">Endereço</label><br />
+            <input pInputText name="logradouro" id="logradouro" type="text" [(ngModel)]="user.endereco.logradouro" #logradouro="ngModel">
+            <app-message [control]="logradouro" error="required" text="Informe seu Endereço"></app-message>
+          </div>
 
-      <div class="p-col-12 p-md-9 p-fluid">
-        <label>Bairro da sua Residência</label>
-        <input pInputText name="bairro" type="text" [(ngModel)]="user.endereco.bairro" #bairro="ngModel" required>
-        <app-message [control]="bairro" error="required" text="Informe o Bairro da sua Residência"></app-message>
-      </div>
+          <div class="col-md-4 mb-3">
+            <label for="numero">Número</label><br />
+            <input pInputText name="numero" id="numero" type="number" [(ngModel)]="user.endereco.numero" #numero="ngModel" required>
+            <app-message [control]="numero" error="required" text="Informe o Número da sua Localização"></app-message>
+          </div>
 
-      <div class="p-col-12 p-md-9 p-fluid">
-        <label>CEP da sua Residência</label>
-        <input pInputText name="cep" type="text" [(ngModel)]="user.endereco.cep" #cep="ngModel" pattern= "[0-9]{5}-[0-9]{3}" placeholder="00000-00" required>
-        <app-message [control]="cep" error="required" text="Informe o CEP da sua Residência"></app-message>
-      </div>
+          <div class="col-md-4 mb-3">
+            <label for="bairro">Bairro</label><br />
+            <input pInputText name="bairro" id="bairro" type="text" [(ngModel)]="user.endereco.bairro" #bairro="ngModel" required>
+            <app-message [control]="bairro" error="required" text="Informe o Bairro da sua Localização"></app-message>
+          </div>
+        </div>
 
-      <div class="p-col-12 p-md-9 p-fluid">
-        <label>Cidade da sua Residência</label>
-        <input pInputText name="cidade" type="text" [(ngModel)]="user.endereco.cidade" #cidade="ngModel" required>
-        <app-message [control]="cidade" error="required" text="Informe a Cidade da sua Residência"></app-message>
-      </div>
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <label for="cep">CEP</label><br />
+            <input pInputText name="cep" id="cep" type="text" [(ngModel)]="user.endereco.cep" #cep="ngModel" pattern= "[0-9]{5}-[0-9]{3}" placeholder="00000-000" required>
+            <app-message [control]="cep" error="required" text="Informe o CEP da sua Localização"></app-message>
+          </div>
 
-      <div class="p-col-12 p-md-9 p-fluid">
-        <label>Estado da sua Residência</label>
-        <input pInputText name="estado" type="text" [(ngModel)]="user.endereco.estado" #estado="ngModel" required>
-        <app-message [control]="estado" error="required" text="Informe o Estado da sua Residência"></app-message>
-      </div>
+          <div class="col-md-4 mb-3">
+            <label for="cidade">Cidade</label><br />
+            <input pInputText name="cidade" id="cidade" type="text" [(ngModel)]="user.endereco.cidade" #cidade="ngModel" required>
+            <app-message [control]="cidade" error="required" text="Informe a Cidade da sua Localização"></app-message>
+          </div>
 
-      <div class="p-col-12 p-md-9 p-fluid">
-        <label>Número de Registro da CNH</label>
-        <input pInputText name="numeroRegistro" type="text" [(ngModel)]="user.cnh.numeroRegistro" #numeroRegistro="ngModel">
-        <app-message [control]="numeroRegistro" error="required" text="Informe o Número de Registro da sua CNH"></app-message>
-      </div>
+          <div class="col-md-4 mb-3">
+            <label for="estado">Estado</label><br />
+            <input pInputText name="estado" id="estado" type="text" [(ngModel)]="user.endereco.estado" #estado="ngModel" required>
+            <app-message [control]="estado" error="required" text="Informe o Estado da sua Localização"></app-message>
+          </div>
+        </div>
 
-      <div class="p-col-6 p-md-3 p-fluid">
-        <label>Data de Validade da CNH</label>
-        <p-calendar name="dataValidade" dateFormat="dd/mm/yy" [inline]="false" [(ngModel)]="user.cnh.dataValidade" #dataValidade="ngModel"></p-calendar>
-        <app-message [control]="dataValidade" error="required" text="Informe a Data de Validade da sua CNH"></app-message>
-      </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h4 class="mb-2 text-primary">Minha CNH</h4>
+          </div>
+        </div>
 
-      <div class="p-col-12 p-md-9 p-fluid">
-        <label>Categoria da CNH</label>
-        <input pInputText name="categoria" type="text" [(ngModel)]="user.cnh.categoria" #categoria="ngModel">
-        <app-message [control]="categoria" error="required" text="Informe a Categoria da sua CNH"></app-message>
-      </div>
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <label for="registro">Número de Registro</label><br />
+            <input pInputText name="numeroRegistro" id="registro" type="text" [(ngModel)]="user.cnh.numeroRegistro" #numeroRegistro="ngModel">
+            <app-message [control]="numeroRegistro" error="required" text="Informe o Número de Registro da sua CNH"></app-message>
+          </div>
 
-      <div class="p-col-12">
-        <p>
-          <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
-        </p>
-      </div>
+          <div class="col-md-4 mb-3">
+            <label>Data de Validade</label><br />
+            <p-calendar name="dataValidade" dateFormat="dd/mm/yy" [inline]="false" [(ngModel)]="user.cnh.dataValidade" #dataValidade="ngModel"></p-calendar>
+            <app-message [control]="dataValidade" error="required" text="Informe a Data de Validade da sua CNH"></app-message>
+          </div>
+
+          <div class="col-md-4 mb-3">
+            <label for="categoria">Categoria</label><br />
+            <input pInputText name="categoria" id="categoria" type="text" [(ngModel)]="user.cnh.categoria" #categoria="ngModel">
+            <app-message [control]="categoria" error="required" text="Informe a Categoria da sua CNH"></app-message>
+          </div>
+        </div>
+
+        <div>
+          <p>
+            <button class="btn btn-primary btn-lg button-style" pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
+          </p>
+        </div>
+      </form>
     </div>
-
-  </form>
+  </div>
 </div>
