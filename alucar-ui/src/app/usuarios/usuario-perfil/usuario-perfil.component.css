@@ -48,11 +48,15 @@ a {
   font-size: 20px;
 }
 
-.highlight, .cnh{
+.highlight, .cnh, .text{
   text-align: center;
 }
 
 .table.table-profile>tbody>tr.highlight>td {
   border-top: 1px solid #b9c3ca;
   border-bottom: 1px solid #b9c3ca
+}
+
+.button-style{
+  width: 120px;
 }

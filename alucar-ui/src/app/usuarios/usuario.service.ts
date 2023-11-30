@@ -65,12 +65,21 @@ export class UsuarioService {
     const headers = new HttpHeaders()
       .append('Content-Type', 'application/json');
 
-    return this.http.put<Usuario>(`${this.usersUrl}/${user.id}`, Usuario.toJsonUpdate(user), { headers })
-      .toPromise()
-      .then((response: any) => {
-        const updated = response;
-        return updated;
-      });
+    if(user.cnh != null){
+      return this.http.put<Usuario>(`${this.usersUrl}/${user.id}`, Usuario.toJsonUpdate(user), { headers })
+        .toPromise()
+        .then((response: any) => {
+          const updated = response;
+          return updated;
+        });
+    } else {
+      return this.http.put<Usuario>(`${this.usersUrl}/${user.id}`, Usuario.toJsonUpdateWithoutCNH(user), { headers })
+        .toPromise()
+        .then((response: any) => {
+          const updated = response;
+          return updated;
+        });
+    }
   }
 
   updateDataValidadeCNH(user: Usuario): Promise<any> {

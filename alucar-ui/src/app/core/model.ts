@@ -46,6 +46,20 @@ export class Usuario {
     }
   }
 
+  static toJsonUpdateWithoutCNH(usuario: Usuario): any {
+    usuario.dataNascimento = moment(usuario.dataNascimento).format('DD/MM/YYYY');
+    return {
+      id: usuario.id,
+      cpf: usuario.cpf,
+      nome: usuario.nome,
+      email: usuario.email,
+      senha: usuario.senha,
+      telefone: usuario.telefone,
+      dataNascimento: usuario.dataNascimento,
+      endereco: usuario.endereco
+    }
+  }
+
   static dataValidadeToJson(usuario: Usuario): any {
     return moment(usuario.cnh.dataValidade, 'DD/MM/YYYY');
   }

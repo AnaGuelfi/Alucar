@@ -90,13 +90,13 @@
           </div>
         </div>
 
-        <div class="row">
+        <div class="row" *ngIf="user.cnh != null">
           <div class="col-md-12">
             <h4 class="mb-2 text-primary">Minha CNH</h4>
           </div>
         </div>
 
-        <div class="row">
+        <div class="row" *ngIf="user.cnh != null">
           <div class="col-md-4 mb-3">
             <label for="registro">Número de Registro</label><br />
             <input pInputText name="numeroRegistro" id="registro" type="text" [(ngModel)]="user.cnh.numeroRegistro" #numeroRegistro="ngModel">

@@ -1,36 +1,36 @@
 <div class="container">
-  <form #f="ngForm" autocomplete="off" (ngSubmit)="saveCNH(f)">
-    <div class="p-grid">
-      <div class="p-col-12">
-        <h1>Cadastre sua CNH</h1>
-      </div>
+  <div class="row">
+    <div class="col-md-12 order-md-1">
+      <h1 class="mb-3">Cadastre sua CNH</h1>
+      <form #f="ngForm" autocomplete="off" (ngSubmit)="saveCNH(f)">
 
-      <div class="p-col-12 p-md-9 p-fluid">
-        <label>Número de Registro da CNH</label>
-        <input pInputText name="numeroRegistro" type="text"
-        [(ngModel)]="cnh.numeroRegistro" #numeroRegistro="ngModel">
-        <app-message [control]="numeroRegistro" error="required" text="Informe o Número de Registro da sua CNH"></app-message>
-      </div>
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <label>Número de Registro da CNH</label><br />
+            <input pInputText name="numeroRegistro" type="text" [(ngModel)]="cnh.numeroRegistro" #numeroRegistro="ngModel">
+            <app-message [control]="numeroRegistro" error="required" text="Informe o Número de Registro da sua CNH"></app-message>
+          </div>
 
-      <div class="p-col-6 p-md-3 p-fluid">
-        <label>Data de Validade da CNH</label>
-        <p-calendar name="dataValidade" dateFormat="dd/mm/yy" [inline]="false" [(ngModel)]="cnh.dataValidade" #dataValidade="ngModel"></p-calendar>
-        <app-message [control]="dataValidade" error="required" text="Informe a Data de Validade da sua CNH"></app-message>
-      </div>
+          <div class="col-md-4 mb-3">
+            <label>Data de Validade da CNH</label><br />
+            <p-calendar name="dataValidade" dateFormat="dd/mm/yy" [inline]="false" [(ngModel)]="cnh.dataValidade" #dataValidade="ngModel"></p-calendar>
+            <app-message [control]="dataValidade" error="required" text="Informe a Data de Validade da sua CNH"></app-message>
+          </div>
 
-      <div class="p-col-12 p-md-9 p-fluid">
-        <label>Categoria da CNH</label>
-        <input pInputText name="categoria" type="text"
-        [(ngModel)]="cnh.categoria" #categoria="ngModel">
-        <app-message [control]="categoria" error="required" text="Informe a Categoria da sua CNH"></app-message>
-      </div>
+          <div class="col-md-4 mb-3">
+            <label>Categoria da CNH</label><br />
+            <input pInputText name="categoria" type="text"
+            [(ngModel)]="cnh.categoria" #categoria="ngModel">
+            <app-message [control]="categoria" error="required" text="Informe a Categoria da sua CNH"></app-message>
+          </div>
+        </div>
 
-      <div class="p-col-12">
-        <p>
-          <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
-        </p>
-      </div>
+        <div>
+          <p>
+            <button class="btn btn-primary btn-lg button-style" pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
+          </p>
+        </div>
+      </form>
     </div>
-
-  </form>
+  </div>
 </div>

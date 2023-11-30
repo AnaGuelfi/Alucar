@@ -9,7 +9,7 @@
                 <table class="table table-profile">
                   <thead>
                     <tr>
-                      <th colspan="2"> <h4>{{ user.nome }} <small>{{ user.cpf }}</small></h4> </th>
+                      <th colspan="2" class="text"> <h4>{{ user.nome }} <small>{{ user.cpf }}</small></h4> </th>
                     </tr>
                   </thead>
                   <!--Sobre mim-->
@@ -94,7 +94,7 @@
                     </tr>
                     <tr class="highlight">
                       <td colspan="2">
-                        <a pButton label="Editar" [routerLink]="['/usuarios/update', user.id]"></a>
+                        <a pButton class="btn btn-primary button-style" label="Editar" [routerLink]="['/usuarios/update', user.id]"></a>
                       </td>
                     </tr>
                   </tbody>
