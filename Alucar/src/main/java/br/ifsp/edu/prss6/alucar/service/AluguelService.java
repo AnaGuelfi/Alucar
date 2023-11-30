@@ -70,10 +70,10 @@ public class AluguelService {
 		Aluguel aluguelSaved = findAluguelById(id);
 		
 		TermoComprometimento termo = new TermoComprometimento();
-		String termoComprometimento = "Eu, " + aluguelSaved.getLocador().getNome() + ", portador do CPF, " + aluguelSaved.getLocador().getCpf()
-				+ " declaro que me responsabilizo em entregar o veículo selecionado por, " + aluguelSaved.getLocatario().getNome()
-				+ ", de CPF " + aluguelSaved.getLocatario().getCpf() + ", nas condições informadas nas fotos cadastradas. Veículo de " 
-				+ "placa " + aluguelSaved.getVeiculo().getPlaca() + " e Renavam " + aluguelSaved.getVeiculo().getCrlv().getRenavam() + ".";
+		String termoComprometimento = "Eu, " + aluguelSaved.getLocador().getNome() + ", portador do CPF " + aluguelSaved.getLocador().getCpf()
+				+ ", declaro que me responsabilizo em entregar o veículo, de placa " + aluguelSaved.getVeiculo().getPlaca() + " e de Renavam "
+				+ aluguelSaved.getVeiculo().getCrlv().getRenavam() + ", nas condições informadas durante o acordo de aluguel, para o locatário "
+				+ aluguelSaved.getLocatario().getNome() + ", de CPF " + aluguelSaved.getLocatario().getCpf() + ". Além disso, declaro que estou sujeito à multa no valor de R$" + aluguelSaved.getValor() + ", caso eu cancele o aluguel no dia de sua retirada ou durante seu período de vigência.";
 		
 		termo.setMensagem(termoComprometimento);
 		termo.setAssinaturaLocador(LocalDate.now());
@@ -123,12 +123,11 @@ public class AluguelService {
 	public void emitirTermoConsentimento(Aluguel aluguel, Optional<Usuario> locatario, Optional<Usuario> locador, Optional<Veiculo> veiculo) {
 		TermoConsentimento termo = new TermoConsentimento();
 		
-		String termoConsentimento = "Eu, " + locatario.get().getNome() + ", portador do CPF, " + locatario.get().getCpf() 
+		String termoConsentimento = "Eu, " + locatario.get().getNome() + ", portador do CPF " + locatario.get().getCpf() 
 				+ " declaro que me responsabilizo por possíveis avarias, roubos e furtos que acontecerem com o veículo deste aluguel, de propriedade de "
 				+ locador.get().getNome() + ", de CPF " + locador.get().getCpf() + ". O veículo alugado possui a placa "
 				+ veiculo.get().getPlaca() + " e Renavam " + veiculo.get().getCrlv().getRenavam() + "."
-				+ "Caso tenha atraso na devolução do veículo, será cobrada uma taxa de multa de 10% do valor acordado a cada dia de atraso.";
-		
+				+ "Caso tenha atraso na devolução do veículo ao locador, declaro que estou ciente de que serei cobrado por meio de uma taxa de multa de 10% do valor acordado no aluguel a cada dia de atraso. Além disso, declaro que estou sujeito à multa no valor de R$" + aluguel.getValor() + ", caso eu cancele o aluguel no dia de sua retirada ou durante seu período de vigência.";
 		termo.setMensagem(termoConsentimento);
 		termo.setAssinaturaLocatario(LocalDate.now());
 		aluguel.setTermoConsentimento(termo);
