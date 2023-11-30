@@ -1,3 +1,11 @@
 a {
   text-decoration: none;
 }
+
+.text {
+  text-align: justify;
+}
+
+.button-aluguel{
+  margin-top: 2%;
+}

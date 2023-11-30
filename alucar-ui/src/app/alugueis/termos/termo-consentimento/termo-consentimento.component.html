@@ -19,7 +19,7 @@
         <ng-template pTemplate="body" let-aluguel>
           <span *ngIf="aluguel.id == aluguel_id">
             <tr>
-              <td>
+              <td class="text">
                 {{ aluguel.termoConsentimento.mensagem }}
               </td>
             </tr>
@@ -34,8 +34,8 @@
         </ng-template>
       </p-table>
     </div>
-    <div class="p-col-12">
-      <p><a pButton routerLink="/alugueis">Meus Aluguéis</a></p>
+    <div class="button-aluguel">
+      <p><a class="btn btn-primary" pButton routerLink="/alugueis">Meus Aluguéis</a></p>
     </div>
   </div>
 </div>

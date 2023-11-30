@@ -1,16 +1,16 @@
 <div class="container">
-  <form #f="ngForm" autocomplete="off" (ngSubmit)="assinarTermoComprometimento(f)">
+  <div class="row">
+    <h1 class="mb-6">Termo de Comprometimento</h1>
+    <form #f="ngForm" autocomplete="off" (ngSubmit)="assinarTermoComprometimento(f)">
 
-    <div class="p-grid">
-      <div class="p-col-12">
-        <h1>Assinar Termo de Comprometimento</h1>
-        <h2> Ao assinar o Termo de Comprometimento, você está consentindo com o andamento do aluguel</h2>
+      <div class="row">
+        <h4 class="mb-6 text-primary text-termo">Eu, {{aluguel.locador.nome}}, portador do CPF {{aluguel.locador.cpf}}, declaro que me responsabilizo em entregar, na data de retirada acordada, o veículo, de placa {{aluguel.veiculo.placa}} e de Renavam {{aluguel.veiculo.crlv.renavam}}, nas condições informadas durante o acordo de aluguel, para o locatário {{aluguel.locatario.nome}}, de CPF {{aluguel.locatario.cpf}}. Além disso, declaro que estou sujeito à multa no valor de R${{aluguel.valor}}, caso eu cancele o aluguel no dia de sua retirada ou durante seu período de vigência.</h4>
       </div>
-
       <div class="p-col-12">
-        <p><button pButton type="submit" label="Assinar"></button></p>
-        <p><button pButton type="submit" label="Voltar" routerLink="/alugueis"></button></p>
+        <button class="btn btn-success button-style button-assinar" pButton type="submit" label="Assinar"></button>
+        <br/>
+        <button class="btn btn-primary button-style" pButton type="submit" label="Voltar" routerLink="/alugueis"></button>
       </div>
-    </div>
-  </form>
+    </form>
+  </div>
 </div>
