@@ -52,7 +52,7 @@ export class UsuarioService {
         const usuario = response;
 
         usuario.dataNascimento = moment(usuario.dataNascimento, 'DD/MM/YYYY').toDate();
-
+        //usuario.cnh.dataValidade = moment(usuario.cnh.dataValidade, 'DD/MM/YYYY').toDate();
         if(usuario.cnh != null){
           usuario.cnh.dataValidade = moment(usuario.cnh.dataValidade).format('DD/MM/YYYY');
         }
