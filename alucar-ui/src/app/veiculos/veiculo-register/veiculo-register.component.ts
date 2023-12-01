@@ -70,6 +70,7 @@ export class VeiculoRegisterComponent {
       .then( veiculo => {
         this.messageService.add({ severity: 'success', detail: 'Veículo editado com sucesso!' });
         this.veiculo = veiculo;
+        this.router.navigate(['/veiculos']);
       })
       .catch(error => this.errorHandler.handle(error));
   }

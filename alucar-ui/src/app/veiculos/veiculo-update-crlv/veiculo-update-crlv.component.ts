@@ -44,8 +44,8 @@ export class VeiculoUpdateCrlvComponent {
   updateRenavam(veiculoForm: NgForm): void {
     this.veiculoService.updateRenavam(this.veiculo)
       .then( veiculo => {
-        this.messageService.add({ severity: 'success', detail: 'Data de Emissão do Renavam editada com sucesso!' });
-        this.router.navigate(['/veiculos']);
+        this.messageService.add({ severity: 'success', detail: 'Data de Emissão do Renavam Editada com Sucesso!' });
+        this.router.navigate(['/veiculos/crlv', this.veiculo.id]);
       })
       .catch(error => this.errorHandler.handle(error));
   }

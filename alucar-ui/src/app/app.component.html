@@ -5,9 +5,7 @@
 
 <p-confirmDialog header="Confirmação" icon="pi pi-question-circle" #confirmation>
   <p-footer>
-    <button type="button" pButton icon="pi pi-check" label="Sim"
-      (click)="confirmation.accept()"></button>
-    <button type="button" pButton icon="pi pi-times" label="Não"
-      (click)="confirmation.reject()"></button>
+    <button type="button" class="btn btn-primary button-sim button-style" pButton icon="pi pi-check" label="Sim" (click)="confirmation.accept()"></button>
+    <button type="button" class="btn btn-primary button-style" pButton icon="pi pi-times" label="Não" (click)="confirmation.reject()"></button>
   </p-footer>
 </p-confirmDialog>

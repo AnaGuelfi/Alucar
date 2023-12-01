@@ -1,7 +1,7 @@
-form .p-button {
-  margin-right: .25em;
+.button-style{
+  width: 120px;
 }
 
-a {
-  text-decoration: none;
+.button-voltar{
+  margin-top: 1%;
 }

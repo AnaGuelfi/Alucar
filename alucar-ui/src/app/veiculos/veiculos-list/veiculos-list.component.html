@@ -57,7 +57,7 @@
               <a pTooltip="Visualizar" [routerLink]="['/veiculos/crlv', veiculos.id]">Visualizar CRLV</a>
             </td>
             <td>
-              <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top" [routerLink]="['/veiculos', veiculos.id]"></a>
+              <button pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top" [routerLink]="['/veiculos', veiculos.id]"></button>
             </td>
             <td>
               <button pButton icon="pi pi-trash" pTooltip="Excluir" tooltipPosition="top" (click)="confirmRemoval(veiculos)"   [disabled]="!auth.hasPermission('ROLE_REMOVE_CAR')"></button>
@@ -73,8 +73,8 @@
         </ng-template>
       </p-table>
     </div>
-    <div class="p-col-12">
-      <p><a pButton label="Novo Veículo" routerLink="/veiculos/new"></a></p>
+    <div class="button-novo-veiculo">
+      <p><a class="btn btn-primary" pButton routerLink="/veiculos/new">Novo Veículo</a></p>
     </div>
   </div>
 </div>
