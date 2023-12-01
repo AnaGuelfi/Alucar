@@ -26,6 +26,10 @@ th {
   text-align: center;
 }
 
+.line{
+  white-space: nowrap;
+}
+
 .button-aluguel{
   margin-top: 2%;
 }

@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12 order-md-1">
-      <h1 class="mb-3">Atualizar Perfil</h1>
+      <h2 class="mb-3">Atualizar Perfil</h2>
       <form #f="ngForm" autocomplete="off" (ngSubmit)="save(f)">
 
         <div class="row">
@@ -117,9 +117,9 @@
         </div>
 
         <div>
-          <p>
-            <button class="btn btn-primary btn-lg button-style" pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
-          </p>
+          <button class="btn btn-primary btn-lg button-salvar button-style" pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
+          <br />
+          <a pButton class="btn btn-primary button-style" label="Meu Perfil" [routerLink]="['/usuarios', user.id]"></a>
         </div>
       </form>
     </div>

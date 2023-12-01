@@ -2,7 +2,7 @@
 <div class="container">
 
   <div class="p-col-12">
-    <h1>Meus Aluguéis</h1>
+    <h2 class="mb-3">Meus Aluguéis</h2>
   </div>
 
   <div>
@@ -32,7 +32,7 @@
               <span class="p-column-title">Status do Aluguel</span>
               {{ aluguel.status }}
             </td>
-            <td>
+            <td class="line">
               <span class="p-column-title">Veículo</span>
               {{ aluguel.veiculo.marca }} {{ aluguel.veiculo.modelo }}
             </td>
@@ -86,7 +86,7 @@
                 <a class="a-row-edit" [routerLink]="['/alugueis', aluguel.id, 'entrega']">Registrar Devolução</a>
               </span>
             </td>
-            <td>
+            <td class="line">
               <span class="p-column-title">Valor da Multa</span>
               <span *ngIf="aluguel.termoConsentimento.valorMulta != null">
                 R$
