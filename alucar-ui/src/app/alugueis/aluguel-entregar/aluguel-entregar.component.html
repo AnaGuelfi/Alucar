@@ -1,16 +1,17 @@
 <div class="container">
-  <form #f="ngForm" autocomplete="off" (ngSubmit)="entregarVeiculo(f)">
+  <div class="row">
+    <h1 class="mb-6">Registrar a Devolução do Veículo</h1>
+      <form #f="ngForm" autocomplete="off" (ngSubmit)="entregarVeiculo(f)">
 
-    <div class="p-grid">
-      <div class="p-col-12">
-        <h1>Registrar a Devolução do Veículo</h1>
-        <h2> Ao confirmar a entrega, você confirma que o Locatário realizou a devolução</h2>
-      </div>
+        <div class="alert alert-danger text" role="alert">
+          Ao confirmar a entrega, você confirma que o usuário locatário realizou a devolução.
+        </div>
 
-      <div class="p-col-12">
-        <p><button pButton type="submit" label="Confirmar"></button></p>
-        <p><button pButton type="submit" label="Voltar" routerLink="/alugueis"></button></p>
-      </div>
-    </div>
-  </form>
+        <div class="p-col-12">
+          <button class="btn btn-success button-style button-entregar" pButton type="submit" label="Entregar"></button>
+          <br/>
+          <button class="btn btn-primary button-style" pButton type="submit" label="Voltar" routerLink="/alugueis"></button>
+        </div>
+      </form>
+  </div>
 </div>

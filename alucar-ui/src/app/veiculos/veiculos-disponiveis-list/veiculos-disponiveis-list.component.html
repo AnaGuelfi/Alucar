@@ -51,7 +51,12 @@
               {{ veiculos.quilometragem }} km
             </td>
             <td>
-              <a pButton icon="pi pi-check" pTooltip="Alugar Veículo" tooltipPosition="top" [routerLink]="['/alugueis/new', veiculos.id]"></a>
+              <span *ngIf="user.cnh != null">
+                <button pButton icon="pi pi-check" pTooltip="Alugar Veículo" tooltipPosition="top" [routerLink]="['/alugueis/new', veiculos.id]"></button>
+              </span>
+              <span *ngIf="user.cnh == null">
+                <a pTooltip="Cadastrar CNH" tooltipPosition="top" [routerLink]="['/usuarios', user.id, 'cnh']">Cadastre sua CNH para poder Alugar</a>
+              </span>
             </td>
           </tr>
         </ng-template>

@@ -1,16 +1,18 @@
 <div class="container">
-  <form #f="ngForm" autocomplete="off" (ngSubmit)="cancelarAluguel(f)">
+  <div class="row">
+    <h1 class="mb-6">Cancelar o Aluguel</h1>
+      <form #f="ngForm" autocomplete="off" (ngSubmit)="cancelarAluguel(f)">
 
-    <div class="p-grid">
-      <div class="p-col-12">
-        <h1>Cancelar o aluguel</h1>
-        <h2> Você confirma que deseja cancelar o aluguel? </h2>
-      </div>
+        <div class="alert alert-danger text" role="alert">
+          Declaro que estou sujeito à multa no valor acordado no aluguel, caso eu cancele o aluguel no dia de sua retirada ou durante seu período de vigência.
+        </div>
 
-      <div class="p-col-12">
-        <p><button pButton type="submit" label="Sim"></button></p>
-        <p><button pButton type="submit" label="Voltar" routerLink="/alugueis"></button></p>
-      </div>
-    </div>
+        <div class="p-col-12">
+          <button class="btn btn-danger button-style button-cancelar" pButton type="submit" label="Cancelar"></button>
+          <br/>
+          <button class="btn btn-primary button-style" pButton type="submit" label="Voltar" routerLink="/alugueis"></button>
+        </div>
   </form>
+  </div>
 </div>
+

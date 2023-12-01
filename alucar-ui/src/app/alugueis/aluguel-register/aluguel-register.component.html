@@ -136,7 +136,7 @@
 
           <div class="col-md-4 mb-3">
             <label for="cepRetirada">CEP</label><br />
-            <input pInputText name="cepRetirada" id="cepRetirada" type="text" [(ngModel)]="aluguel.localRetirada.cep" #cepRetirada="ngModel" required>
+            <input pInputText name="cepRetirada" id="cepRetirada" type="text" [(ngModel)]="aluguel.localRetirada.cep" #cepRetirada="ngModel" pattern= "[0-9]{5}-[0-9]{3}" placeholder="00000-000" required>
             <app-message [control]="cepRetirada" error="required" text="Informe o CEP do Local da Retirada"></app-message>
           </div>
 
@@ -182,7 +182,7 @@
 
           <div class="col-md-4 mb-3">
             <label for="cidadeEntrega">CEP</label><br />
-            <input pInputText name="cepEntrega" id="cidadeEntrega" type="text" [(ngModel)]="aluguel.localEntrega.cep" #cepEntrega="ngModel" required>
+            <input pInputText name="cepEntrega" id="cidadeEntrega" type="text" [(ngModel)]="aluguel.localEntrega.cep" #cepEntrega="ngModel" pattern= "[0-9]{5}-[0-9]{3}" placeholder="00000-000" required>
             <app-message [control]="cepEntrega" error="required" text="Informe o CEP do Local da Entrega"></app-message>
           </div>
 
@@ -194,12 +194,15 @@
         </div>
 
         <div class="alert alert-danger text" role="alert">
-          Ao alugar realizar este aluguel, declaro que me responsabilizo por roubos e furtos que acontecerem com o veículo. Caso tenha atraso na devolução do veículo ao locador, declaro que estou ciente de que serei cobrado por meio de uma taxa de multa de 10% do valor acordado no aluguel a cada dia de atraso. Além disso, declaro que estou sujeito à multa no valor acordado no aluguel, caso eu cancele o aluguel no dia de sua retirada ou durante seu período de vigência.
+          Ao realizar este aluguel, declaro que me responsabilizo por roubos e furtos que acontecerem com o veículo. Caso tenha atraso na devolução do veículo ao locador, declaro que estou ciente de que serei cobrado por meio de uma taxa de multa de 10% do valor acordado no aluguel a cada dia de atraso. Além disso, declaro que estou sujeito à multa no valor acordado no aluguel, caso eu cancele o aluguel no dia de sua retirada ou durante seu período de vigência.
         </div>
 
         <div>
           <p>
-            <button class="btn btn-primary btn-lg button-style" pTooltip="Ao alugar este veículo, declaro que estou de acordo com os termos de consentimento do usuário locatário." pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
+            <button class="btn btn-primary button-style" pTooltip="Ao alugar este veículo, declaro que estou de acordo com os termos de consentimento do usuário locatário." pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
+          </p>
+          <p>
+          <a pButton class="btn btn-primary button-voltar button-style" label="Voltar" routerLink="/veiculos/disponiveis"></a>
           </p>
         </div>
       </form>

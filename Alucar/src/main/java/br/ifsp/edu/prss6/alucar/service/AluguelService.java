@@ -42,7 +42,7 @@ public class AluguelService {
 		Optional<Veiculo> veiculo = veiculoRepository.findById(aluguel.getVeiculo().getId());
 		List<Aluguel> listaAluguel = aluguelRepository.findAll();
 		for(Aluguel a: listaAluguel) {
-			if(!a.getStatus().equals(StatusAluguel.CONCLUIDO) && a.getVeiculo()==veiculo.get()) {
+			if(!a.getStatus().equals(StatusAluguel.CONCLUIDO) && (!a.getStatus().equals(StatusAluguel.CANCELADO)) && a.getVeiculo()==veiculo.get()) {
 				return null;
 			}
 		}

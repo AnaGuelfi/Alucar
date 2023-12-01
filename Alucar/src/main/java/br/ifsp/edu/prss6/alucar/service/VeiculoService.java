@@ -58,7 +58,7 @@ public class VeiculoService {
 		List<Veiculo> veiculosIndisponiveis = new ArrayList<>();
 		List<Aluguel> listaAluguel = aluguelRepository.findAll();
 		for(Aluguel a: listaAluguel) {
-			if(!a.getStatus().equals(StatusAluguel.CONCLUIDO)) {
+			if((!a.getStatus().equals(StatusAluguel.CONCLUIDO)) && (!a.getStatus().equals(StatusAluguel.CANCELADO))) {
 				veiculosIndisponiveis.add(a.getVeiculo());
 			}
 		}

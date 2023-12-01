@@ -75,14 +75,14 @@
                 <a pTooltip="Exibir Termo de Comprometimento" tooltipPosition="top" [routerLink]="['/alugueis/comprometimento/', aluguel.id]">Visualizar Termo</a>
                 <br />Assinado em {{ aluguel.termoComprometimento.assinaturaLocador }}
               </span>
-              <span *ngIf="usuario === aluguel.locador.id && aluguel.termoComprometimento == null">
+              <span *ngIf="usuario === aluguel.locador.id && aluguel.termoComprometimento == null && aluguel.status !== 'CANCELADO'">
                 <a class="a-row-edit" [routerLink]="['/alugueis', aluguel.id, 'comprometimento']">Assinar Termo</a>
               </span>
             </td>
             <td>
               <span class="p-column-title">Data de Entrega</span>
               {{ aluguel.dataEntrega }}
-              <span *ngIf="usuario === aluguel.locador.id && aluguel.termoComprometimento != null && aluguel.dataEntrega == null && aluguel.dataPrevistaEntrega <= data_hoje" >
+              <span *ngIf="usuario === aluguel.locador.id && aluguel.termoComprometimento != null && aluguel.dataEntrega == null && aluguel.dataPrevistaEntrega <= data_hoje && aluguel.status !== 'CANCELADO'"  >
                 <a class="a-row-edit" [routerLink]="['/alugueis', aluguel.id, 'entrega']">Registrar Devolução</a>
               </span>
             </td>
@@ -109,8 +109,8 @@
         </ng-template>
       </p-table>
     </div>
-    <div class="p-col-12">
-      <p><a pButton routerLink="/veiculos/disponiveis">Alugar um Veículo</a></p>
+    <div class="button-aluguel">
+      <p><a class="btn btn-primary" pButton routerLink="/veiculos/disponiveis">Alugar um Veículo</a></p>
     </div>
   </div>
 </div>
