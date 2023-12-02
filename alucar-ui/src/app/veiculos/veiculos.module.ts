@@ -18,6 +18,7 @@ import { VeiculoRegisterComponent } from './veiculo-register/veiculo-register.co
 import { VeiculoUpdateCrlvComponent } from './veiculo-update-crlv/veiculo-update-crlv.component';
 import { VeiculosDisponiveisListComponent } from './veiculos-disponiveis-list/veiculos-disponiveis-list.component';
 import { CrlvComponent } from './crlv/crlv.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { CrlvComponent } from './crlv/crlv.component';
     BrowserModule,
     BrowserAnimationsModule,
     InputTextModule,
+    HttpClientModule,
     FormsModule,
     ButtonModule,
     TableModule,

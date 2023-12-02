@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/security/auth.service';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 import { Veiculo } from 'src/app/core/model';
 import { VeiculoService } from '../veiculo.service';
+import { HttpClient, HttpEventType } from '@angular/common/http';
 
 @Component({
   selector: 'app-veiculo-register',
@@ -28,6 +29,7 @@ export class VeiculoRegisterComponent {
   veiculo = new Veiculo(this.auth.jwtPayload?.usuario_id);
 
   constructor(
+    private httpClient: HttpClient,
     private veiculoService: VeiculoService,
     private auth: AuthService,
     private errorHandler: ErrorHandlerService,
@@ -36,6 +38,31 @@ export class VeiculoRegisterComponent {
     private router: Router,
     private title: Title
     ){}
+
+    selectedFile!: File;
+    retrievedImage: any;
+    base64Data: any;
+    retrieveResonse: any;
+    message!: string;
+    imageName: any;
+
+    public onFileChanged(event: { target: { files: File[]; }; }) {
+      //Select File
+      this.selectedFile = event.target.files[0];
+    }
+
+    getImage() {
+      //Make a call to Sprinf Boot to get the Image Bytes.
+      this.httpClient.get('http://localhost:8080/image/get/' + this.imageName)
+        .subscribe(
+          res => {
+            this.retrieveResonse = res;
+            this.base64Data = this.retrieveResonse.picByte;
+            this.retrievedImage = 'data:image/jpeg;base64,' + this.base64Data;
+          }
+        );
+    }
+
 
     ngOnInit(): void {
       const id = this.route.snapshot.params[`id`];
@@ -76,7 +103,7 @@ export class VeiculoRegisterComponent {
   }
 
   addVeiculo(veiculoForm: NgForm) {
-    this.veiculoService.add(this.veiculo)
+    this.veiculoService.add(this.veiculo, this.selectedFile)
       .then(addedVeiculo => {
         this.messageService.add({ severity: 'success', detail: 'Veículo adicionado com sucesso!' });
         this.loadVeiculo(addedVeiculo.id);

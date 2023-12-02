@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpEventType, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { AuthService } from '../security/auth.service';
@@ -12,6 +12,7 @@ import * as moment from 'moment';
 export class VeiculoService {
 
   email: any;
+  message!: string;
 
   veiculosUrl = 'http://localhost:8080/veiculos';
 
@@ -46,7 +47,24 @@ export class VeiculoService {
       });
   }
 
-  add(veiculo: Veiculo): Promise<Veiculo> {
+  add(veiculo: Veiculo, selectedFile: File): Promise<Veiculo> {
+    console.log(selectedFile);
+
+      //FormData API provides methods and properties to allow us easily prepare form data to be sent with POST HTTP requests.
+      const uploadImageData = new FormData();
+      uploadImageData.append('imageFile', selectedFile, selectedFile.name);
+
+      //Make a call to the Spring Boot Application to save the image
+      this.http.post('http://localhost:8080/image/upload', uploadImageData, { observe: 'response' })
+        .subscribe((response) => {
+          if (response.status === 200) {
+            this.message = 'Image uploaded successfully';
+          } else {
+            this.message = 'Image not uploaded successfully';
+          }
+        }
+        );
+
     const headers = new HttpHeaders()
       .append('Content-Type', 'application/json');
 

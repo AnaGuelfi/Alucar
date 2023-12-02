@@ -40,8 +40,6 @@ public class Veiculo {
 	private double quilometragem;
 	@Embedded
 	private CRLV crlv;
-	@Embedded
-	private Imagens imagens;
 	@NotNull
 	@ManyToOne
 	@JoinColumn(name="id_usuario")
@@ -107,17 +105,9 @@ public class Veiculo {
 	public void setCrlv(CRLV crlv) {
 		this.crlv = crlv;
 	}
-	public Imagens getImagens() {
-		return imagens;
-	}
-	public void setImagens(Imagens imagens) {
-		this.imagens = imagens;
-	}
-	
 	@Override
 	public int hashCode() {
-		return Objects.hash(combustivel, cor, crlv, id, imagens, marca, modelo, opcionais, placa, quilometragem,
-				usuario);
+		return Objects.hash(combustivel, cor, crlv, id, marca, modelo, opcionais, placa, quilometragem, usuario);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -129,11 +119,13 @@ public class Veiculo {
 			return false;
 		Veiculo other = (Veiculo) obj;
 		return combustivel == other.combustivel && Objects.equals(cor, other.cor) && Objects.equals(crlv, other.crlv)
-				&& Objects.equals(id, other.id) && Objects.equals(imagens, other.imagens)
-				&& Objects.equals(marca, other.marca) && Objects.equals(modelo, other.modelo)
-				&& Objects.equals(opcionais, other.opcionais) && Objects.equals(placa, other.placa)
+				&& Objects.equals(id, other.id) && Objects.equals(marca, other.marca)
+				&& Objects.equals(modelo, other.modelo) && Objects.equals(opcionais, other.opcionais)
+				&& Objects.equals(placa, other.placa)
 				&& Double.doubleToLongBits(quilometragem) == Double.doubleToLongBits(other.quilometragem)
 				&& Objects.equals(usuario, other.usuario);
 	}
+	
+	
 	
 }

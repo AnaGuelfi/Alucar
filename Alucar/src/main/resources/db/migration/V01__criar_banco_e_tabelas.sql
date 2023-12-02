@@ -12,7 +12,6 @@ INSERT INTO ENDERECO(id, logradouro, numero, bairro, cep, cidade, estado) VALUES
 INSERT INTO ENDERECO(id, logradouro, numero, bairro, cep, cidade, estado) VALUES(2, 'Avenida Castro Alves', 2000, 'Jardim Morumbi', '14801-460', 'Araraquara', 'São Paulo');
 
 
-
 CREATE TABLE IF NOT EXISTS USUARIO(
 	id BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
 	CPF VARCHAR(15) NOT NULL,
@@ -33,6 +32,14 @@ CREATE TABLE IF NOT EXISTS USUARIO(
 
 INSERT INTO USUARIO(id, CPF, nome, telefone, email, data_nascimento, senha, numero_registro, categoria, data_validade, id_endereco) VALUES(1, '473.322.598-93', 'Ana', '12345689', 'ana@email.com', '2002-08-03', '$2a$10$Ot4XGuyPP7r82nN3WXA0bOL1Qk9gShKDlVuPoyp89HoFnHcwO4Tji', 'SP123456789', 'A', '2029-09-04', 1);
 INSERT INTO USUARIO(id, CPF, nome, telefone, email, data_nascimento, senha, id_endereco) VALUES(2, '323.378.228-42', 'Stefano', '12348689', 'stefano@email.com', '2001-06-03', '$2a$10$Ot4XGuyPP7r82nN3WXA0bOL1Qk9gShKDlVuPoyp89HoFnHcwO4Tji', 2);
+
+CREATE TABLE IF NOT EXISTS IMAGEM(
+	id BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
+	name VARCHAR(200) NOT NULL,
+	type VARCHAR(200) NOT NULL,
+	pic_byte LONGBLOB NOT NULL
+	
+)ENGINE=INNODB DEFAULT CHARSET=UTF8;
 
 
 CREATE TABLE IF NOT EXISTS VEICULO(
