@@ -10,6 +10,7 @@
         <th class="col-actions-header"></th>
         <ng-template pTemplate="header">
           <tr>
+            <th>Imagem</th>
             <th>Marca</th>
             <th>Modelo</th>
             <th>Cor</th>
@@ -22,6 +23,10 @@
         </ng-template>
         <ng-template pTemplate="body" let-veiculos>
           <tr>
+            <td>
+              <span class="p-column-title">Imagem</span>
+              <a pTooltip="Visualizar" [routerLink]="['/image/get', veiculos.id]">Visualizar Imagem</a>
+            </td>
             <td>
               <span class="p-column-title">Marca</span>
               {{ veiculos.marca }}

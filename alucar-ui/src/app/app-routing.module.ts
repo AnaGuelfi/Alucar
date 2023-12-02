@@ -22,6 +22,7 @@ import { VeiculoRegisterComponent } from './veiculos/veiculo-register/veiculo-re
 import { VeiculoUpdateCrlvComponent } from './veiculos/veiculo-update-crlv/veiculo-update-crlv.component';
 import { VeiculosDisponiveisListComponent } from './veiculos/veiculos-disponiveis-list/veiculos-disponiveis-list.component';
 import { CrlvComponent } from './veiculos/crlv/crlv.component';
+import { ImagemComponent } from './veiculos/imagem/imagem.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'veiculos/disponiveis', pathMatch: 'full' },
@@ -105,6 +106,12 @@ const routes: Routes = [
   {
     path: 'veiculos/crlv/:id',
     component: CrlvComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['ROLE_SEARCH_CAR']}
+  },
+  {
+    path: 'image/get/:id',
+    component: ImagemComponent,
     canActivate: [AuthGuard],
     data: { roles: ['ROLE_SEARCH_CAR']}
   },

@@ -19,6 +19,7 @@ import { VeiculoUpdateCrlvComponent } from './veiculo-update-crlv/veiculo-update
 import { VeiculosDisponiveisListComponent } from './veiculos-disponiveis-list/veiculos-disponiveis-list.component';
 import { CrlvComponent } from './crlv/crlv.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ImagemComponent } from './imagem/imagem.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { HttpClientModule } from '@angular/common/http';
     VeiculoRegisterComponent,
     VeiculoUpdateCrlvComponent,
     VeiculosDisponiveisListComponent,
-    CrlvComponent
+    CrlvComponent,
+    ImagemComponent
   ],
   imports: [
     BrowserModule,

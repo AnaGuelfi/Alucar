@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/security/auth.service';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 import { Veiculo } from 'src/app/core/model';
 import { VeiculoService } from '../veiculo.service';
-import { HttpClient, HttpEventType } from '@angular/common/http';
+import { HttpClient, HttpEventType, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-veiculo-register',
@@ -103,8 +103,26 @@ export class VeiculoRegisterComponent {
   }
 
   addVeiculo(veiculoForm: NgForm) {
-    this.veiculoService.add(this.veiculo, this.selectedFile)
+    this.veiculoService.add(this.veiculo)
+
       .then(addedVeiculo => {
+        console.log(this.selectedFile);
+
+      //FormData API provides methods and properties to allow us easily prepare form data to be sent with POST HTTP requests.
+      const uploadImageData = new FormData();
+      uploadImageData.append('imageFile', this.selectedFile, this.selectedFile.name);
+
+      //Make a call to the Spring Boot Application to save the image
+      this.httpClient.post(`http://localhost:8080/image/upload/${addedVeiculo.id}`, uploadImageData, { observe: 'response' })
+        .subscribe((response) => {
+          if (response.status === 200) {
+            this.message = 'Image uploaded successfully';
+          } else {
+            this.message = 'Image not uploaded successfully';
+          }
+        }
+        );
+
         this.messageService.add({ severity: 'success', detail: 'Veículo adicionado com sucesso!' });
         this.loadVeiculo(addedVeiculo.id);
         this.router.navigate(['/veiculos', addedVeiculo.id]);

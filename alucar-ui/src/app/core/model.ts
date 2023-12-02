@@ -109,6 +109,13 @@ export class Endereco {
   }
 }
 
+export class Imagem{
+  id!: number;
+  name!: string;
+  type!: string;
+  pic_byte: any;
+}
+
 export class Veiculo {
   id!: number;
   marca!: string;

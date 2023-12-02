@@ -1,6 +1,5 @@
 package br.ifsp.edu.prss6.alucar.domain.model;
 
-import java.util.ArrayList;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -125,7 +124,6 @@ public class Veiculo {
 				&& Double.doubleToLongBits(quilometragem) == Double.doubleToLongBits(other.quilometragem)
 				&& Objects.equals(usuario, other.usuario);
 	}
-	
 	
 	
 }

@@ -1,14 +1,15 @@
 package br.ifsp.edu.prss6.alucar.domain.model;
 
-import java.sql.Blob;
 
 import javax.persistence.Column;
-import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "IMAGEM")
@@ -25,6 +26,11 @@ public class Imagem {
 	
 	@Column(name = "pic_byte", length = 1000)
 	private byte[] picByte;
+	
+	@NotNull
+	@OneToOne
+	@JoinColumn(name="id_veiculo")
+	private Veiculo veiculo;
 	
 	public Imagem() {
 		super();
@@ -67,4 +73,14 @@ public class Imagem {
 	public void setPicByte(byte[] picByte) {
 		this.picByte = picByte;
 	}
+
+	public Veiculo getVeiculo() {
+		return veiculo;
+	}
+
+	public void setVeiculo(Veiculo veiculo) {
+		this.veiculo = veiculo;
+	}
+	
+	
 }

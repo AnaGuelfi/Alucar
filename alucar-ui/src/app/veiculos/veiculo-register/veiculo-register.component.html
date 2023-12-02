@@ -57,26 +57,9 @@
         <div class="row">
           <div class="col-md-3 mb-3">
             <label>Upload</label><br />
-            <input type="file" (change)="onFileChanged($event)">
+            <input type="file" name="imagem" (change)="onFileChanged($event)">
           </div>
         </div>
-
-        <div class="row">
-          <div class="col-md-6">
-            <input type="text" class="form-control" id="name" placeholder="image name" [(ngModel)]="imageName" name="name" />
-          </div>
-          <div class="col-md-6">
-            <input type="button" (click)="getImage()" value="Get Image">
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-md-12">
-              <div *ngIf=retrievedImage>
-                  <img [src]="retrievedImage">
-              </div>
-          </div>
-      </div>
 
         <div class="row">
           <div class="col-md-12">
