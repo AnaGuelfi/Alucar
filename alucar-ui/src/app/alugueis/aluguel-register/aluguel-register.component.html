@@ -44,6 +44,11 @@
           </div>
 
           <div class="col-md-4 mb-3">
+            <label for="quilometragem">Quilometragem</label><br />
+            <input pInputText name="quilometragem" id="quilometragem" type="number" [(ngModel)]="veiculo.quilometragem" #quilometragem="ngModel" required readonly>
+          </div>
+
+          <div class="col-md-4 mb-3">
             <label for="renavam">Renavam</label><br />
             <input pInputText name="renavam" id="renavam" type="text" [(ngModel)]="veiculo.crlv.renavam" #renavam="ngModel" required readonly>
             <app-message [control]="renavam" error="required" text="Informe o Renavam do Veículo"></app-message>

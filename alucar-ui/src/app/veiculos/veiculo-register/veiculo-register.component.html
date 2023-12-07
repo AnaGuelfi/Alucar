@@ -43,6 +43,12 @@
           </div>
 
           <div class="col-md-4 mb-3">
+            <label for="quilometragem">Quilometragem</label><br />
+            <input pInputText name="quilometragem" id="quilometragem" type="number" [(ngModel)]="veiculo.quilometragem" #quilometragem="ngModel" required>
+            <app-message [control]="quilometragem" error="required" text="Informe a Quilometragem do Veículo"></app-message>
+          </div>
+
+          <div class="col-md-4 mb-3">
             <label>Opcionais do Veículo</label><br />
             <textarea pInputTextarea name="opcionais" [(ngModel)]="veiculo.opcionais"></textarea>
           </div>
