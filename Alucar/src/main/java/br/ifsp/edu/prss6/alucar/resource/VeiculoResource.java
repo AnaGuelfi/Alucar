@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.ifsp.edu.prss6.alucar.domain.model.Veiculo;
+import br.ifsp.edu.prss6.alucar.repository.ImagemRepository;
 import br.ifsp.edu.prss6.alucar.repository.VeiculoRepository;
 import br.ifsp.edu.prss6.alucar.service.VeiculoService;
 import javax.servlet.http.HttpServletResponse;
@@ -33,6 +34,9 @@ public class VeiculoResource {
 	
 	@Autowired
 	private VeiculoRepository veiculoRepository;
+	
+	@Autowired
+	private ImagemResource imageResource;
 	
 	@PreAuthorize("hasAuthority('ROLE_SEARCH_CAR') and #oauth2.hasScope('read')")
 	@GetMapping
@@ -78,6 +82,7 @@ public class VeiculoResource {
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void remove(@PathVariable Long id) {
+		imageResource.remove(id);
 		veiculoRepository.deleteById(id);
 	}
 	
